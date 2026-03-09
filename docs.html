@@ -49,21 +49,43 @@
     <!-- Navbar -->
     <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8">
         <div class="navbar-start">
+            <button type="button" class="btn btn-ghost lg:hidden text-js p-2" data-mobile-menu-toggle aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </button>
             <a class="btn btn-ghost text-xl font-bold gap-2" href="index.html" aria-label="JS Pro Roadmap - Home">
                 <i class="fa-brands fa-js text-2xl"></i>
                 <span class="hidden sm:inline">JS Pro Roadmap</span>
             </a>
         </div>
-        <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 font-medium text-white">
-                <li><a href="index.html" class="hover:text-js"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="docs.html" class="text-js font-bold"><i class="fa-solid fa-book"></i> Documentation</a>
-                </li>
-            </ul>
+        <div class="navbar-center hidden lg:flex items-center gap-6">
+            <a href="index.html" class="nav-link-pill"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="docs.html" class="nav-link-pill active"><i class="fa-solid fa-book"></i> Documentation</a>
+            <a href="practice.html" class="nav-link-pill"><i class="fa-solid fa-pen-fancy"></i> Practice</a>
         </div>
         <div class="navbar-end gap-2">
+            <a href="index.html" class="nav-profile-btn"><i class="fa-solid fa-user-astronaut"></i> My Profile</a>
         </div>
     </div>
+
+    <!-- Mobile drawer (modern UI): only visible on mobile -->
+    <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-black/60 z-[55] lg:hidden" aria-hidden="true"></div>
+    <aside id="mobile-drawer" class="fixed right-0 top-0 bottom-0 w-72 max-w-[85vw] bg-jsdark text-white shadow-2xl z-[60] lg:hidden flex flex-col" aria-label="Mobile menu">
+        <div class="flex items-center justify-between p-4 border-b border-slate-600">
+            <span class="font-bold text-js flex items-center gap-2"><i class="fa-brands fa-js text-xl"></i> Menu</span>
+            <button type="button" class="btn btn-ghost btn-sm btn-circle text-white hover:bg-white/10" data-mobile-drawer-close aria-label="Close menu">
+                <i class="fa-solid fa-times text-lg"></i>
+            </button>
+        </div>
+        <nav class="p-4 flex-1 overflow-y-auto">
+            <ul class="menu menu-vertical gap-1 w-full">
+                <li><a href="index.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-house w-5 text-center"></i> Home</a></li>
+                <li><a href="docs.html" class="flex items-center gap-3 rounded-xl py-3 text-js font-semibold hover:bg-white/10 transition-colors"><i class="fa-solid fa-book w-5 text-center"></i> Documentation</a></li>
+                <li><a href="practice.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-pen-fancy w-5 text-center"></i> Practice</a></li>
+            </ul>
+        </nav>
+    </aside>
 
     <main class="max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
@@ -1324,6 +1346,7 @@
     </footer>
 
     <script src="scroll-animations.js"></script>
+    <script src="mobile-menu.js"></script>
     <script src="docs.js"></script>
     <script src="site-optimizer.js"></script>
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JavaScript practice questions from beginner to advanced. Revise by topic and mark questions for revision.">
+    <title>Practice & Revision | JS Pro Roadmap</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="practice.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        js: '#F7DF1E',
+                        jsdark: '#323330',
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="practice-page text-slate-800 antialiased relative">
+
+    <!-- Scroll progress bar -->
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-jsdark z-[60]">
+        <div id="scroll-progress" class="h-full bg-js text-jsdark transition-all duration-150 w-0"></div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8">
+        <div class="navbar-start">
+            <button type="button" class="btn btn-ghost lg:hidden text-js p-2" data-mobile-menu-toggle aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </button>
+            <a class="btn btn-ghost text-xl font-bold gap-2" href="index.html" aria-label="JS Pro Roadmap - Home">
+                <i class="fa-brands fa-js text-2xl"></i>
+                <span class="hidden sm:inline">JS Pro Roadmap</span>
+            </a>
+        </div>
+        <div class="navbar-center hidden lg:flex items-center gap-6">
+            <a href="index.html" class="nav-link-pill"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="docs.html" class="nav-link-pill"><i class="fa-solid fa-book"></i> Documentation</a>
+            <a href="practice.html" class="nav-link-pill active" aria-current="page"><i class="fa-solid fa-pen-fancy"></i> Practice</a>
+        </div>
+        <div class="navbar-end gap-2">
+            <a href="index.html" class="nav-profile-btn"><i class="fa-solid fa-user-astronaut"></i> My Profile</a>
+        </div>
+    </div>
+
+    <!-- Mobile drawer (modern UI): only visible on mobile -->
+    <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-black/60 z-[55] lg:hidden" aria-hidden="true"></div>
+    <aside id="mobile-drawer" class="fixed right-0 top-0 bottom-0 w-72 max-w-[85vw] bg-jsdark text-white shadow-2xl z-[60] lg:hidden flex flex-col" aria-label="Mobile menu">
+        <div class="flex items-center justify-between p-4 border-b border-slate-600">
+            <span class="font-bold text-js flex items-center gap-2"><i class="fa-brands fa-js text-xl"></i> Menu</span>
+            <button type="button" class="btn btn-ghost btn-sm btn-circle text-white hover:bg-white/10" data-mobile-drawer-close aria-label="Close menu">
+                <i class="fa-solid fa-times text-lg"></i>
+            </button>
+        </div>
+        <nav class="p-4 flex-1 overflow-y-auto">
+            <ul class="menu menu-vertical gap-1 w-full">
+                <li><a href="index.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-house w-5 text-center"></i> Home</a></li>
+                <li><a href="docs.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-book w-5 text-center"></i> Documentation</a></li>
+                <li><a href="practice.html" class="flex items-center gap-3 rounded-xl py-3 text-js font-semibold hover:bg-white/10 transition-colors"><i class="fa-solid fa-pen-fancy w-5 text-center"></i> Practice</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <!-- Hero -->
+        <section class="practice-hero px-4 lg:px-8 py-10 md:py-14">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2 flex items-center justify-center gap-3 flex-wrap">
+                    <i class="fa-solid fa-pen-fancy"></i>
+                    Practice & Revision
+                </h1>
+                <p class="text-slate-300 text-lg max-w-2xl mx-auto">
+                    Beginner থেকে Advanced পর্যন্ত সব টপিকের প্রশ্ন। বারবার প্র্যাকটিস করুন, রিভিশনের জন্য মার্ক করুন — যাতে পিছনের টপিক ভুলে গেলেও আবার রিভিশন করতে পারেন এবং লজিক স্ট্রং থাকে।
+                </p>
+            </div>
+        </section>
+
+        <!-- Revision only banner (hidden when no revision marked) -->
+        <div id="revision-only-banner" class="revision-only-banner hidden px-4 py-3 flex items-center justify-center gap-2 flex-wrap">
+            <i class="fa-solid fa-rotate-right text-amber-700"></i>
+            <span><strong data-revision-count>0</strong> question(s) marked for revision.</span>
+            <button type="button" data-filter-revision="only" class="btn btn-sm btn-warning">Show only revision</button>
+        </div>
+
+        <!-- Sidebar + Content (same layout as Documentation page) -->
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 px-4 lg:px-8 pb-12 max-w-[88rem] mx-auto">
+            <!-- Sidebar: Topic list (topic name only, one line) -->
+            <aside class="w-full lg:w-80 flex-shrink-0 order-2 lg:order-1">
+                <nav class="practice-sidebar-nav p-4 lg:sticky lg:top-24 max-h-[80vh] overflow-y-auto rounded-xl border border-slate-200 bg-white/95 shadow-sm" id="practice-sidebar">
+                    <h3 class="font-bold text-slate-700 mb-3 text-sm uppercase tracking-wider">Topics</h3>
+                    <ul class="menu menu-vertical w-full gap-0.5 text-slate-600" id="practice-sidebar-list">
+                        <li class="py-2"><span class="text-slate-400 text-sm">Loading…</span></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content: Filters + Questions (narrower width, centered) -->
+            <div class="flex-1 min-w-0 order-1 lg:order-2 max-w-4xl mx-auto">
+                <section class="py-6">
+                    <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
+                        <span class="text-slate-600 font-medium">Level:</span>
+                        <div class="flex flex-wrap gap-2">
+                            <button type="button" data-filter-level="all" class="btn btn-sm filter-pill active">All</button>
+                            <button type="button" data-filter-level="beginner" class="btn btn-sm btn-ghost filter-pill">Beginner</button>
+                            <button type="button" data-filter-level="intermediate" class="btn btn-sm btn-ghost filter-pill">Intermediate</button>
+                            <button type="button" data-filter-level="advanced" class="btn btn-sm btn-ghost filter-pill">Advanced</button>
+                        </div>
+                        <span class="text-slate-400 mx-2">|</span>
+                        <span class="text-slate-600 font-medium">View:</span>
+                        <button type="button" data-filter-revision="all" class="btn btn-sm btn-ghost filter-pill active">All questions</button>
+                        <button type="button" data-filter-revision="only" class="btn btn-sm btn-ghost filter-pill">Revision only</button>
+                    </div>
+
+                    <div id="practice-topics" class="min-h-[200px] max-w-full mx-auto">
+                        <div class="flex justify-center py-12">
+                            <span class="loading loading-spinner loading-lg text-js"></span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 py-6 text-center text-slate-500 text-sm relative z-10">
+        <div id="seo-widget-container"></div>
+        <p><a href="index.html" class="link link-hover text-jsdark font-medium">JS Pro Roadmap</a> — Practice করে লজিক স্ট্রং রাখুন।</p>
+    </footer>
+
+    <script src="scroll-animations.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="practice.js"></script>
+    <script src="site-optimizer.js"></script>
+</body>
+</html>

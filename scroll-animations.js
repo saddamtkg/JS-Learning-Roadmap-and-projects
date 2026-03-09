@@ -22,13 +22,25 @@
         );
     }
 
+    function isInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var margin = vh * 0.15;
+        return rect.top < vh - margin && rect.bottom > -margin;
+    }
+
     function initScrollAnimations() {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         if (!observer) observer = createObserver();
 
         document.querySelectorAll('.scroll-animate').forEach(function (el) {
             if (el.getAttribute('data-scroll-observed') === 'true') return;
-            observer.observe(el);
+            if (isInViewport(el)) {
+                el.classList.add('animated');
+                el.setAttribute('data-scroll-observed', 'true');
+            } else {
+                observer.observe(el);
+            }
         });
     }
 

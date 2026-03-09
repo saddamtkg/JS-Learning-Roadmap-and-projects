@@ -83,9 +83,29 @@
     });
   }
 
+  function initAnchorScrollNoHash() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (href === '#') return;
+        var id = href.slice(1);
+        var el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var url = window.location.pathname + window.location.search;
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', url);
+          }
+        }
+      });
+    });
+  }
+
   function init() {
     initScrollSpy();
     addCopyButtons();
+    initAnchorScrollNoHash();
   }
 
   if (document.readyState === 'loading') {

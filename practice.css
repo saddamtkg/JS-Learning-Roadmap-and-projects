@@ -1,0 +1,116 @@
+/* Practice & Revision page styles */
+.practice-page {
+    font-family: 'Hind Siliguri', sans-serif;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    min-height: 100vh;
+}
+
+.practice-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+    border-bottom: 3px solid #F7DF1E;
+}
+
+.practice-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e2e8f0;
+}
+.practice-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+.question-item {
+    border-left: 4px solid transparent;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.question-item:hover {
+    background-color: #f8fafc;
+}
+.question-item.revision-marked {
+    border-left-color: #F59E0B;
+    background-color: #fffbeb;
+}
+.question-item.revision-marked:hover {
+    background-color: #fef3c7;
+}
+
+.level-badge-beginner { background-color: #dbeafe; color: #1d4ed8; }
+.level-badge-intermediate { background-color: #d1fae5; color: #047857; }
+.level-badge-advanced { background-color: #fce7f3; color: #9d174d; }
+
+.filter-pill {
+    transition: all 0.2s ease;
+}
+.filter-pill:hover {
+    transform: scale(1.02);
+}
+.filter-pill.active {
+    box-shadow: 0 0 0 2px currentColor;
+}
+
+.revision-only-banner {
+    background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #f59e0b;
+}
+
+.topic-section {
+    scroll-margin-top: 6rem;
+}
+
+/* Sidebar: same feel as Documentation page */
+.practice-sidebar-nav {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.practice-nav-link.active {
+    background: rgba(247, 223, 30, 0.15);
+    color: #323330;
+}
+
+.question-num {
+    min-width: 1.5rem;
+    display: inline-block;
+}
+
+/* Sidebar: topic text one line, allow width for full text */
+.practice-sidebar-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 1024px) {
+    .practice-sidebar-nav {
+        min-width: 18rem;
+    }
+}
+
+/* Smooth expand for topic body */
+.topic-body {
+    animation: topicExpand 0.25s ease-out;
+}
+@keyframes topicExpand {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.code-font {
+    font-family: 'Fira Code', monospace;
+}
+
+.empty-state-icon {
+    opacity: 0.6;
+}
+
+/* Hint & Answer tooltips — readable length and wrap */
+[data-tip] {
+    max-width: 20rem;
+}
+.tooltip::before {
+    white-space: normal;
+    max-width: 20rem;
+    text-align: left;
+}

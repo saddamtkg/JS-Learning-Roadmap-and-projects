@@ -55,8 +55,57 @@ function switchSyllabusTab(tabId, clickedBtn = null) {
 let taskDetails = {};
 let projects = [];
 
+// Anchor links: স্মুথ স্ক্রল করবে, URL-এ # যুক্ত হবে না
+function initAnchorScrollNoHash() {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            const id = href.slice(1);
+            const el = document.getElementById(id);
+            if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const url = window.location.pathname + window.location.search;
+                if (window.history && window.history.replaceState) {
+                    window.history.replaceState(null, '', url);
+                }
+            }
+        });
+    });
+}
+
+// Home page: hover on dropdown anchor = scroll to section (ক্লিকের দরকার নেই)
+function initHomeAnchorHover() {
+    const menu = document.getElementById('home-anchor-menu');
+    if (!menu) return;
+    let hoverTimer = null;
+    menu.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('mouseenter', function () {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            const id = href.slice(1);
+            hoverTimer = setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (window.history && window.history.replaceState) {
+                        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+                    }
+                }
+                hoverTimer = null;
+            }, 180);
+        });
+        link.addEventListener('mouseleave', function () {
+            if (hoverTimer) clearTimeout(hoverTimer);
+        });
+    });
+}
+
 // Initialize App & Fetch Data
 document.addEventListener('DOMContentLoaded', () => {
+    initAnchorScrollNoHash();
+    initHomeAnchorHover();
     loadAppData();
 });
 

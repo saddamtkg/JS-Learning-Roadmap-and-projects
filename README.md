@@ -1,5 +1,7 @@
 # JavaScript Pro Roadmap — শেখার সাইট
 
+**🔗 Live site:** [https://saddamtkg.github.io/JS-Learning-Roadmap-and-projects/](https://saddamtkg.github.io/JS-Learning-Roadmap-and-projects/)
+
 এই রিপোজিটরিতে **১২ মাসের JavaScript + DSA ও Web Optimization** রোডম্যাপ আছে। বাংলা ও ইংরেজিতে ব্যাখ্যা, ২০টি প্রজেক্ট, সিলেবাস ও ডকুমেন্টেশন সহ একটি সম্পূর্ণ শেখার সাইট।
 
 ---

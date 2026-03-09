@@ -87,44 +87,61 @@
     <!-- Navbar -->
     <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8">
         <div class="navbar-start">
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden text-js" aria-label="Open menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
-                </div>
-                <ul tabindex="0"
-                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-jsdark text-white rounded-box w-52">
-                    <li><a href="#welcome">Welcome</a></li>
-                    <li><a href="#dsa-performance">DSA & Optimization</a></li>
-                    <li><a href="#syllabus">12-Month Syllabus</a></li>
-                    <li><a href="#projects">20 Projects</a></li>
-                    <li><a href="docs.html" class="text-js font-bold">📚 Documentation</a></li>
-                </ul>
-            </div>
+            <button type="button" class="btn btn-ghost lg:hidden text-js p-2" data-mobile-menu-toggle aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </button>
             <a class="btn btn-ghost text-xl font-bold gap-2" href="index.html" aria-label="JS Pro Roadmap - Home">
                 <i class="fa-brands fa-js text-2xl"></i>
                 <span class="hidden sm:inline">JS Pro Roadmap</span>
             </a>
         </div>
-        <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 font-medium text-white">
-                <li><a href="#welcome" class="hover:text-js">Welcome</a></li>
-                <li><a href="#dsa-performance" class="hover:text-js">DSA & Optimization</a></li>
-                <li><a href="#syllabus" class="hover:text-js">12-Month Syllabus</a></li>
-                <li><a href="#projects" class="hover:text-js">20 Projects</a></li>
-                <li><a href="docs.html" class="hover:text-js text-js font-bold flex items-center gap-1"><i
-                            class="fa-solid fa-book"></i> Documentation</a></li>
-            </ul>
+        <div class="navbar-center hidden lg:flex items-center gap-6">
+            <div class="nav-home-dropdown relative">
+                <a href="index.html" class="nav-dropdown-trigger active"><i class="fa-solid fa-house"></i> Home <i class="fa-solid fa-chevron-down text-xs opacity-80"></i></a>
+                <ul class="nav-home-dropdown-menu" id="home-anchor-menu">
+                    <li><a href="#welcome" class="nav-anchor-item"><i class="fa-solid fa-hand-wave w-4 text-center"></i> Welcome</a></li>
+                    <li><a href="#dsa-performance" class="nav-anchor-item"><i class="fa-solid fa-chart-line w-4 text-center"></i> DSA & Optimization</a></li>
+                    <li><a href="#syllabus" class="nav-anchor-item"><i class="fa-solid fa-calendar-days w-4 text-center"></i> 12-Month Syllabus</a></li>
+                    <li><a href="#projects" class="nav-anchor-item"><i class="fa-solid fa-flask w-4 text-center"></i> 20 Projects</a></li>
+                </ul>
+            </div>
+            <a href="docs.html" class="nav-link-pill"><i class="fa-solid fa-book"></i> Documentation</a>
+            <a href="practice.html" class="nav-link-pill"><i class="fa-solid fa-pen-fancy"></i> Practice</a>
         </div>
         <div class="navbar-end gap-2">
-            <button class="btn btn-sm border-2 border-js bg-transparent text-js hover:bg-js hover:text-jsdark font-semibold px-4" onclick="showWelcomeModal()">
-                <i class="fa-solid fa-user-astronaut mr-1"></i> My Profile
+            <button type="button" class="nav-profile-btn" onclick="showWelcomeModal()">
+                <i class="fa-solid fa-user-astronaut"></i> My Profile
             </button>
         </div>
     </div>
+
+    <!-- Mobile drawer (modern UI): only visible on mobile, desktop header unchanged -->
+    <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-black/60 z-[55] lg:hidden" aria-hidden="true"></div>
+    <aside id="mobile-drawer" class="fixed right-0 top-0 bottom-0 w-72 max-w-[85vw] bg-jsdark text-white shadow-2xl z-[60] lg:hidden flex flex-col" aria-label="Mobile menu">
+        <div class="flex items-center justify-between p-4 border-b border-slate-600">
+            <span class="font-bold text-js flex items-center gap-2"><i class="fa-brands fa-js text-xl"></i> Menu</span>
+            <button type="button" class="btn btn-ghost btn-sm btn-circle text-white hover:bg-white/10" data-mobile-drawer-close aria-label="Close menu">
+                <i class="fa-solid fa-times text-lg"></i>
+            </button>
+        </div>
+        <nav class="p-4 flex-1 overflow-y-auto">
+            <ul class="menu menu-vertical gap-1 w-full">
+                <li><a href="#welcome" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-house w-5 text-center"></i> Welcome</a></li>
+                <li><a href="#dsa-performance" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-chart-line w-5 text-center"></i> DSA & Optimization</a></li>
+                <li><a href="#syllabus" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-calendar-days w-5 text-center"></i> 12-Month Syllabus</a></li>
+                <li><a href="#projects" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-flask w-5 text-center"></i> 20 Projects</a></li>
+                <li><a href="docs.html" class="flex items-center gap-3 rounded-xl py-3 text-js font-semibold hover:bg-white/10 transition-colors"><i class="fa-solid fa-book w-5 text-center"></i> Documentation</a></li>
+                <li><a href="practice.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-pen-fancy w-5 text-center"></i> Practice</a></li>
+            </ul>
+            <div class="mt-4 pt-4 border-t border-slate-600">
+                <button type="button" onclick="showWelcomeModal(); document.body.classList.remove('mobile-drawer-open');" class="btn btn-outline btn-sm border-2 border-js text-js hover:bg-js hover:text-jsdark w-full gap-2 rounded-xl">
+                    <i class="fa-solid fa-user-astronaut"></i> My Profile
+                </button>
+            </div>
+        </nav>
+    </aside>
 
     <main>
         <!-- Hero Section with JS Code Aesthetic -->
@@ -183,7 +200,7 @@
         </section>
 
         <!-- Current Status Profile -->
-        <section id="welcome" class="py-12 -mt-10 relative z-20 px-4">
+        <section id="welcome" class="py-12 -mt-10 relative z-20 px-4 scroll-mt-16">
             <div
                 class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-100 flex flex-col md:flex-row items-center gap-8 scroll-animate" data-animate="fadeUp">
                 <div class="avatar placeholder">
@@ -210,7 +227,7 @@
         </section>
 
         <!-- NEW: JS + DSA Pro Section -->
-        <section id="dsa-performance" class="py-16 bg-slate-50 px-4">
+        <section id="dsa-performance" class="py-16 bg-slate-50 px-4 scroll-mt-16">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-12 scroll-animate" data-animate="fadeUp">
                     <div class="badge bg-js text-jsdark font-bold mb-3 border-none p-3">The Secret to Pro Level</div>
@@ -282,7 +299,7 @@
         </section>
 
         <!-- 12 Months Detailed Syllabus -->
-        <section id="syllabus" class="py-16 bg-white border-t border-slate-200 px-4">
+        <section id="syllabus" class="py-16 bg-white border-t border-slate-200 px-4 scroll-mt-16">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12 scroll-animate" data-animate="fadeUp">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">১২ মাসের সাপ্তাহিক সিলেবাস</h2>
@@ -539,7 +556,7 @@
         </section>
 
         <!-- 20 Projects Interactive Section -->
-        <section id="projects" class="py-16 bg-slate-900 text-white px-4">
+        <section id="projects" class="py-16 bg-slate-900 text-white px-4 scroll-mt-16">
             <div class="max-w-7xl mx-auto">
                 <div class="flex justify-between items-end mb-10 border-b border-slate-700 pb-4">
                     <div>
@@ -616,13 +633,36 @@
 
     <!-- Confetti / Success Modal -->
     <dialog id="confetti-modal" class="modal">
-        <div class="modal-box text-center py-10">
+        <div class="modal-box max-w-lg text-left py-8">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Close">✕</button>
             </form>
-            <div class="text-6xl mb-4">🚀</div>
-            <h3 class="font-bold text-2xl">Congratulations Future Pro!</h3>
-            <p class="py-4">Stay consistent, practice daily, and write optimized code.</p>
+            <div class="text-center mb-6">
+                <div class="text-5xl mb-3">🚀</div>
+                <h3 class="font-bold text-2xl text-slate-800">Congratulations Future Pro!</h3>
+                <p class="text-slate-600 mt-2">এই রোডম্যাপের গোল অ্যাচিভ করার পর নিজেকে আরও এগিয়ে নিতে নিচের দিকগুলো মাথায় রাখুন।</p>
+            </div>
+            <div class="space-y-4 text-sm">
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                    <h4 class="font-bold text-amber-900 mb-2 flex items-center gap-2"><i class="fa-solid fa-arrow-right"></i> পরবর্তী ধাপ (Next Steps)</h4>
+                    <ul class="text-slate-700 space-y-1 list-disc list-inside">
+                        <li><strong>Framework:</strong> React বা Vue শেখা — রিয়েল প্রজেক্টে JS এর পরপরই দরকার হয়।</li>
+                        <li><strong>Backend:</strong> Node.js + Express দিয়ে API বানানো, ডাটাবেস (MongoDB/SQL) বেসিক।</li>
+                        <li><strong>System Design:</strong> স্কেলেবল অ্যাপ কিভাবে ডিজাইন করা হয় — ইন্টারভিউতে চলে।</li>
+                        <li><strong>Interview Prep:</strong> লিকোড/হ্যাকারর্যাং রেগুলার প্র্যাকটিস, বিহেভিয়ারাল প্রশ্ন প্রস্তুতি।</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-100 border border-slate-200 rounded-lg p-4">
+                    <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> নিজেকে আরও Skilled করবেন যেভাবে</h4>
+                    <ul class="text-slate-700 space-y-1 list-disc list-inside">
+                        <li>ছোট ছোট সাইড প্রজেক্ট বানিয়ে পোর্টফোলিওতে যোগ করুন।</li>
+                        <li>ওপেন সোর্সে কন্ট্রিবিউট করুন অথবা নিজের মিনি লাইব্রেরি পাবলিশ করুন।</li>
+                        <li>ব্লগ/ভিডিওতে যা শিখেছেন সেটা শেয়ার করুন — এক্সপ্লেইন করলে ধারণা পাকাপোক্ত হয়।</li>
+                        <li>কোনো টপিকে গভীরে যান (যেমন Performance, Security) এবং সেই দিকে স্পেশালাইজ করুন।</li>
+                    </ul>
+                </div>
+                <p class="text-center text-slate-500 text-xs pt-2">Stay consistent, practice daily, and write clean & optimized code. You got this! 💪</p>
+            </div>
         </div>
     </dialog>
 
@@ -642,6 +682,7 @@
 
     <!-- Scroll animations (must run early so elements can be observed) -->
     <script src="scroll-animations.js"></script>
+    <script src="mobile-menu.js"></script>
     <!-- Main JavaScript File -->
     <script src="main.js"></script>
     <script src="site-optimizer.js"></script>
