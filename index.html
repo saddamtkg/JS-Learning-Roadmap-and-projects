@@ -1,770 +1,649 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" data-theme="light" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Developer Roadmap & Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #f7df1e; /* JS Yellow */
-            --primary-dark: #d4be10;
-            --text-main: #333;
-            --text-light: #666;
-            --bg-body: #f5f7fa;
-            --bg-card: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
-            --accent-1: #3b82f6; /* Blue */
-            --accent-2: #10b981; /* Green */
-            --accent-3: #8b5cf6; /* Purple */
-            --accent-4: #f43f5e; /* Rose */
-            --accent-5: #f97316; /* Orange */
-        }
+    <meta name="description"
+        content="A complete 12-month JavaScript and Data Structures & Algorithms roadmap for Pro developers.">
+    <title>Pro JavaScript & DSA Roadmap | 1 Year Plan</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <!-- DaisyUI & Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animations (scroll & modern UI) -->
+    <link rel="stylesheet" href="animations.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        js: '#F7DF1E', // JS Yellow
+                        jsdark: '#323330', // JS Black
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            overflow-y: scroll;
+            scrollbar-gutter: stable;
         }
 
         body {
-            font-family: 'Inter', 'Hind Siliguri', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f4f4f9;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        .code-font {
+            font-family: 'Fira Code', monospace;
         }
 
-        /* Header */
-        header {
-            text-align: center;
-            margin-bottom: 4rem;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, #111 0%, #333 100%);
-            color: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        header::before {
-            content: 'JS';
-            position: absolute;
-            font-size: 15rem;
-            font-weight: 800;
-            color: rgba(247, 223, 30, 0.05);
-            top: -50px;
-            right: -20px;
-            z-index: 0;
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-
-        header p {
-            font-size: 1.2rem;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Timeline / Roadmap Summary */
-        .roadmap-summary {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4rem;
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .milestone {
-            flex: 1;
-            text-align: center;
-            min-width: 150px;
-            position: relative;
-        }
-
-        .milestone:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 25px;
-            right: -50%;
-            width: 100%;
-            height: 2px;
-            background-color: #eee;
-            z-index: 0;
-        }
-
-        .milestone-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: #111;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 0 0 5px white;
-        }
-
-        .milestone h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .milestone p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Phases Grid */
-        .phase-section {
-            margin-bottom: 4rem;
-        }
-
-        .phase-title {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #eee;
-        }
-
-        .phase-title i {
-            color: var(--primary-dark);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Project Card */
-        .project-card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid var(--accent-1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .phase-1 .project-card { border-top-color: var(--accent-1); }
-        .phase-2 .project-card { border-top-color: var(--accent-2); }
-        .phase-3 .project-card { border-top-color: var(--accent-3); }
-        .phase-4 .project-card { border-top-color: var(--accent-4); }
-        .phase-5 .project-card { border-top-color: var(--accent-5); }
-
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .project-number {
-            background: #f1f5f9;
-            color: var(--text-light);
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .project-content {
-            flex-grow: 1;
-        }
-
-        .skills-list {
-            margin-top: 1rem;
-        }
-
-        .skills-list h4 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: var(--text-light);
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background: #f1f5f9;
-            color: #475569;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .phase-1 .tag { background: #eff6ff; color: #1d4ed8; }
-        .phase-2 .tag { background: #ecfdf5; color: #047857; }
-        .phase-3 .tag { background: #f5f3ff; color: #6d28d9; }
-        .phase-4 .tag { background: #fff1f2; color: #be123c; }
-        .phase-5 .tag { background: #fff7ed; color: #c2410c; }
-
-        /* Final Outcomes */
-        .outcomes {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: var(--radius);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #111;
-            margin-top: 4rem;
-            box-shadow: var(--shadow);
-        }
-
-        .outcomes h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .outcomes p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .outcome-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .outcome-tag {
-            background: rgba(255, 255, 255, 0.9);
-            color: #111;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .roadmap-summary {
-                flex-direction: column;
-            }
-            .milestone:not(:last-child)::after {
-                display: none;
-            }
-            .milestone {
-                margin-bottom: 1.5rem;
-            }
-            header h1 {
-                font-size: 2.2rem;
-            }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body>
 
-<div class="container">
-    <header>
-        <h1>Beginner to Advanced<br>JavaScript Projects Roadmap</h1>
-        <p>A complete step-by-step guide to becoming a Market-Ready JavaScript Developer in 12 months. (শূন্য থেকে মার্কেট-রেডি ডেভেলপার হওয়ার সম্পূর্ণ গাইডলাইন)</p>
-    </header>
+<body class="text-slate-800 antialiased relative">
 
-    <div class="roadmap-summary">
-        <div class="milestone">
-            <div class="milestone-icon">1</div>
-            <h3>Month 1-2</h3>
-            <p>Basic Projects<br>(বেসিক প্রজেক্টস)</p>
+    <!-- Interactive Progress Tracker: ট্র্যাক = হেডার রঙ, স্ক্রল ফিল = JS হলুদ -->
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-jsdark z-[60]">
+        <div id="scroll-progress" class="h-full bg-js text-jsdark transition-all duration-150 w-0"></div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden text-js" aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </div>
+                <ul tabindex="0"
+                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-jsdark text-white rounded-box w-52">
+                    <li><a href="#welcome">Welcome</a></li>
+                    <li><a href="#dsa-performance">DSA & Optimization</a></li>
+                    <li><a href="#syllabus">12-Month Syllabus</a></li>
+                    <li><a href="#projects">20 Projects</a></li>
+                    <li><a href="docs.html" class="text-js font-bold">📚 Documentation</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl font-bold gap-2" href="index.html" aria-label="JS Pro Roadmap - Home">
+                <i class="fa-brands fa-js text-2xl"></i>
+                <span class="hidden sm:inline">JS Pro Roadmap</span>
+            </a>
         </div>
-        <div class="milestone">
-            <div class="milestone-icon">2</div>
-            <h3>Month 3-4</h3>
-            <p>Intermediate Projects<br>(ইন্টারমিডিয়েট লেভেল)</p>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 font-medium text-white">
+                <li><a href="#welcome" class="hover:text-js">Welcome</a></li>
+                <li><a href="#dsa-performance" class="hover:text-js">DSA & Optimization</a></li>
+                <li><a href="#syllabus" class="hover:text-js">12-Month Syllabus</a></li>
+                <li><a href="#projects" class="hover:text-js">20 Projects</a></li>
+                <li><a href="docs.html" class="hover:text-js text-js font-bold flex items-center gap-1"><i
+                            class="fa-solid fa-book"></i> Documentation</a></li>
+            </ul>
         </div>
-        <div class="milestone">
-            <div class="milestone-icon">3</div>
-            <h3>Month 5-6</h3>
-            <p>Algorithm Projects<br>(লজিক ও অ্যালগরিদম)</p>
-        </div>
-        <div class="milestone">
-            <div class="milestone-icon">4</div>
-            <h3>Month 7-12</h3>
-            <p>Real-World Projects<br>(বাস্তবভিত্তিক কাজ)</p>
+        <div class="navbar-end gap-2">
+            <button class="btn btn-sm border-2 border-js bg-transparent text-js hover:bg-js hover:text-jsdark font-semibold px-4" onclick="showWelcomeModal()">
+                <i class="fa-solid fa-user-astronaut mr-1"></i> My Profile
+            </button>
         </div>
     </div>
 
-    <!-- Phase 1 -->
-    <section class="phase-section phase-1">
-        <h2 class="phase-title"><i class="fa-solid fa-rocket"></i> Phase 1: Basic JavaScript Projects</h2>
-        <p style="margin-bottom: 1.5rem; color: var(--text-light);">এই ফেইজে আমরা জাভাস্ক্রিপ্ট এর একদম বেসিক জিনিসগুলো যেমন DOM ম্যানিপুলেশন, ইভেন্ট লিসেনার নিয়ে কাজ করবো।</p>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">1. Counter App</h3>
-                    <span class="project-number">Project #1</span>
+    <main>
+        <!-- Hero Section with JS Code Aesthetic -->
+        <section class="relative pt-20 pb-24 lg:pt-32 lg:pb-36 bg-jsdark text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-left scroll-animate" data-animate="fadeLeft">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-js font-mono text-sm mb-6 cursor-pointer hover:bg-slate-700 transition"
+                            onclick="triggerConfetti()">
+                            <i class="fa-solid fa-code"></i> console.log("Let's become a Pro!");
+                        </div>
+                        <h1
+                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight">
+                            WordPress Dev থেকে <br />
+                            <span class="text-js">JavaScript + DSA Pro</span>
+                        </h1>
+                        <p class="text-lg text-slate-300 mb-10 leading-relaxed">
+                            যেহেতু আপনি ইতোমধ্যে WordPress, PHP বেসিক জানেন এবং AI দিয়ে কোড লিখতে পারেন, আপনার জন্য এই
+                            রোডম্যাপটি সাধারণ বিগিনারদের চেয়ে আলাদা। এখানে <strong>Advanced JS, Data Structures &
+                                Algorithms (DSA), এবং Web Performance Optimization</strong> এর উপর সর্বোচ্চ ফোকাস দেওয়া
+                            হয়েছে।
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#syllabus"
+                                class="btn bg-js text-jsdark hover:bg-yellow-500 border-none font-bold px-8">Start the
+                                Journey <i class="fa-solid fa-arrow-down"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Code Editor Mockup -->
+                    <div class="mockup-code bg-slate-900 border border-slate-700 shadow-2xl text-left hidden md:block scroll-animate" data-animate="fadeRight">
+                        <pre data-prefix="1"
+                            class="text-slate-400"><code><span class="text-purple-400">const</span> roadmap = {</code></pre>
+                        <pre data-prefix="2"
+                            class="text-slate-300"><code>  user: <span class="text-green-400">"WordPress Dev"</span>,</code></pre>
+                        <pre data-prefix="3"
+                            class="text-slate-300"><code>  goal: <span class="text-green-400">"Pro JS Engineer"</span>,</code></pre>
+                        <pre data-prefix="4"
+                            class="text-slate-300"><code>  tools: [<span class="text-green-400">"React"</span>, <span class="text-green-400">"Node"</span>, <span class="text-green-400">"DSA"</span>],</code></pre>
+                        <pre data-prefix="5"
+                            class="text-slate-300"><code>  status: <span class="text-green-400">"Learning DOM & API"</span></code></pre>
+                        <pre data-prefix="6" class="text-slate-400"><code>};</code></pre>
+                        <pre data-prefix="7"><code></code></pre>
+                        <pre data-prefix="8"
+                            class="text-purple-400"><code>async function <span class="text-blue-400">becomePro</span>() {</code></pre>
+                        <pre data-prefix="9"
+                            class="text-slate-300"><code>  <span class="text-purple-400">await</span> masterJS();</code></pre>
+                        <pre data-prefix="10"
+                            class="text-slate-300"><code>  <span class="text-purple-400">await</span> learnDSA();</code></pre>
+                        <pre data-prefix="11"
+                            class="text-slate-300"><code>  <span class="text-purple-400">return</span> <span class="text-green-400">"Market Ready!"</span>;</code></pre>
+                        <pre data-prefix="12" class="text-purple-400"><code>}</code></pre>
+                    </div>
                 </div>
-                <div class="project-content">
-                    <p>একটি সিম্পল কাউন্টার যেখানে increment, decrement এবং reset বাটন থাকবে।</p>
-                    <div class="skills-list">
-                        <h4>What you'll learn (কী শিখবেন):</h4>
-                        <div class="tags">
-                            <span class="tag">DOM Manipulation</span>
-                            <span class="tag">Event Listeners</span>
-                            <span class="tag">State Update</span>
+            </div>
+        </section>
+
+        <!-- Current Status Profile -->
+        <section id="welcome" class="py-12 -mt-10 relative z-20 px-4">
+            <div
+                class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-100 flex flex-col md:flex-row items-center gap-8 scroll-animate" data-animate="fadeUp">
+                <div class="avatar placeholder">
+                    <div class="bg-jsdark text-js rounded-full w-24 border-4 border-white shadow-lg">
+                        <span class="text-3xl"><i class="fa-solid fa-user-tie"></i></span>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-bold mb-2">আপনার বর্তমান প্রোফাইল</h2>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="badge badge-primary gap-1"><i class="fa-brands fa-wordpress"></i> WP Developer</div>
+                        <div class="badge badge-secondary gap-1"><i class="fa-brands fa-php"></i> PHP Basics</div>
+                        <div class="badge badge-accent gap-1"><i class="fa-solid fa-robot"></i> AI Coder</div>
+                        <div class="badge badge-info gap-1 text-white"><i class="fa-brands fa-js"></i> 3 Months JS</div>
+                        <div class="badge badge-success gap-1 text-white"><i class="fa-solid fa-sitemap"></i> DOM + API
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm">
+                        আপনার লজিক বিল্ড করার বেসিক আছে। এখন আপনাকে শিখতে হবে কোড কিভাবে "কাজ করে" এর চেয়ে "কত দ্রুত ও
+                        ইফিসিয়েন্টলি কাজ করে" (Performance & Optimization)।
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: JS + DSA Pro Section -->
+        <section id="dsa-performance" class="py-16 bg-slate-50 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 scroll-animate" data-animate="fadeUp">
+                    <div class="badge bg-js text-jsdark font-bold mb-3 border-none p-3">The Secret to Pro Level</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">JS + DSA & Web Optimization</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">একটি সাধারণ ওয়েবসাইট তৈরি করা এবং একটি হাই-পারফরম্যান্স,
+                        অপ্টিমাইজড ওয়েব অ্যাপ্লিকেশন তৈরি করার মধ্যে পার্থক্য হলো DSA এবং Browser Engine এর নলেজ।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- DSA Focus -->
+                    <div class="scroll-animate" data-animate="fadeLeft" data-delay="1">
+                        <h3 class="text-2xl font-bold mb-4 text-slate-800 border-b-2 border-slate-200 pb-2"><i
+                                class="fa-solid fa-code-branch text-purple-500 mr-2"></i>Data Structures & Algorithms
+                            (DSA)</h3>
+                        <ul class="space-y-4">
+                            <li class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-purple-500 hover-lift">
+                                <h4 class="font-bold text-lg"><i
+                                        class="fa-solid fa-stopwatch text-slate-400 mr-2"></i>Time & Space Complexity
+                                    (Big O)</h4>
+                                <p class="text-sm text-slate-600 mt-1">কোড লেখার আগে বুঝতে হবে সেটি কত দ্রুত চলবে। O(N)
+                                    এবং O(1) এর পার্থক্য বোঝা, যেন হাজার ডেটাতেও সাইট ল্যাগ না করে।</p>
+                            </li>
+                            <li class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-purple-500 hover-lift">
+                                <h4 class="font-bold text-lg"><i
+                                        class="fa-solid fa-layer-group text-slate-400 mr-2"></i>Advanced Data Types</h4>
+                                <p class="text-sm text-slate-600 mt-1">সাধারণ Array এর বদলে <code>Set</code> এবং
+                                    <code>Map</code> এর ব্যবহার, যা ডেটা সার্চ করাকে অনেক গুণ ফাস্ট করে।</p>
+                            </li>
+                            <li class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-purple-500 hover-lift">
+                                <h4 class="font-bold text-lg"><i
+                                        class="fa-solid fa-chess-knight text-slate-400 mr-2"></i>Algorithmic Patterns
+                                </h4>
+                                <p class="text-sm text-slate-600 mt-1">LeetCode এর প্রবলেম সলভ করতে <b>Two Pointer</b>,
+                                    <b>Sliding Window</b> এবং <b>Frequency Counter</b> শেখা যা রিয়েল প্রজেক্ট
+                                    অপ্টিমাইজেশনে কাজে লাগে।</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Web Optimization Focus -->
+                    <div class="scroll-animate" data-animate="fadeRight" data-delay="1">
+                        <h3 class="text-2xl font-bold mb-4 text-slate-800 border-b-2 border-slate-200 pb-2"><i
+                                class="fa-solid fa-gauge-high text-green-500 mr-2"></i>Web Performance Optimization</h3>
+                        <ul class="space-y-4">
+                            <li class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500 hover-lift">
+                                <h4 class="font-bold text-lg"><i
+                                        class="fa-brands fa-chrome text-slate-400 mr-2"></i>Browser Rendering Engine
+                                </h4>
+                                <p class="text-sm text-slate-600 mt-1">ব্রাউজার কিভাবে কোড পড়ে? <b>Reflow</b> এবং
+                                    <b>Repaint</b> কমানো, এবং <code>DocumentFragment</code> ব্যবহার করে DOM ম্যনিপুলেশন
+                                    ফাস্ট করা।</p>
+                            </li>
+                            <li class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500 hover-lift">
+                                <h4 class="font-bold text-lg"><i
+                                        class="fa-solid fa-bolt text-slate-400 mr-2"></i>Debounce & Throttle</h4>
+                                <p class="text-sm text-slate-600 mt-1">ইউজার যখন বারবার সার্চ বা স্ক্রল করে, তখন
+                                    অতিরিক্ত API Call বা ফাংশন এক্সিকিউশন আটকে দিয়ে সার্ভারের প্রেশার কমানো।</p>
+                            </li>
+                            <li class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500 hover-lift">
+                                <h4 class="font-bold text-lg"><i
+                                        class="fa-solid fa-memory text-slate-400 mr-2"></i>Memory Management</h4>
+                                <p class="text-sm text-slate-600 mt-1"><b>Memory Leaks</b> এড়ানো, Closures ঠিকভাবে
+                                    ব্যবহার করা এবং <code>Garbage Collection</code> কিভাবে কাজ করে তা বোঝা।</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12 Months Detailed Syllabus -->
+        <section id="syllabus" class="py-16 bg-white border-t border-slate-200 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12 scroll-animate" data-animate="fadeUp">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">১২ মাসের সাপ্তাহিক সিলেবাস</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto">কী শিখবেন, কোথা থেকে শিখবেন (বাংলা রিসোর্স সহ) তার
+                        বিস্তারিত লিস্ট।</p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="tabs tabs-boxed bg-slate-100 p-2 mb-8 justify-center hidden md:flex flex-wrap gap-2" id="syllabus-tabs-nav">
+                    <button class="tab tab-active font-bold text-slate-700 bg-white shadow-sm rounded-lg px-4" onclick="switchSyllabusTab('m1', this)">Month 1</button>
+                    <button class="tab font-bold text-slate-700 hover:bg-white/50 rounded-lg px-4" onclick="switchSyllabusTab('m2', this)">Month 2</button>
+                    <button class="tab font-bold text-slate-700 hover:bg-white/50 rounded-lg px-4" onclick="switchSyllabusTab('m3', this)">Month 3</button>
+                    <button class="tab font-bold text-slate-700 hover:bg-white/50 rounded-lg px-4" onclick="switchSyllabusTab('m4', this)">Month 4</button>
+                    <button class="tab font-bold text-slate-700 hover:bg-white/50 rounded-lg px-4" onclick="switchSyllabusTab('m5', this)">Month 5</button>
+                    <button class="tab font-bold text-slate-700 hover:bg-white/50 rounded-lg px-4" onclick="switchSyllabusTab('m6-9', this)">Months 6-9</button>
+                    <button class="tab font-bold text-slate-700 hover:bg-white/50 rounded-lg px-4" onclick="switchSyllabusTab('m10-12', this)">Months 10-12</button>
+                </div>
+
+                <!-- Mobile Dropdown Navigation -->
+                <div class="md:hidden mb-8">
+                    <select class="select select-bordered w-full font-bold text-slate-700 bg-slate-50" onchange="switchSyllabusTab(this.value, null)" id="syllabus-mobile-nav">
+                        <option value="m1">Month 1: JS Fundamentals</option>
+                        <option value="m2">Month 2: DOM & APIs</option>
+                        <option value="m3">Month 3: Data Structures</option>
+                        <option value="m4">Month 4: Algorithms</option>
+                        <option value="m5">Month 5: Solving Patterns</option>
+                        <option value="m6-9">Months 6-9: Architecture</option>
+                        <option value="m10-12">Months 10-12: Job Prep</option>
+                    </select>
+                </div>
+
+                <!-- Tab Content Container -->
+                <div id="syllabus-content" class="bg-white shadow-sm border border-slate-200 rounded-2xl p-6 md:p-8 min-h-[300px] relative overflow-hidden scroll-animate" data-animate="scale">
+                    <!-- Month 1 Content -->
+                    <div id="tab-m1" class="syllabus-tab-content block animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                            <div class="avatar placeholder hidden md:block">
+                                <div class="bg-blue-100 text-blue-600 rounded-full w-14 text-lg font-bold shadow-inner"><span>M1</span></div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800">Month 1: JS Fundamentals & Core</h3>
+                                <p class="text-slate-500 font-medium mt-1">Foundation, Array, String, Objects</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-blue-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-layer-group mr-2"></i>Week 1-2: Core & Arrays</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">Variables, Hoisting, push, pop, map, filter, reduce.</p>
+                                <button class="btn btn-sm bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M1W1')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-blue-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-quote-right mr-2"></i>Week 3-4: Strings & Objects</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">Reverse, Palindrome, Object manipulation, Frequency Counter.</p>
+                                <button class="btn btn-sm bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M1W3')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                        </div>
+                        <div class="alert alert-info bg-blue-50 border-blue-200 text-slate-800 shadow-sm">
+                            <i class="fa-solid fa-video text-blue-500 text-xl hidden sm:block"></i>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Bangla Resources:</h3>
+                                <ul class="text-sm list-disc ml-5 space-y-1">
+                                    <li><a href="https://www.youtube.com/@LearnwithSumit" target="_blank" class="link text-blue-600 hover:text-blue-800 font-medium">Learn with Sumit - JavaScript Course</a></li>
+                                    <li><a href="https://www.youtube.com/@StackLearner" target="_blank" class="link text-blue-600 hover:text-blue-800 font-medium">Stack Learner - JS Fundamentals</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 2 Content -->
+                    <div id="tab-m2" class="syllabus-tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                            <div class="avatar placeholder hidden md:block">
+                                <div class="bg-green-100 text-green-600 rounded-full w-14 text-lg font-bold shadow-inner"><span>M2</span></div>
+                            </div>
+                            <div>
+                                <div class="badge badge-success gap-1 text-white mb-1"><i class="fa-solid fa-crosshairs"></i> Your Current Focus</div>
+                                <h3 class="text-2xl font-bold text-slate-800">Month 2: DOM & APIs</h3>
+                                <p class="text-slate-500 font-medium mt-1">Advanced DOM, Event Delegation, Fetch, JSON</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-green-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-sitemap mr-2"></i>Week 1-2: DOM Pro</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">Event Bubbling, Event Delegation, Fragment use for performance.</p>
+                                <button class="btn btn-sm bg-green-50 text-green-600 hover:bg-green-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M2W1')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-green-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-network-wired mr-2"></i>Week 3-4: APIs & Data</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">fetch API, async/await, sorting/filtering JSON data.</p>
+                                <button class="btn btn-sm bg-green-50 text-green-600 hover:bg-green-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M2W3')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                        </div>
+                        <div class="alert alert-success bg-green-50 border-green-200 text-slate-800 shadow-sm">
+                            <i class="fa-solid fa-lightbulb text-green-600 text-xl hidden sm:block"></i>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Pro Tip for you:</h3>
+                                <p class="text-sm leading-relaxed">যেহেতু আপনি DOM+API শিখছেন, এখন ফোকাস করুন <b class="text-green-700 bg-green-100 px-1 rounded">Debounce</b> এবং <b class="text-green-700 bg-green-100 px-1 rounded">Throttle</b> শেখার উপর। ইউজার সার্চ করলে প্রতি কীস্ট্রোক-এ যেন API Call না হয়!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 3 Content -->
+                    <div id="tab-m3" class="syllabus-tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                            <div class="avatar placeholder hidden md:block">
+                                <div class="bg-purple-100 text-purple-600 rounded-full w-14 text-lg font-bold shadow-inner"><span>M3</span></div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800">Month 3: Data Structures Introduction</h3>
+                                <p class="text-slate-500 font-medium mt-1">Set, Map, Stack, Queue, Big O Notation</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-purple-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-cubes mr-2"></i>Week 1-2: Advanced Data Types</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">কেন Array এর বদলে Set বা Map ব্যবহার করবেন ডাটা লুকআপ এর জন্য। Stack (LIFO) ইমপ্লিমেন্টেশন।</p>
+                                <button class="btn btn-sm bg-purple-50 text-purple-600 hover:bg-purple-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M3W1')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-purple-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-stopwatch mr-2"></i>Week 3-4: Queue & Big O</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">Queue (FIFO) এবং অ্যালগরিদমের টাইম কমপ্লেক্সিটি (O(1), O(N), O(N^2)) বিশ্লেষণ।</p>
+                                <button class="btn btn-sm bg-purple-50 text-purple-600 hover:bg-purple-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M3W3')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                        </div>
+                        <div class="alert alert-secondary bg-purple-50 border-purple-200 text-slate-800 shadow-sm">
+                            <i class="fa-brands fa-youtube text-purple-600 text-xl hidden sm:block"></i>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Resources:</h3>
+                                <p class="text-sm">Youtube: Search "Big O Notation in JS Bangla" by Anisul Islam or Programming Hero.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 4 Content -->
+                    <div id="tab-m4" class="syllabus-tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                            <div class="avatar placeholder hidden md:block">
+                                <div class="bg-orange-100 text-orange-600 rounded-full w-14 text-lg font-bold shadow-inner"><span>M4</span></div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800">Month 4: Algorithms & Sorting</h3>
+                                <p class="text-slate-500 font-medium mt-1">Recursion, Binary Search, Bubble/Selection Sort</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-orange-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-magnifying-glass mr-2"></i>Week 1-2: Logic & Searching</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">Recursive logic (Factorial) এবং Binary Search দিয়ে বিশাল ডাটা থেকে দ্রুত ডাটা খোঁজা।</p>
+                                <button class="btn btn-sm bg-orange-50 text-orange-600 hover:bg-orange-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M4W1')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                            <div class="card bg-white border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-orange-600 text-lg border-b border-slate-100 pb-2 mb-3"><i class="fa-solid fa-arrow-down-a-z mr-2"></i>Week 3-4: Sorting Deep Dive</h4>
+                                <p class="text-sm text-slate-600 mb-4 leading-relaxed">ম্যানুয়ালি সর্ট করা শেখা এবং JS এর <code class="bg-slate-100 px-1 rounded text-orange-700 font-mono">Array.sort()</code> এর বিহাইন্ড দ্য সিন লজিক।</p>
+                                <button class="btn btn-sm bg-orange-50 text-orange-600 hover:bg-orange-600 hover:text-white border-none w-full mt-auto" onclick="showTaskModal('M4W2')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 5 Content -->
+                    <div id="tab-m5" class="syllabus-tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                            <div class="avatar placeholder hidden md:block">
+                                <div class="bg-red-100 text-red-600 rounded-full w-14 text-lg font-bold shadow-inner"><span>M5</span></div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800">Month 5: Problem Solving Patterns</h3>
+                                <p class="text-slate-500 font-medium mt-1">Two Pointer, Sliding Window, LeetCode</p>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                            <p class="text-slate-700 mb-5 text-lg">প্রো-লেভেল ডেভেলপার হতে হলে LeetCode এর প্যাটার্নগুলো বুঝতে হবে। এটি আপনার কোড অনেক অপ্টিমাইজ করবে।</p>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <div class="badge badge-error gap-2 text-white p-4 text-sm font-bold shadow-sm"><i class="fa-solid fa-arrows-left-right-to-line"></i> Two Pointers</div>
+                                <div class="badge badge-error gap-2 text-white p-4 text-sm font-bold shadow-sm"><i class="fa-solid fa-window-maximize"></i> Sliding Window</div>
+                                <div class="badge badge-error gap-2 text-white p-4 text-sm font-bold shadow-sm"><i class="fa-solid fa-stopwatch-20"></i> Frequency Counter</div>
+                            </div>
+                            <div class="border-l-4 border-red-500 pl-5 py-3 bg-red-50 rounded-r-lg mb-4">
+                                <h4 class="font-bold text-slate-800 text-lg mb-1">Target Task:</h4>
+                                <p class="text-slate-700 text-sm">Solve 20 selected problems on LeetCode strictly using these specific patterns, not just brute force loops.</p>
+                            </div>
+                            <button class="btn btn-sm bg-red-50 text-red-600 hover:bg-red-600 hover:text-white border-none w-full" onclick="showTaskModal('M5W1')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                        </div>
+                    </div>
+
+                    <!-- Month 6-9 Content -->
+                    <div id="tab-m6-9" class="syllabus-tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                            <div class="avatar placeholder hidden md:block">
+                                <div class="bg-cyan-100 text-cyan-600 rounded-full w-14 text-sm font-bold shadow-inner"><span>M6-9</span></div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800">Month 6 to 9: Architecture & Performance</h3>
+                                <p class="text-slate-500 font-medium mt-1">Advanced JS (Closures), Git, Lazy Loading, Design Patterns</p>
+                            </div>
+                        </div>
+                        <div class="py-6 overflow-x-auto">
+                            <ul class="steps w-full text-sm font-bold text-slate-600">
+                                <li class="step step-info">Git & Debug</li>
+                                <li class="step step-info">Closures</li>
+                                <li class="step">Performance</li>
+                                <li class="step">Architecture</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-6 rounded-xl border border-cyan-200">
+                            <h4 class="font-bold text-cyan-800 text-lg mb-2"><i class="fa-solid fa-gauge-high mr-2"></i>Performance Goal:</h4>
+                            <p class="text-slate-700 leading-relaxed text-sm mb-4">কিভাবে DOM অপারেশন কমানো যায়, Code Splitting করা যায় এবং Lighthouse অডিট করে ওয়েবসাইটের স্পিড ১০০% করা যায় তা শেখা এবং প্রজেক্টে এপ্লাই করা।</p>
+                            <button class="btn btn-sm bg-cyan-50 text-cyan-600 hover:bg-cyan-600 hover:text-white border-none w-full" onclick="showTaskModal('M6W1')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task</button>
+                        </div>
+                    </div>
+
+                    <!-- Month 10-12 Content -->
+                    <div id="tab-m10-12" class="syllabus-tab-content hidden animate-[fadeIn_0.3s_ease-in-out]">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                            <div class="avatar placeholder hidden md:block">
+                                <div class="bg-js text-jsdark rounded-full w-14 text-sm font-bold shadow-inner"><span>10-12</span></div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800">Month 10 to 12: Job Prep & Portfolio</h3>
+                                <p class="text-slate-500 font-medium mt-1">Mock Interviews, Portfolio Deploy, Job Application</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-4">
+                            <div class="p-6 bg-white rounded-xl border border-slate-200 text-center hover:shadow-md transition-shadow">
+                                <div class="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-solid fa-comments text-2xl text-slate-700"></i>
+                                </div>
+                                <h4 class="font-bold text-lg mb-2 text-slate-800">Interview Prep</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">Practice Data structures & JS tricky questions. Do mock interviews.</p>
+                            </div>
+                            <div class="p-6 bg-slate-900 text-white rounded-xl border border-slate-800 text-center hover:shadow-lg transition-shadow relative overflow-hidden">
+                                <div class="absolute -right-4 -top-4 text-js opacity-10">
+                                    <i class="fa-solid fa-star text-7xl"></i>
+                                </div>
+                                <div class="w-14 h-14 bg-js rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
+                                    <i class="fa-solid fa-laptop-code text-2xl text-jsdark"></i>
+                                </div>
+                                <h4 class="font-bold text-lg mb-2 text-white relative z-10">Build Portfolio</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed relative z-10">Deploy on Vercel. Aim for 100% Lighthouse score on mobile.</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-xl border border-slate-200 text-center hover:shadow-md transition-shadow">
+                                <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa-brands fa-linkedin text-2xl text-blue-600"></i>
+                                </div>
+                                <h4 class="font-bold text-lg mb-2 text-slate-800">Apply Jobs</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">Build a professional resume, optimize LinkedIn profile, apply.</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <button class="btn btn-sm bg-js text-jsdark hover:bg-yellow-500 border-none" onclick="showTaskModal('M10W1')"><i class="fa-solid fa-eye mr-1"></i> View Detailed Task (Month 10–12)</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">2. Digital Clock</h3>
-                    <span class="project-number">Project #2</span>
-                </div>
-                <div class="project-content">
-                    <p>লাইভ সময় দেখানোর জন্য একটি ডিজিটাল ঘড়ি।</p>
-                    <div class="skills-list">
-                        <h4>What you'll learn (কী শিখবেন):</h4>
-                        <div class="tags">
-                            <span class="tag">Date API</span>
-                            <span class="tag">setInterval()</span>
-                            <span class="tag">Time Formatting</span>
-                        </div>
+        <!-- 20 Projects Interactive Section -->
+        <section id="projects" class="py-16 bg-slate-900 text-white px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex justify-between items-end mb-10 border-b border-slate-700 pb-4">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2"><i
+                                class="fa-solid fa-flask text-js mr-2"></i>The 20 Pro Projects</h2>
+                        <p class="text-slate-400">তাত্ত্বিক নলেজকে বাস্তবে রূপ দিতে এই ২০টি প্রোজেক্ট।</p>
                     </div>
+                    <div class="hidden md:block">
+                        <div class="radial-progress text-js text-sm" style="--value:0; --size:3rem; --thickness: 4px;"
+                            role="progressbar" id="project-progress-circle">0%</div>
+                    </div>
+                </div>
+
+                <!-- Projects Grid (DaisyUI Cards) -->
+                <div id="projects-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Cards will be populated by main.js -->
                 </div>
             </div>
+        </section>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">3. Random Quote Generator</h3>
-                    <span class="project-number">Project #3</span>
-                </div>
-                <div class="project-content">
-                    <p>বাটনে ক্লিক করলে নতুন নতুন উক্তি (Quote) দেখাবে।</p>
-                    <div class="skills-list">
-                        <h4>What you'll learn (কী শিখবেন):</h4>
-                        <div class="tags">
-                            <span class="tag">API Calls (fetch)</span>
-                            <span class="tag">async/await</span>
-                            <span class="tag">JSON Parsing</span>
-                        </div>
-                    </div>
+        <!-- Final Goal -->
+        <section class="py-20 bg-js text-jsdark text-center px-4">
+            <div class="max-w-3xl mx-auto scroll-animate" data-animate="fadeUp">
+                <h2 class="text-4xl font-extrabold mb-6">১ বছর পর আপনি কোথায় থাকবেন?</h2>
+                <p class="text-lg mb-8 font-medium">আপনি শুধু "কোড লিখতে পারেন" এমন ডেভেলপার থাকবেন না। আপনি জানবেন
+                    কিভাবে একটি স্কেলেবল, হাই-পারফরম্যান্স ওয়েবসাইট বানাতে হয় যা মিলিসেকেন্ডে লোড হয়!</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="btn btn-neutral btn-lg"
+                        onclick="document.getElementById('confetti-modal').showModal()">Complete Roadmap Goal</button>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">4. Character Counter</h3>
-                    <span class="project-number">Project #4</span>
-                </div>
-                <div class="project-content">
-                    <p>টেক্সটবক্সে কতগুলো অক্ষর লেখা হয়েছে তা লাইভ কাউন্ট করবে।</p>
-                    <div class="skills-list">
-                        <h4>What you'll learn (কী শিখবেন):</h4>
-                        <div class="tags">
-                            <span class="tag">Textarea Events</span>
-                            <span class="tag">String Manipulation</span>
-                            <span class="tag">Live Feedback</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- UI MODALS (DaisyUI Interactive Elements) -->
+
+    <!-- Task Modal -->
+    <dialog id="task_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box bg-white text-slate-800">
+            <h3 class="font-bold text-lg border-b pb-2 mb-4" id="task-modal-title">Task Details</h3>
+            <div id="task-modal-desc"></div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-sm btn-primary">Understood!</button>
+                </form>
             </div>
         </div>
-    </section>
+        <form method="dialog" class="modal-backdrop">
+            <button aria-label="Close dialog">close</button>
+        </form>
+    </dialog>
 
-    <!-- Phase 2 -->
-    <section class="phase-section phase-2">
-        <h2 class="phase-title"><i class="fa-solid fa-layer-group"></i> Phase 2: Intermediate JS Projects</h2>
-        <p style="margin-bottom: 1.5rem; color: var(--text-light);">এখন আমরা ডেটা সেভ করা, এপিআই নিয়ে আরেকটু গভীরে কাজ করা এবং ডাইনামিক ফিল্টারিং শিখবো।</p>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">5. Todo App</h3>
-                    <span class="project-number">Project #5</span>
-                </div>
-                <div class="project-content">
-                    <p>কাজ লিস্ট করার অ্যাপ যেখানে টাস্ক অ্যাড, ডিলিট এবং কমপ্লিট করা যাবে।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">CRUD Operations</span>
-                            <span class="tag">localStorage</span>
-                            <span class="tag">Data Persistence</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Project Modal -->
+    <dialog id="project_modal" class="modal">
+        <div class="modal-box bg-slate-900 text-white border border-slate-700">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Close project modal">✕</button>
+            </form>
+            <h3 class="font-bold text-2xl text-js mb-1" id="proj-title">Project Name</h3>
+            <span class="badge badge-outline text-slate-300 mb-4" id="proj-phase">Phase</span>
+
+            <div class="bg-slate-800 p-4 rounded-lg mb-4">
+                <h4 class="font-bold text-sm text-slate-400 uppercase mb-2">💡 Core Concept to Apply:</h4>
+                <p class="text-sm" id="proj-desc">This project will test your skills in DOM Manipulation and Event
+                    handling. Focus on performance.</p>
             </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">6. Weather App</h3>
-                    <span class="project-number">Project #6</span>
-                </div>
-                <div class="project-content">
-                    <p>শহরের নাম দিলে সেখানকার বর্তমান আবহাওয়া দেখাবে।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">External REST APIs</span>
-                            <span class="tag">Advanced async JS</span>
-                            <span class="tag">Error Handling</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">7. Search Filter System</h3>
-                    <span class="project-number">Project #7</span>
-                </div>
-                <div class="project-content">
-                    <p>লিস্টের মধ্যে কিছু সার্চ করলে সাথে সাথে ফিল্টার হয়ে শুধু ম্যাচ করা ডেটা দেখাবে।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Array.filter()</span>
-                            <span class="tag">Dynamic DOM Updates</span>
-                            <span class="tag">Search Inputs</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">8. Image Slider</h3>
-                    <span class="project-number">Project #8</span>
-                </div>
-                <div class="project-content">
-                    <p>ছবি ডানে-বামে স্লাইড করে দেখার সিস্টেম (ক্যারোজেল)।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Advanced DOM</span>
-                            <span class="tag">CSS Transitions JS</span>
-                            <span class="tag">Array Index Tracking</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex items-center gap-3">
+                <button class="btn btn-js bg-js text-jsdark hover:bg-yellow-500 flex-1 border-none"
+                    onclick="markProjectComplete()">Mark as Completed</button>
             </div>
         </div>
-    </section>
+    </dialog>
 
-    <!-- Phase 3 -->
-    <section class="phase-section phase-3">
-        <h2 class="phase-title"><i class="fa-solid fa-brain"></i> Phase 3: Algorithm + Logic Projects</h2>
-        <p style="margin-bottom: 1.5rem; color: var(--text-light);">এই ফেইজে আপনার লজিক বিল্ডিং স্ট্রং হবে। ডেটা কীভাবে কাজ করে, কীভাবে খুঁজবে বা সাজাবে তা শিখবেন।</p>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">9. Sorting Visualizer</h3>
-                    <span class="project-number">Project #9</span>
-                </div>
-                <div class="project-content">
-                    <p>অ্যালগরিদম কীভাবে কাজ করে তার ভিজ্যুয়াল উপস্থাপন (এনিমেশন)।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Bubble Sort</span>
-                            <span class="tag">Selection Sort</span>
-                            <span class="tag">Timing/Delays in JS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">10. Advanced Search System</h3>
-                    <span class="project-number">Project #10</span>
-                </div>
-                <div class="project-content">
-                    <p>বড় ডেটাবেজ থেকে দ্রুত তথ্য খুঁজে বের করার সিস্টেম।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Binary Search</span>
-                            <span class="tag">Dynamic Searching</span>
-                            <span class="tag">Performance</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">11. Pagination System</h3>
-                    <span class="project-number">Project #11</span>
-                </div>
-                <div class="project-content">
-                    <p>অনেক ডেটাকে ছোট ছোট পেইজে ভাগ করে দেখানো (১, ২, ৩... পেইজ)।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Next/Prev Logic</span>
-                            <span class="tag">API Data Pagination</span>
-                            <span class="tag">Math/Calculations</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">12. Infinite Scroll</h3>
-                    <span class="project-number">Project #12</span>
-                </div>
-                <div class="project-content">
-                    <p>পেইজের নিচে গেলে অটোমেটিক নতুন ডেটা লোড হবে (ফেসবুক/ইন্সটাগ্রাম এর মত)।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Lazy Loading</span>
-                            <span class="tag">Scroll Events</span>
-                            <span class="tag">Intersection Observer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Confetti / Success Modal -->
+    <dialog id="confetti-modal" class="modal">
+        <div class="modal-box text-center py-10">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Close">✕</button>
+            </form>
+            <div class="text-6xl mb-4">🚀</div>
+            <h3 class="font-bold text-2xl">Congratulations Future Pro!</h3>
+            <p class="py-4">Stay consistent, practice daily, and write optimized code.</p>
         </div>
-    </section>
+    </dialog>
 
-    <!-- Phase 4 -->
-    <section class="phase-section phase-4">
-        <h2 class="phase-title"><i class="fa-solid fa-briefcase"></i> Phase 4: Real World Projects</h2>
-        <p style="margin-bottom: 1.5rem; color: var(--text-light);">এখন আমরা প্রফেশনাল প্রজেক্ট বানাবো যেগুলো পোর্টফোলিওতে রাখার মত এবং ক্লায়েন্টরা সচরাচর চেয়ে থাকে।</p>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">13. Blog Website</h3>
-                    <span class="project-number">Project #13</span>
-                </div>
-                <div class="project-content">
-                    <p>পোস্ট লিস্ট, ক্যাটাগরি, সার্চ এবং ফিল্টার সহ পূর্ণাঙ্গ ব্লগ।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Post Rendering</span>
-                            <span class="tag">Search + Filter</span>
-                            <span class="tag">Routing Logic</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">14. E-commerce Product Filter</h3>
-                    <span class="project-number">Project #14</span>
-                </div>
-                <div class="project-content">
-                    <p>ই-কমার্স সাইটের মত প্রাইস, ক্যাটাগরি অনুযায়ী প্রোডাক্ট ফিল্টার করা।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Multi-level Filtering</span>
-                            <span class="tag">Sorting (Price/Name)</span>
-                            <span class="tag">Complex Data Handling</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">15. Dashboard UI</h3>
-                    <span class="project-number">Project #15</span>
-                </div>
-                <div class="project-content">
-                    <p>চার্ট এবং ডাইনামিক ডেটা দিয়ে এডমিন প্যানেল ড্যাশবোর্ড তৈরি।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Chart JS / APIS</span>
-                            <span class="tag">Dashboard Layouts</span>
-                            <span class="tag">Dynamic Statistics</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">16. Advanced Task Manager</h3>
-                    <span class="project-number">Project #16</span>
-                </div>
-                <div class="project-content">
-                    <p>প্রায়োরিটি, ডেডলাইন, ড্র্যাগ এন্ড ড্রপ সহ প্রজেক্ট ম্যানেজমেন্ট টুল (Trello Clone)।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Priority Management</span>
-                            <span class="tag">Deadlines/Dates</span>
-                            <span class="tag">Complex State</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Toast Notification -->
+    <div class="toast toast-bottom toast-end z-[100] hidden" id="toast-notify">
+        <div class="alert alert-success bg-green-500 text-white shadow-lg">
+            <span id="toast-msg">Action successful.</span>
         </div>
-    </section>
-
-    <!-- Phase 5 -->
-    <section class="phase-section phase-5">
-        <h2 class="phase-title"><i class="fa-solid fa-fire"></i> Phase 5: Advanced Projects</h2>
-        <p style="margin-bottom: 1.5rem; color: var(--text-light);">ফাইন্যাল স্টেপ! এখানে আমরা পারফরম্যান্স অপ্টিমাইজেশন এবং অ্যাডভান্সড ফিচার নিয়ে কাজ করবো।</p>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">17. Real-time Chat UI</h3>
-                    <span class="project-number">Project #17</span>
-                </div>
-                <div class="project-content">
-                    <p>লাইভ মেসেজিং ইন্টারফেস, টাইপিং ইন্ডিকেটর এবং রিয়েল টাইম ডেটা ফ্লো।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Chat UI Patterns</span>
-                            <span class="tag">Typing Effects</span>
-                            <span class="tag">WebSockets (Basic)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">18. Performance Optimized Blog</h3>
-                    <span class="project-number">Project #18</span>
-                </div>
-                <div class="project-content">
-                    <p>কোড স্প্লিটিং, লেজি লোডিং ব্যাবহার করে অত্যন্ত ফাস্ট একটি ব্লগ তৈরি।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Code Splitting</span>
-                            <span class="tag">Advanced Lazy Loading</span>
-                            <span class="tag">Performance Tuning</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">19. Full API Dashboard</h3>
-                    <span class="project-number">Project #19</span>
-                </div>
-                <div class="project-content">
-                    <p>একাধিক API থেকে ডেটা এনে একসাথে প্রসেস করে ভিজ্যুয়ালাইজ করা।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Multiple API Handling</span>
-                            <span class="tag">Data Visualization</span>
-                            <span class="tag">Promise.all()</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 class="project-title">20. Developer Portfolio</h3>
-                    <span class="project-number">Project #20</span>
-                </div>
-                <div class="project-content">
-                    <p>আপনার নিজের কাজের শোকেস করার জন্য কন্ট্যাক্ট ফর্ম সহ একটি প্রফেশনাল পোর্টফোলিও।</p>
-                    <div class="skills-list">
-                        <h4>Features & Skills (ফিচার ও স্কিল):</h4>
-                        <div class="tags">
-                            <span class="tag">Project Showcase</span>
-                            <span class="tag">Form Validation</span>
-                            <span class="tag">Personal Branding</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final Outcomes -->
-    <div class="outcomes">
-        <h2>🎯 Ultimate Result (ফলাফল)</h2>
-        <p>এই ২০টি প্রজেক্ট সফলভাবে শেষ করার পর আপনার যে স্কিলগুলো একদম স্ট্রং হবে:</p>
-        
-        <div class="outcome-tags">
-            <span class="outcome-tag"><i class="fa-brands fa-js"></i> JavaScript Strong Foundation</span>
-            <span class="outcome-tag"><i class="fa-solid fa-sitemap"></i> DOM Master</span>
-            <span class="outcome-tag"><i class="fa-solid fa-server"></i> API Expert</span>
-            <span class="outcome-tag"><i class="fa-solid fa-bolt"></i> Performance Optimization</span>
-            <span class="outcome-tag"><i class="fa-solid fa-puzzle-piece"></i> Problem Solving Skills</span>
-        </div>
-        <p style="margin-top: 2rem; font-weight: 600; font-size: 1.3rem;">🚀 Congratulations! You are now a Market-Ready Developer!</p>
     </div>
 
-    <footer>
-        <p>Created from the "Beginner → Advanced 20 Projects List"</p>
-        <p>Good luck on your programming journey!</p>
+    <footer class="bg-slate-950 text-slate-500 py-8 text-center border-t border-slate-800 relative z-10">
+        <!-- Reusable Optimization Widget Container (Floating setup handled via JS) -->
+        <div id="seo-widget-container"></div>
+        
+        <p>&copy; 2026 Developer Roadmap. Built with <i class="fa-solid fa-heart text-red-500 mx-1"></i> for future developers.</p>
     </footer>
-</div>
 
+    <!-- Scroll animations (must run early so elements can be observed) -->
+    <script src="scroll-animations.js"></script>
+    <!-- Main JavaScript File -->
+    <script src="main.js"></script>
+    <script src="site-optimizer.js"></script>
 </body>
+
 </html>

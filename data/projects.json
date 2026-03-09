@@ -1,0 +1,22 @@
+[
+    {"id": 1, "title": "Counter App", "phase": "Basic", "tags": ["DOM", "Events"], "icon": "fa-calculator", "functions": ["document.getElementById()", "addEventListener()", "let/const state update"]},
+    {"id": 2, "title": "Digital Clock", "phase": "Basic", "tags": ["Date API", "setInterval"], "icon": "fa-clock", "functions": ["new Date()", "setInterval()", "getHours(), getMinutes()", "padStart()"]},
+    {"id": 3, "title": "Quote Generator", "phase": "Basic", "tags": ["API Call", "Async"], "icon": "fa-quote-left", "functions": ["fetch()", "async / await", "try...catch", "Math.random()"]},
+    {"id": 4, "title": "Char Counter", "phase": "Basic", "tags": ["String", "Events"], "icon": "fa-keyboard", "functions": ["oninput event", "string.length", "string.trim().split()"]},
+    {"id": 5, "title": "Todo App", "phase": "Intermediate", "tags": ["Array", "localStorage"], "icon": "fa-list-check", "functions": ["Array.push(), filter()", "JSON.stringify()", "localStorage.setItem()"]},
+    {"id": 6, "title": "Weather App", "phase": "Intermediate", "tags": ["API", "JSON"], "icon": "fa-cloud-sun", "functions": ["navigator.geolocation", "fetch(API)", "DOM Element Creation"]},
+    {"id": 7, "title": "Search Filter", "phase": "Intermediate", "tags": ["filter()", "Dynamic DOM"], "icon": "fa-magnifying-glass", "functions": ["Array.filter()", "string.includes()", "Debounce function"]},
+    {"id": 8, "title": "Image Slider", "phase": "Intermediate", "tags": ["DOM logic", "Timeout"], "icon": "fa-images", "functions": ["Array Index Tracking", "setTimeout()", "classList.add/remove"]},
+    {"id": 9, "title": "Sorting Visualizer", "phase": "DSA", "tags": ["Algorithms", "Visualization"], "icon": "fa-chart-bar", "highlight": true, "functions": ["Nested For Loops", "requestAnimationFrame()", "DOM height manipulation"]},
+    {"id": 10, "title": "Binary Search System", "phase": "DSA", "tags": ["O(log N)", "Performance"], "icon": "fa-bolt", "highlight": true, "functions": ["Math.floor()", "Array.sort()", "While loop logic"]},
+    {"id": 11, "title": "Pagination Logic", "phase": "DSA", "tags": ["API Pagination"], "icon": "fa-pager", "functions": ["Array.slice(start, end)", "Math.ceil()", "State: currentPage"]},
+    {"id": 12, "title": "Infinite Scroll", "phase": "DSA", "tags": ["Lazy Load", "Scroll Event"], "icon": "fa-arrows-up-down", "functions": ["IntersectionObserver API", "Throttled API Call", "window.scrollY"]},
+    {"id": 13, "title": "Blog Website", "phase": "Real World", "tags": ["Full UI", "Search"], "icon": "fa-blog", "functions": ["Modular JS (Import/Export)", "Template Literals", "Complex DOM"]},
+    {"id": 14, "title": "E-comm Filter", "phase": "Real World", "tags": ["Multi-filter", "Sort"], "icon": "fa-filter", "functions": ["Multiple Array.filter()", "Set() for unique data", "Array.sort()"]},
+    {"id": 15, "title": "Dashboard UI", "phase": "Real World", "tags": ["Chart.js", "Data"], "icon": "fa-chart-pie", "functions": ["Chart.js API", "Array.reduce()", "CSS Grid with JS"]},
+    {"id": 16, "title": "Task Manager", "phase": "Real World", "tags": ["Complex State"], "icon": "fa-list-ol", "functions": ["Advanced Object Manipulation", "Drag and Drop API", "Deep clone objects"]},
+    {"id": 17, "title": "Real-time Chat UI", "phase": "Advanced", "tags": ["WebSockets logic", "UI"], "icon": "fa-comments", "highlight": true, "functions": ["WebSockets API", "onMessage event", "element.scrollTo()"]},
+    {"id": 18, "title": "Optimized Blog", "phase": "Advanced", "tags": ["Performance", "Code Splitting"], "icon": "fa-gauge-high", "highlight": true, "functions": ["Dynamic import()", "DocumentFragment", "loading='lazy'"]},
+    {"id": 19, "title": "Multi-API Dashboard", "phase": "Advanced", "tags": ["Promise.all", "Async"], "icon": "fa-server", "functions": ["Promise.all()", "Promise.race()", "Error boundary strategy"]},
+    {"id": 20, "title": "Dev Portfolio", "phase": "Advanced", "tags": ["Showcase", "Deploy"], "icon": "fa-user-tie", "functions": ["Vite setup", "SEO meta injection", "EmailJS API"]}
+]

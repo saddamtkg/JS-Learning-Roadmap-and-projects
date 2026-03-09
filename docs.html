@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Pro JavaScript Documentation — Array, Object, Loop, Event Loop, Event Listener, Variables, Hoisting, String, JSON, Destructuring, DOM, Async/Await, Performance, Set, Map, Big O, Algorithms, Patterns, Closures, Error Handling.">
+    <title>JS Pro Documentation | Roadmap Guide</title>
+
+    <!-- DaisyUI & Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animations (scroll & modern UI) -->
+    <link rel="stylesheet" href="animations.css">
+    <!-- Documentation page styles -->
+    <link rel="stylesheet" href="docs.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        js: '#F7DF1E', // JS Yellow
+                        jsdark: '#323330', // JS Black
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-slate-800 antialiased relative">
+
+    <!-- Navbar -->
+    <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8">
+        <div class="navbar-start">
+            <a class="btn btn-ghost text-xl font-bold gap-2" href="index.html" aria-label="JS Pro Roadmap - Home">
+                <i class="fa-brands fa-js text-2xl"></i>
+                <span class="hidden sm:inline">JS Pro Roadmap</span>
+            </a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 font-medium text-white">
+                <li><a href="index.html" class="hover:text-js"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="docs.html" class="text-js font-bold"><i class="fa-solid fa-book"></i> Documentation</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-end gap-2">
+        </div>
+    </div>
+
+    <main class="max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <div class="text-center mb-14 scroll-animate" data-animate="fadeUp">
+            <div
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-800/90 text-js font-mono text-sm mb-5 shadow-lg">
+                <i class="fa-solid fa-book-open"></i> Reference Material
+            </div>
+            <h1
+                class="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-clip-text text-transparent mb-4">
+                Pro JS Documentation</h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                ১২ মাসের সিলেবাসের প্রতিটি টপিকের বিস্তারিত ধারণা এবং কনসেপ্ট এই পেইজে দেওয়া হলো।
+            </p>
+        </div>
+
+        <!-- Sidebar + Content: কন্টেন্ট আরও চওড়া -->
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-10">
+
+            <!-- Sidebar — টপিক এক লাইনে, হাইট কম -->
+            <aside class="w-full lg:w-80 flex-shrink-0 order-2 lg:order-1">
+                <nav class="sidebar-nav p-3 lg:sticky lg:top-24 max-h-[80vh] overflow-y-auto" id="docs-sidebar">
+                    <ul class="menu menu-vertical w-full gap-0.5 text-slate-600 space-y-2">
+                        <li><a href="#core-array-object-loop" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-layer-group w-4 text-amber-500 mr-2 text-xs"></i>Array, Object &
+                                Events</a></li>
+                        <li><a href="#js-basics" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-code w-4 text-blue-500 mr-2 text-xs"></i>Variables & Hoisting</a>
+                        </li>
+                        <li><a href="#arrays-objects" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-list w-4 text-emerald-500 mr-2 text-xs"></i>Arrays & Objects</a>
+                        </li>
+                        <li><a href="#string-json" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-quote-right w-4 text-slate-500 mr-2 text-xs"></i>String &
+                                JSON</a></li>
+                        <li><a href="#dom" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-sitemap w-4 text-orange-500 mr-2 text-xs"></i>Advanced DOM</a>
+                        </li>
+                        <li><a href="#async" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-bolt w-4 text-yellow-500 mr-2 text-xs"></i>Async & Await</a></li>
+                        <li><a href="#performance" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-gauge-high w-4 text-teal-500 mr-2 text-xs"></i>Performance</a>
+                        </li>
+                        <li><a href="#dsa" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-cubes w-4 text-purple-500 mr-2 text-xs"></i>Set, Map, Stack,
+                                Queue</a></li>
+                        <li><a href="#big-o" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-stopwatch w-4 text-red-500 mr-2 text-xs"></i>Big O</a></li>
+                        <li><a href="#algorithms" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-magnifying-glass w-4 text-cyan-500 mr-2 text-xs"></i>Search &
+                                Sort</a></li>
+                        <li><a href="#patterns" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-solid fa-chess-board w-4 text-indigo-500 mr-2 text-xs"></i>Patterns</a>
+                        </li>
+                        <li><a href="#advanced-js" class="nav-doc-link whitespace-nowrap"><i
+                                    class="fa-brands fa-js-square w-4 text-jsdark mr-2 text-xs"></i>Closures & This</a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content Area — ফুল উইডথ কোড ব্লক সহ -->
+            <div class="flex-1 min-w-0 space-y-12 order-1 lg:order-2">
+
+                <!-- ========== CORE: Array, Object, Loop, Event Loop, Event Listener ========== -->
+                <section id="core-array-object-loop"
+                        class="doc-card doc-card-accent doc-card-accent-amber p-8 md:p-10 rounded-2xl scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <div class="mb-8">
+                            <span
+                                class="inline-block text-xs font-semibold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-100 mb-4">অতি
+                                গুরুত্বপূর্ণ</span>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">
+                                <i class="fa-solid fa-layer-group text-amber-500 mr-2"></i>Array, Object, Loop, Event
+                                Loop ও Event Listener
+                            </h2>
+                        </div>
+                        <p class="text-slate-600 mb-10 leading-relaxed">JS এ এই টপিকগুলো না বুঝলে প্রায় কিছুই করা যায়
+                            না। নিচে ধারণা, কখন কোথায় কীভাবে ব্যবহার করবেন এবং অনেক উদাহরণ দেওয়া হলো — কপি করে Console
+                            এ রান করে দেখুন।</p>
+
+                        <!-- ARRAY -->
+                        <div class="mb-12">
+                            <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2"><i
+                                    class="fa-solid fa-list-ol text-blue-500"></i> ১. Array (অ্যারে)</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed"><strong class="text-slate-800">কী:</strong>
+                                অ্যারে হলো অর্ডার করা লিস্ট — একই বা আলাদা টাইপের অনেকগুলো ভ্যালু একটা ভেরিয়েবলে।
+                                ইনডেক্স ০ থেকে শুরু। <strong class="text-slate-800">কখন কোথায়:</strong> লিস্ট ডেটা
+                                (ইউজার লিস্ট, টাস্ক, প্রোডাক্ট), লুপ চালাতে, map/filter/reduce দিয়ে ট্রান্সফর্ম করতে।
+                            </p>
+                            <p class="text-sm font-semibold text-slate-700 mb-3">কিভাবে কাজ করে ও ব্যবহার করবেন:</p>
+                            <div class="space-y-5">
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// বানানো ও অ্যাক্সেস</code></pre>
+                                    <pre data-prefix="2"><code>const arr = [10, 20, 30, 40, 50];</code></pre>
+                                    <pre data-prefix="3"><code>console.log(arr[0]);   // 10 (প্রথম)</code></pre>
+                                    <pre data-prefix="4"><code>console.log(arr.length); // 5</code></pre>
+                                    <pre data-prefix="5"><code>arr.push(60);  // শেষে যোগ</code></pre>
+                                    <pre data-prefix="6"><code>arr.pop();     // শেষটা বাদ</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// map: প্রতিটা আইটেম বদলিয়ে নতুন অ্যারে</code></pre>
+                                    <pre data-prefix="2"><code>const doubled = arr.map(x =&gt; x * 2);</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>console.log(doubled); // [20, 40, 60, 80, 100]</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// filter: শর্ত মেনে শুধু কিছু রাখা</code></pre>
+                                    <pre data-prefix="2"><code>const big = arr.filter(x =&gt; x &gt; 25);</code></pre>
+                                    <pre data-prefix="3"><code>console.log(big); // [30, 40, 50]</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// reduce: পুরো অ্যারে থেকে একটা মান (যেমন যোগফল)</code></pre>
+                                    <pre
+                                        data-prefix="2"><code>const sum = arr.reduce((acc, x) =&gt; acc + x, 0);</code></pre>
+                                    <pre data-prefix="3"><code>console.log(sum); // 150</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// find: প্রথম যে আইটেম শর্ত মেনে</code></pre>
+                                    <pre data-prefix="2"><code>const first = arr.find(x =&gt; x &gt; 25);</code></pre>
+                                    <pre data-prefix="3"><code>console.log(first); // 30</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- OBJECT -->
+                        <div class="mb-12">
+                            <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2"><i
+                                    class="fa-solid fa-cube text-green-500"></i> ২. Object (অবজেক্ট)</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed"><strong class="text-slate-800">কী:</strong>
+                                অবজেক্ট হলো key-value জোড়ার কালেকশন — একটা এনটিটির বিভিন্ন প্রপার্টি (নাম, বয়স, ইমেইল)
+                                একসাথে রাখা। <strong class="text-slate-800">কখন কোথায়:</strong> ইউজার/প্রোডাক্ট ডেটা,
+                                সেটিংস, API থেকে আসা JSON, ফ্রিকোয়েন্সি কাউন্টার (কোন অক্ষর কতবার)।</p>
+                            <p class="text-sm font-semibold text-slate-700 mb-3">কিভাবে কাজ করে ও ব্যবহার করবেন:</p>
+                            <div class="space-y-5">
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// বানানো ও অ্যাক্সেস</code></pre>
+                                    <pre
+                                        data-prefix="2"><code>const user = { name: 'Karim', age: 28, city: 'Dhaka' };</code></pre>
+                                    <pre data-prefix="3"><code>console.log(user.name);  // Karim (dot)</code></pre>
+                                    <pre data-prefix="4"><code>console.log(user['age']); // 28 (bracket)</code></pre>
+                                    <pre
+                                        data-prefix="5"><code>user.email = 'k@mail.com'; // নতুন প্রপার্টি যোগ</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// Keys, Values, Entries — লুপ বা অ্যারে বানানোর জন্য</code></pre>
+                                    <pre
+                                        data-prefix="2"><code>console.log(Object.keys(user));   // ['name','age','city','email']</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>console.log(Object.values(user)); // ['Karim', 28, 'Dhaka', 'k@mail.com']</code></pre>
+                                    <pre
+                                        data-prefix="4"><code>console.log(Object.entries(user)); // [['name','Karim'], ['age',28], ...]</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// ফ্রিকোয়েন্সি কাউন্টার (কোন অক্ষর কতবার)</code></pre>
+                                    <pre data-prefix="2"><code>function countChars(str) {</code></pre>
+                                    <pre data-prefix="3"><code>  const obj = {};</code></pre>
+                                    <pre data-prefix="4"><code>  for (const ch of str) {</code></pre>
+                                    <pre data-prefix="5"><code>    obj[ch] = (obj[ch] || 0) + 1;</code></pre>
+                                    <pre data-prefix="6"><code>  }</code></pre>
+                                    <pre data-prefix="7"><code>  return obj;</code></pre>
+                                    <pre data-prefix="8"><code>}</code></pre>
+                                    <pre
+                                        data-prefix="9"><code>console.log(countChars('hello')); // { h:1, e:1, l:2, o:1 }</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LOOPS -->
+                        <div class="mb-12">
+                            <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center gap-2"><i
+                                    class="fa-solid fa-rotate text-purple-500"></i> ৩. Loop (লুপ)</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed"><strong class="text-slate-800">কী:</strong>
+                                একই কাজ বারবার করানোর জন্য লুপ। <strong class="text-slate-800">কখন কোনটা:</strong>
+                                ইনডেক্স দরকার হলে <code>for (let i=0; ...)</code>; অ্যারের ভ্যালু দরকার হলে
+                                <code>for...of</code>; অবজেক্টের কী/ভ্যালু ঘুরতে <code>for...in</code> বা
+                                <code>Object.keys()</code>; প্রতিটায় একটা কাজ করতে <code>forEach</code>।</p>
+                            <p class="text-sm font-semibold text-slate-700 mb-3">উদাহরণ — কপি করে রান করুন:</p>
+                            <div class="space-y-5">
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>const nums = [10, 20, 30];</code></pre>
+                                    <pre data-prefix="2"><code>// for — ইনডেক্স দরকার হলে</code></pre>
+                                    <pre data-prefix="3"><code>for (let i = 0; i &lt; nums.length; i++) {</code></pre>
+                                    <pre
+                                        data-prefix="4"><code>  console.log(i, nums[i]); // 0 10, 1 20, 2 30</code></pre>
+                                    <pre data-prefix="5"><code>}</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// for...of — শুধু ভ্যালু দরকার (সবচেয়ে সহজ)</code></pre>
+                                    <pre data-prefix="2"><code>for (const n of nums) {</code></pre>
+                                    <pre data-prefix="3"><code>  console.log(n); // 10, 20, 30</code></pre>
+                                    <pre data-prefix="4"><code>}</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// for...in — অবজেক্টের keys (অ্যারে না দেয়া ভালো)</code></pre>
+                                    <pre data-prefix="2"><code>const obj = { a: 1, b: 2 };</code></pre>
+                                    <pre data-prefix="3"><code>for (const key in obj) {</code></pre>
+                                    <pre data-prefix="4"><code>  console.log(key, obj[key]); // a 1, b 2</code></pre>
+                                    <pre data-prefix="5"><code>}</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// forEach — অ্যারের প্রতিটি উপাদানে ফাংশন চালানো</code></pre>
+                                    <pre data-prefix="2"><code>nums.forEach((value, index) =&gt; {</code></pre>
+                                    <pre data-prefix="3"><code>  console.log(index, value);</code></pre>
+                                    <pre data-prefix="4"><code>});</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EVENT LOOP -->
+                        <div class="mb-10">
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2 flex items-center gap-2"><i
+                                    class="fa-solid fa-infinity text-cyan-500"></i> ৪. Event Loop (ইভেন্ট লুপ)</h3>
+                            <p class="text-slate-600 mb-3"><strong>কী:</strong> JavaScript একটাই থ্রেডে চলে। Event Loop
+                                হলো ইঞ্জিনের যে মেকানিজম দিয়ে এটি সিনক্রোনাস কোড আগে রান করে, তারপর কলব্যাক/প্রমিজ
+                                (async) গুলো একটার পর একটা চালায় — যাতে UI ব্লক না হয়। <strong>কিভাবে কাজ করে
+                                    (সংক্ষেপে):</strong> (১) Call Stack এ যে ফাংশনগুলো একটার পর একটা চলে সেগুলো শেষ হয়;
+                                (২) তারপর Task Queue / Microtask Queue থেকে একটা করে টাস্ক নিয়ে স্ট্যাকে দিয়ে রান করে;
+                                (৩) এই সাইকেল চলতেই থাকে। তাই <code>setTimeout(fn, 0)</code> বা প্রমিজের
+                                <code>.then</code> সবসময় বর্তমান সিনক্রোনাস কোডের পরে রান হয়।</p>
+                            <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 mb-4">
+                                <p class="text-sm font-bold text-cyan-900 mb-2">কখন কোথায় মাথায় রাখবেন:</p>
+                                <p class="text-sm text-cyan-800">API কল, <code>setTimeout</code>,
+                                    <code>addEventListener</code> — এগুলো অ্যাসিঙ্ক; এগুলো শেষ হওয়ার পরের কোড তখনই রান
+                                    হবে যখন Event Loop ওই কলব্যাকটা স্ট্যাকে দেবে। তাই async ডেটার পরের লজিক কলব্যাক বা
+                                    async/await এর ভেতরে লিখতে হয়।</p>
+                            </div>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>// Event Loop বোঝার জন্য: এটা রান করে দেখুন</code></pre>
+                                <pre data-prefix="2"><code>console.log('A');</code></pre>
+                                <pre data-prefix="3"><code>setTimeout(() =&gt; console.log('B'), 0);</code></pre>
+                                <pre
+                                    data-prefix="4"><code>Promise.resolve().then(() =&gt; console.log('C'));</code></pre>
+                                <pre data-prefix="5"><code>console.log('D');</code></pre>
+                                <pre
+                                    data-prefix="6"><code>// আউটপুট: A, D, C, B (সিনক্রোনাস আগে, তারপর মাইক্রোটাস্ক, তারপর টাস্ক)</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- EVENT LISTENER -->
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2 flex items-center gap-2"><i
+                                    class="fa-solid fa-ear-listen text-rose-500"></i> ৫. Event Listener (ইভেন্ট লিসেনার)
+                            </h3>
+                            <p class="text-slate-600 mb-3"><strong>কী:</strong> ইউজার ক্লিক, টাইপ, স্ক্রল করলে ব্রাউজার
+                                একটা ইভেন্ট ফায়ার করে। Event Listener দিয়ে আপনি বলতে পারেন “এই ইভেন্ট হলে এই ফাংশন
+                                চালাও”। <strong>কখন কোথায়:</strong> বাটন ক্লিক, ইনপুটে টাইপ, ফর্ম সাবমিট, স্ক্রল,
+                                কী-প্রেস — যেকোনো ইউজার অ্যাকশনে রেসপন্স দিতে।</p>
+                            <p class="text-sm font-bold text-slate-700 mb-2">কিভাবে লিখতে হয় ও ব্যবহার করবেন:</p>
+                            <div class="space-y-4">
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// বেসিক: একটা এলিমেন্টে ক্লিক শুনা</code></pre>
+                                    <pre
+                                        data-prefix="2"><code>// HTML: &lt;button id="btn"&gt;Click&lt;/button&gt;</code></pre>
+                                    <pre data-prefix="3"><code>const btn = document.getElementById('btn');</code></pre>
+                                    <pre data-prefix="4"><code>btn.addEventListener('click', function () {</code></pre>
+                                    <pre data-prefix="5"><code>  console.log('Button clicked!');</code></pre>
+                                    <pre data-prefix="6"><code>});</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// ইভেন্ট অবজেক্ট ব্যবহার (কি ক্লিক হয়েছে, কী প্রেস হয়েছে)</code></pre>
+                                    <pre data-prefix="2"><code>btn.addEventListener('click', (e) =&gt; {</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>  console.log(e.target);      // যে এলিমেন্টে ক্লিক</code></pre>
+                                    <pre data-prefix="4"><code>  console.log(e.type);       // 'click'</code></pre>
+                                    <pre data-prefix="5"><code>});</code></pre>
+                                    <pre data-prefix="6"><code>input.addEventListener('keyup', (e) =&gt; {</code></pre>
+                                    <pre data-prefix="7"><code>  console.log(e.key, e.target.value);</code></pre>
+                                    <pre data-prefix="8"><code>});</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// Event Delegation: প্যারেন্টে এক লিসেনার, অনেক চাইল্ডের জন্য</code></pre>
+                                    <pre
+                                        data-prefix="2"><code>// HTML: &lt;ul id="list"&gt;&lt;li&gt;A&lt;/li&gt;&lt;li&gt;B&lt;/li&gt;&lt;/ul&gt;</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>document.getElementById('list').addEventListener('click', (e) =&gt; {</code></pre>
+                                    <pre data-prefix="4"><code>  const li = e.target.closest('li');</code></pre>
+                                    <pre data-prefix="5"><code>  if (!li) return;</code></pre>
+                                    <pre data-prefix="6"><code>  console.log('Clicked:', li.textContent);</code></pre>
+                                    <pre data-prefix="7"><code>});</code></pre>
+                                </div>
+                                <div class="mockup-code text-xs">
+                                    <pre
+                                        data-prefix="1"><code>// কমন ইভেন্ট টাইপ: 'click', 'submit', 'input', 'keyup', 'scroll', 'load'</code></pre>
+                                    <pre data-prefix="2"><code>form.addEventListener('submit', (e) =&gt; {</code></pre>
+                                    <pre data-prefix="3"><code>  e.preventDefault(); // পেজ রিলোড আটকাতে</code></pre>
+                                    <pre data-prefix="4"><code>  console.log('Form submitted');</code></pre>
+                                    <pre data-prefix="5"><code>});</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-50 border border-amber-300 rounded-xl p-4">
+                            <h4 class="font-bold text-amber-900 mb-2">সংক্ষেপে মনে রাখুন</h4>
+                            <ul class="text-sm text-slate-700 space-y-1 list-disc ml-5">
+                                <li><strong>Array:</strong> লিস্ট ডেটা; map/filter/reduce দিয়ে ট্রান্সফর্ম ও একক মান
+                                    বের করুন।</li>
+                                <li><strong>Object:</strong> key-value; এক এনটিটির প্রপার্টি বা ফ্রিকোয়েন্সি কাউন্টার।
+                                </li>
+                                <li><strong>Loop:</strong> ইনডেক্স চাইলে for; শুধু ভ্যালু for...of; অবজেক্টে for...in বা
+                                    Object.keys।</li>
+                                <li><strong>Event Loop:</strong> সিনক্রোনাস কোড আগে; তারপর অ্যাসিঙ্ক কলব্যাক — তাই async
+                                    ডেটার পরের কাজ কলব্যাক/await এর ভেতরে লিখুন।</li>
+                                <li><strong>Event Listener:</strong> addEventListener('eventType', callback); অনেক
+                                    এলিমেন্টে এক লিসেনার দিতে Delegation (প্যারেন্ট + e.target.closest) ব্যবহার করুন।
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                <!-- Section: JS Basics -->
+                <section id="js-basics"
+                        class="doc-card doc-card-accent doc-card-accent-blue bg-white p-8 rounded-2xl shadow-sm border-t border-r border-b border-slate-200 scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <div class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-code text-blue-500"></i> Variables, Scope & Hoisting
+                        </div>
+                        <p class="text-slate-600 mb-4">JS এর বেসিক ফাউন্ডেশন। কিভাবে মেমরিতে ভেরিয়েবল কাজ করে তা না
+                            জানলে অনেক বাগ ফেস করতে হয়। নিচের উদাহরণগুলো কপি করে ব্রাউজারের Console এ রান করে দেখতে
+                            পারবেন।</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <h4 class="font-bold text-blue-800 mb-1">কিভাবে ফাংশনে ব্যবহার করব?</h4>
+                                <p class="text-sm text-slate-700">যে ভ্যালু পরিবর্তন হবে সেখানে <code>let</code>, যে
+                                    পরিবর্তন হবে না (রেফারেন্স বা প্রিমিটিভ) সেখানে <code>const</code> ব্যবহার করুন।
+                                    ফাংশনের ভেতরে বা ব্লক (if/for) এর ভেতরে declare করলে শুধু সেখানেই এক্সেস থাকবে।
+                                    লুপের ভেতরে <code>var</code> না দিয়ে <code>let</code> দিন যাতে লুপের বাইরে সেই
+                                    ভেরিয়েবল লিক না হয়।</p>
+                            </div>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <h4 class="font-bold text-blue-800 mb-1">কেন let/const ভালো?</h4>
+                                <p class="text-sm text-slate-700">Block scope হওয়ায় বাগ কমে; একই নাম দিয়ে অন্য ব্লকে
+                                    ব্যবহার করলেও সংঘর্ষ হয় না। <code>const</code> দিয়ে ইচ্ছাকার পরিবর্তন কমিয়ে কোড
+                                    পড়া সহজ হয়। Hoisting-এর কারণে <code>var</code> দিয়ে অপ্রত্যাশিত undefined পেতে
+                                    পারেন; <code>let</code>/<code>const</code> টিডিজেডে থাকায় declare করার আগে ব্যবহার
+                                    করলে সরাসরি এরর পাবেন, ডিবাগ করতে সুবিধা।</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-blue-700">var, let, const</h3>
+                                <p class="text-sm text-slate-600 mb-3"><code>var</code> হলো function-scoped এবং এর
+                                    হোইস্টিং এ ঝামেলা আছে। তাই আধুনিক JS এ সবসময় <code>let</code> (চেঞ্জেবল ভ্যালু) এবং
+                                    <code>const</code> (ফিক্সড ভ্যালু) ব্যবহার করা হয়, যা block-scoped.</p>
+                                <div class="mockup-code text-xs mb-3">
+                                    <pre
+                                        data-prefix="1"><code>// var - একই নাম দিয়ে একাধিকবার declare করা যায় (খারাপ প্র্যাকটিস)</code></pre>
+                                    <pre data-prefix="2"><code>var x = 5;</code></pre>
+                                    <pre data-prefix="3"><code>var x = 10; // allowed</code></pre>
+                                    <pre data-prefix="4"><code>console.log(x); // 10</code></pre>
+                                    <pre data-prefix="5"><code></code></pre>
+                                    <pre
+                                        data-prefix="6"><code>// let - একই স্কোপে দ্বিতীয়বার declare করা যাবে না</code></pre>
+                                    <pre data-prefix="7"><code>let y = 5;</code></pre>
+                                    <pre
+                                        data-prefix="8"><code>// let y = 10; // Error: Identifier 'y' has already been declared</code></pre>
+                                </div>
+                                <p class="text-xs text-slate-500">মনে রাখবেন: <b>প্রাক্টিক্যাল প্রোজেক্টে</b> সবসময়
+                                    <code>let</code> এবং <code>const</code> ব্যবহার করবেন।</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-blue-700">Hoisting (সহজ ভাবে)</h3>
+                                <p class="text-sm text-slate-600 mb-3">কোড রান করার আগে JS ইঞ্জিন ভেরিয়েবল এবং ফাংশন
+                                    ডিক্লারেশনগুলোকে ফাইলের শুরুতে নিয়ে যায়, একে Hoisting বলে। কিন্তু <code>let</code>
+                                    এবং <code>const</code> TDZ (Temporal Dead Zone) এ থাকে বলে প্রথমে ব্যবহার করলে Error
+                                    হয়।</p>
+                                <div class="mockup-code text-xs mb-3">
+                                    <pre
+                                        data-prefix="1"><code>console.log(a); // Output: undefined (var এর ক্ষেত্রে)</code></pre>
+                                    <pre data-prefix="2"><code>var a = 5;</code></pre>
+                                    <pre data-prefix="3"><code></code></pre>
+                                    <pre data-prefix="4"><code>// let ব্যবহার করলে:</code></pre>
+                                    <pre
+                                        data-prefix="5"><code>// console.log(b); // ReferenceError (TDZ এর জন্য)</code></pre>
+                                    <pre data-prefix="6"><code>let b = 10;</code></pre>
+                                </div>
+                                <p class="text-xs text-slate-500">এক কথায়: <b>var</b> আগে থেকে রেজিস্টার হয় (value =
+                                    <code>undefined</code>), আর <b>let/const</b> আগে থেকে ব্যবহার করলে ক্র্যাশ করে।</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-blue-700">Mini Practice (Copy & Run)</h3>
+                                <p class="text-sm text-slate-600 mb-3">নিচের কোড ব্লক কপি করে Console এ পেস্ট করুন এবং
+                                    কী আউটপুট আসে তা নিজে নিজে প্রেডিক্ট করার চেষ্টা করুন।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>function testScope() {</code></pre>
+                                    <pre data-prefix="2"><code>  if (true) {</code></pre>
+                                    <pre data-prefix="3"><code>    var a = 'var inside if';</code></pre>
+                                    <pre data-prefix="4"><code>    let b = 'let inside if';</code></pre>
+                                    <pre data-prefix="5"><code>  }</code></pre>
+                                    <pre data-prefix="6"><code>  console.log(a); // ?</code></pre>
+                                    <pre data-prefix="7"><code>  console.log(typeof b); // ?</code></pre>
+                                    <pre data-prefix="8"><code>}</code></pre>
+                                    <pre data-prefix="9"><code>testScope();</code></pre>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Hint: <code>a</code> function scope, কিন্তু
+                                    <code>b</code> শুধু if ব্লকের ভেতরে।</p>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- Section: Arrays & Objects -->
+                <section id="arrays-objects"
+                        class="doc-card doc-card-accent doc-card-accent-emerald p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-list text-emerald-500"></i> Arrays & Objects Mastery
+                        </h2>
+                        <p class="text-slate-600 mb-4">ডেটা ম্যানিপুলেশনের জন্য এই মেথডগুলো জানা বাধ্যতামূলক। নিচের
+                            উদাহরণগুলো কপি করে রান করলে ভিজুয়ালি বুঝতে সুবিধা হবে।</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                                <h4 class="font-bold text-emerald-800 mb-1">কিভাবে কোডে ব্যবহার করব?</h4>
+                                <p class="text-sm text-slate-700">যেকোনো অ্যারে বা অবজেক্টের উপর ডট দিয়ে মেথড কল করুন:
+                                    <code>arr.map(...)</code>, <code>arr.filter(...)</code>,
+                                    <code>Object.keys(obj)</code>। ফাংশনের ভেতরে রিটার্ন করতে চাইলে এই মানগুলো
+                                    ভেরিয়েবলে রাখুন (যেমন <code>const evens = numbers.filter(...)</code>) তারপর
+                                    <code>return evens</code>।</p>
+                            </div>
+                            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                                <h4 class="font-bold text-emerald-800 mb-1">কেন map / filter / reduce ব্যবহার ভালো?</h4>
+                                <p class="text-sm text-slate-700"><strong>map:</strong> প্রতিটি আইটেম ট্রান্সফর্ম করতে
+                                    (নতুন অ্যারে)। <strong>filter:</strong> শর্ত মেনে শুধু কিছু আইটেম রাখতে।
+                                    <strong>reduce:</strong> পুরো অ্যারে থেকে একটা একক মান বের করতে (যোগফল, গড়, অবজেক্ট
+                                    বানানো)। for লুপের চেয়ে ইচ্ছা পরিষ্কার এবং চেইন করা যায় (যেমন
+                                    <code>.filter().map()</code>)।</p>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                                <h3 class="font-bold text-lg mb-2 text-emerald-800">Array Methods</h3>
+                                <ul class="text-sm text-slate-700 space-y-2 mb-3">
+                                    <li><strong>push() / pop():</strong> Array এর শেষে ডেটা যোগ করা এবং রিমুভ করা। O(1)
+                                        টাইম নেয়।</li>
+                                    <li><strong>map():</strong> একটি Array এর প্রতিটি আইটেমকে মডিফাই করে নতুন Array
+                                        রিটার্ন করে।</li>
+                                    <li><strong>filter():</strong> কন্ডিশনের উপর ভিত্তি করে নির্দিষ্ট আইটেমগুলো ছেঁকে
+                                        বের করে।</li>
+                                    <li><strong>reduce():</strong> পুরো Array কে প্রসেস করে একটি সিঙ্গেল ভ্যালুতে (যেমন
+                                        যোগফল) নিয়ে আসে।</li>
+                                </ul>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>const numbers = [1, 2, 3, 4, 5];</code></pre>
+                                    <pre data-prefix="2"><code>// Filter even numbers</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>const evens = numbers.filter(n =&gt; n % 2 === 0);</code></pre>
+                                    <pre data-prefix="4"><code>// Sum of all numbers</code></pre>
+                                    <pre
+                                        data-prefix="5"><code>const sum = numbers.reduce((acc, n) =&gt; acc + n, 0);</code></pre>
+                                    <pre data-prefix="6"><code>console.log(evens, sum); // [2,4], 15</code></pre>
+                                </div>
+                            </div>
+                            <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-100">
+                                <h3 class="font-bold text-lg mb-2 text-emerald-800">Object & String</h3>
+                                <ul class="text-sm text-slate-700 space-y-2 mb-3">
+                                    <li><strong>Object.keys():</strong> Object এর সব Key গুলোর Array দেয়।</li>
+                                    <li><strong>Object.values():</strong> Object এর সব Value গুলোর Array দেয়।</li>
+                                    <li><strong>split(''):</strong> String কে ভেঙে Array বানায়।</li>
+                                    <li><strong>join(''):</strong> Array কে জোড়া লাগিয়ে String বানায়।</li>
+                                </ul>
+                                <div class="mockup-code text-xs mb-3">
+                                    <pre data-prefix="1"><code>const user = { name: 'Rahim', age: 25 };</code></pre>
+                                    <pre
+                                        data-prefix="2"><code>console.log(Object.keys(user));   // ['name','age']</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>console.log(Object.values(user)); // ['Rahim',25]</code></pre>
+                                    <pre data-prefix="4"><code></code></pre>
+                                    <pre data-prefix="5"><code>const text = 'level';</code></pre>
+                                    <pre
+                                        data-prefix="6"><code>const reversed = text.split('').reverse().join('');</code></pre>
+                                    <pre
+                                        data-prefix="7"><code>console.log(reversed === text); // palindrome check</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-emerald-100 rounded-xl p-5">
+                            <h3 class="font-bold text-lg mb-2 text-emerald-800">Mini Project: Frequency Counter</h3>
+                            <p class="text-sm text-slate-600 mb-3">একটি স্ট্রিং-এর প্রতিটি অক্ষর কতবার এসেছে তা গণনা
+                                করার জন্য Object ব্যবহার করা হয়।</p>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>function charFrequency(str) {</code></pre>
+                                <pre data-prefix="2"><code>  const freq = {};</code></pre>
+                                <pre data-prefix="3"><code>  for (const ch of str) {</code></pre>
+                                <pre data-prefix="4"><code>    freq[ch] = (freq[ch] || 0) + 1;</code></pre>
+                                <pre data-prefix="5"><code>  }</code></pre>
+                                <pre data-prefix="6"><code>  return freq;</code></pre>
+                                <pre data-prefix="7"><code>}</code></pre>
+                                <pre data-prefix="8"><code>console.log(charFrequency('hello'));</code></pre>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- Section: String, JSON & Destructuring (নতুন টপিক) -->
+                <section id="string-json"
+                        class="doc-card doc-card-accent p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <h2
+                            class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b-2 border-slate-200 pb-3">
+                            <i class="fa-solid fa-quote-right text-slate-500"></i> String, JSON ও Destructuring
+                        </h2>
+                        <p class="text-slate-600 mb-6">প্রোজেক্টে স্ট্রিং ম্যানিপুলেশন, API থেকে আসা JSON এবং ডেটা ভাঙতে
+                            Destructuring প্রতিদিন লাগে।</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                                <h3 class="font-bold text-lg text-slate-800 mb-2">String Methods</h3>
+                                <p class="text-sm text-slate-600 mb-3">split, join, slice, includes, trim, toLowerCase —
+                                    প্যালিনড্রোম চেক, সার্চ, কেস বদলাতে ব্যবহার করুন।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>const s = '  Hello World  ';</code></pre>
+                                    <pre
+                                        data-prefix="2"><code>s.trim().toLowerCase();        // 'hello world'</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>s.split(' ').filter(Boolean);  // ['Hello','World']</code></pre>
+                                    <pre
+                                        data-prefix="4"><code>const rev = 'level'.split('').reverse().join('');</code></pre>
+                                    <pre data-prefix="5"><code>rev === 'level'; // true (palindrome)</code></pre>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                                <h3 class="font-bold text-lg text-slate-800 mb-2">JSON & Destructuring</h3>
+                                <p class="text-sm text-slate-600 mb-3">API রেসপন্স স্ট্রিংকে <code>JSON.parse()</code>;
+                                    অবজেক্ট/অ্যারে থেকে ভ্যালু বের করতে destructuring।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>const jsonStr = '{"name":"A","age":25}';</code></pre>
+                                    <pre data-prefix="2"><code>const obj = JSON.parse(jsonStr);</code></pre>
+                                    <pre data-prefix="3"><code>const { name, age } = obj;</code></pre>
+                                    <pre data-prefix="4"><code>const [a, b] = [1, 2];</code></pre>
+                                    <pre data-prefix="5"><code>JSON.stringify(obj); // আবার স্ট্রিং</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- Section: DOM -->
+                <section id="dom"
+                    class="doc-card doc-card-accent doc-card-accent-orange p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                    data-animate="fadeUp">
+                    <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-sitemap text-orange-500"></i> Advanced DOM & Events
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                                <h4 class="font-bold text-orange-800 mb-1">কিভাবে ইভেন্টে ব্যবহার করব?</h4>
+                                <p class="text-sm text-slate-700">কোন এলিমেন্টে ক্লিক/ইনপুট হলে কী হবে সেটা
+                                    <code>addEventListener('click', function)</code> দিয়ে বাঁধুন। অনেকগুলো বাটন/লিস্ট
+                                    আইটেম থাকলে প্রতিটায় আলাদা listener না দিয়ে, তাদের <strong>প্যারেন্ট</strong>
+                                    একটায় listener দিন; ভেতরে <code>event.target</code> বা
+                                    <code>event.target.closest('li')</code> দিয়ে কোন চাইল্ড ক্লিক হয়েছে চেক করুন —
+                                    এটাই ইভেন্ট ডেলিগেশন।</p>
+                            </div>
+                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                                <h4 class="font-bold text-orange-800 mb-1">কেন Event Delegation ও Fragment ভালো?</h4>
+                                <p class="text-sm text-slate-700"><strong>Delegation:</strong> ১০০টা বাটনে ১০০টা
+                                    listener না দিয়ে একটা প্যারেন্টে একটাই দিলে মেমরি কম লাগে এবং ডায়নামিকভাবে যোগ
+                                    হওয়া আইটেমেও কাজ করে। <strong>DocumentFragment:</strong> অনেকগুলো নোড লুপে বানিয়ে
+                                    একবারে DOM-এ যোগ করলে রিফ্লো একবারই হয়, তাই পারফরম্যান্স ভালো।</p>
+                            </div>
+                        </div>
+
+                        <h3 class="font-bold text-xl mt-4 mb-2">Event Bubbling & Delegation</h3>
+                        <p class="text-slate-600 mb-4">HTML এ ইভেন্টগুলো নিচ থেকে উপরের দিকে (Child -> Parent) পাস হয়,
+                            একে Event Bubbling বলে। এর সুবিধা নিয়ে <b>Event Delegation</b> করা হয়। অর্থাৎ ১০০টি বাটনে
+                            ১০০টি Event Listener যুক্ত করার বদলে, তাদের Parent এ মাত্র ১টি Listener যুক্ত করা, যা মেমরি
+                            সাশ্রয় করে।</p>
+
+                        <div class="mockup-code text-xs mb-4">
+                            <pre data-prefix="1"><code>// HTML ধারণা:</code></pre>
+                            <pre data-prefix="2"><code>// &lt;ul id="todo-list"&gt;</code></pre>
+                            <pre data-prefix="3"><code>//   &lt;li data-id="1"&gt;Task 1&lt;/li&gt;</code></pre>
+                            <pre data-prefix="4"><code>//   &lt;li data-id="2"&gt;Task 2&lt;/li&gt;</code></pre>
+                            <pre data-prefix="5"><code>// &lt;/ul&gt;</code></pre>
+                            <pre data-prefix="6"><code></code></pre>
+                            <pre data-prefix="7"><code>const list = document.getElementById('todo-list');</code></pre>
+                            <pre data-prefix="8"><code>list.addEventListener('click', (event) =&gt; {</code></pre>
+                            <pre data-prefix="9"><code>  const li = event.target.closest('li');</code></pre>
+                            <pre data-prefix="10"><code>  if (!li) return;</code></pre>
+                            <pre data-prefix="11"><code>  console.log('Clicked id:', li.dataset.id);</code></pre>
+                            <pre data-prefix="12"><code>});</code></pre>
+                        </div>
+
+                        <h3 class="font-bold text-xl mt-6 mb-2">DocumentFragment</h3>
+                        <p class="text-slate-600 mb-4">লুপ চালিয়ে ১০০টি এলিমেন্ট DOM এ যোগ করলে ব্রাউজার ১০০ বার রিফ্রেশ
+                            (Reflow) হয়। এর বদলে <code>DocumentFragment</code> ব্যবহার করলে মেমরিতে সব যোগ করে ব্রাউজারে
+                            মাত্র একবার রিফ্রেশ করা যায়।</p>
+
+                        <div class="mockup-code text-xs mb-6">
+                            <pre data-prefix="1"><code>const fragment = document.createDocumentFragment();</code></pre>
+                            <pre data-prefix="2"><code>for (let i = 0; i &lt; 100; i++) {</code></pre>
+                            <pre data-prefix="3"><code>  const li = document.createElement('li');</code></pre>
+                            <pre data-prefix="4"><code>  li.textContent = 'Item ' + i;</code></pre>
+                            <pre data-prefix="5"><code>  fragment.appendChild(li); // মেমরিতে যোগ হচ্ছে</code></pre>
+                            <pre data-prefix="6"><code>}</code></pre>
+                            <pre
+                                data-prefix="7"><code>document.querySelector('ul').appendChild(fragment); // একসাথে যোগ!</code></pre>
+                        </div>
+
+                        <p class="text-xs text-slate-500">Practice Idea: DOM কে WordPress এর DOM Tree-এর মতো ভেবে নিন —
+                            শুধু এখানে আপনি সরাসরি JavaScript দিয়ে node create/modify করতে পারেন।</p>
+                </section>
+
+                <!-- Section: Async -->
+                <section id="async"
+                        class="doc-card doc-card-accent doc-card-accent-amber p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-bolt text-yellow-500"></i> Async & Await — বিস্তারিত
+                        </h2>
+
+                        <p class="text-slate-600 mb-6">ইন্টারনেট থেকে ডেটা আনা, ফাইল রিড করা, বা যে কাজে সময় লাগে —
+                            সেগুলো JavaScript এ <strong>Asynchronous</strong>। <code>async</code> এবং <code>await</code>
+                            দিয়ে এই কাজগুলো সহজ ও পড়তে সুবিধা হয় (Promise-এর চেয়ে)।</p>
+
+                        <!-- Part 1: কী ও কেন -->
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r-xl mb-6">
+                            <h3 class="font-bold text-lg text-amber-900 mb-2">১. async এবং await কী?</h3>
+                            <ul class="text-sm text-slate-700 space-y-1 list-disc ml-5">
+                                <li><strong>async:</strong> কোনো ফাংশনের আগে লিখলে সেই ফাংশনটা একটা
+                                    <strong>Promise</strong> রিটার্ন করে। মানে ফাংশনটা “আগামী কোনো সময়ে” রেজাল্ট দেবে।
+                                </li>
+                                <li><strong>await:</strong> শুধু <code>async</code> ফাংশনের ভেতরে ব্যবহার করা যায়। এটি
+                                    কোনো Promise-এর সামনে বসালে JavaScript সেই Promise রেজলভ হওয়া পর্যন্ত অপেক্ষা করে,
+                                    তারপর পরের লাইন চালায়। তাই কোড দেখতে একদম সাধারণ সিরিয়াল কোডের মতো লাগে।</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r-xl mb-6">
+                            <h3 class="font-bold text-lg text-amber-900 mb-2">২. কেন async/await ব্যবহার করব?</h3>
+                            <ul class="text-sm text-slate-700 space-y-1 list-disc ml-5">
+                                <li>কোড পড়া ও লিখা সহজ — একটার পর একটা স্টেপ লিখতে পারি, <code>.then().then()</code> এর
+                                    চেয়ে পরিষ্কার।</li>
+                                <li>এরর হ্যান্ডলিং এক জায়গায় — <code>try { ... } catch (err) { ... }</code> দিয়ে সব
+                                    async এরর ধরা যায়।</li>
+                                <li>API কল, ফাইল রিড, টাইমার — যেকোনো “সময় নেয় এমন” কাজে ইন্ডাস্ট্রি স্ট্যান্ডার্ড।
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Part 2: কিভাবে লিখতে হয় -->
+                        <div class="mb-8">
+                            <h3 class="font-bold text-xl text-slate-800 mb-3">৩. কিভাবে কোডে লিখতে হয় (স্টেপ বাই স্টেপ)
+                            </h3>
+                            <div class="space-y-4 text-sm text-slate-600">
+                                <p><strong>স্টেপ ১:</strong> যে ফাংশন থেকে await ব্যবহার করবেন, সেই ফাংশনের আগে
+                                    <code>async</code> লিখুন।</p>
+                                <p><strong>স্টেপ ২:</strong> যেই জায়গায় “অপেক্ষা” করতে চান (যেমন fetch, res.json()),
+                                    সেখানে সেই এক্সপ্রেশনের আগে <code>await</code> লিখুন।</p>
+                                <p><strong>স্টেপ ৩:</strong> এরর হ্যান্ডল করার জন্য পুরো অংশ <code>try { ... }</code> এর
+                                    ভেতরে রাখুন এবং <code>catch (err) { ... }</code> দিয়ে এরর লগ বা মেসেজ দিন।</p>
+                            </div>
+                        </div>
+
+                        <!-- Example 1: সবচেয়ে বেসিক -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-6">
+                            <h4 class="font-bold mb-2 text-slate-800">উদাহরণ ১ — সবচেয়ে বেসিক (কপি করে Console এ রান
+                                করুন)</h4>
+                            <p class="text-sm text-slate-600 mb-3">এখানে দেখুন: <code>async</code> ফাংশন,
+                                <code>await fetch()</code>, <code>await res.json()</code>, এবং <code>try/catch</code>
+                                একসাথে কীভাবে ব্যবহার হচ্ছে।</p>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>async function loadUsers() {</code></pre>
+                                <pre data-prefix="2"><code>  try {</code></pre>
+                                <pre
+                                    data-prefix="3"><code>    const res = await fetch('https://jsonplaceholder.typicode.com/users');</code></pre>
+                                <pre
+                                    data-prefix="4"><code>    if (!res.ok) throw new Error('Network error');</code></pre>
+                                <pre data-prefix="5"><code>    const data = await res.json();</code></pre>
+                                <pre data-prefix="6"><code>    console.log('Total users:', data.length);</code></pre>
+                                <pre data-prefix="7"><code>    console.log('First user:', data[0]);</code></pre>
+                                <pre data-prefix="8"><code>    return data;</code></pre>
+                                <pre data-prefix="9"><code>  } catch (err) {</code></pre>
+                                <pre data-prefix="10"><code>    console.error('Failed:', err.message);</code></pre>
+                                <pre data-prefix="11"><code>  }</code></pre>
+                                <pre data-prefix="12"><code>}</code></pre>
+                                <pre data-prefix="13"><code>loadUsers();</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Example 2: একের পর এক await -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-6">
+                            <h4 class="font-bold mb-2 text-slate-800">উদাহরণ ২ — একের পর এক দুইটা API কল (সিরিয়াল)</h4>
+                            <p class="text-sm text-slate-600 mb-3">প্রথম API থেকে ডেটা আসার পরই দ্বিতীয়টা কল হচ্ছে। কোড
+                                যেভাবে লিখেছেন সেভাবেই এক্সিকিউট হয়।</p>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>async function loadInOrder() {</code></pre>
+                                <pre data-prefix="2"><code>  try {</code></pre>
+                                <pre
+                                    data-prefix="3"><code>    const usersRes = await fetch('https://jsonplaceholder.typicode.com/users');</code></pre>
+                                <pre data-prefix="4"><code>    const users = await usersRes.json();</code></pre>
+                                <pre data-prefix="5"><code>    console.log('Users loaded:', users.length);</code></pre>
+                                <pre data-prefix="6"><code></code></pre>
+                                <pre
+                                    data-prefix="7"><code>    const postsRes = await fetch('https://jsonplaceholder.typicode.com/posts');</code></pre>
+                                <pre data-prefix="8"><code>    const posts = await postsRes.json();</code></pre>
+                                <pre data-prefix="9"><code>    console.log('Posts loaded:', posts.length);</code></pre>
+                                <pre data-prefix="10"><code>    return { users, posts };</code></pre>
+                                <pre data-prefix="11"><code>  } catch (e) {</code></pre>
+                                <pre data-prefix="12"><code>    console.error(e.message);</code></pre>
+                                <pre data-prefix="13"><code>  }</code></pre>
+                                <pre data-prefix="14"><code>}</code></pre>
+                                <pre data-prefix="15"><code>loadInOrder();</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Example 3: Promise.all with async/await -->
+                        <div class="bg-yellow-50 p-6 rounded-xl border border-yellow-200 mb-6">
+                            <h4 class="font-bold mb-2 text-yellow-800">উদাহরণ ৩ — একসাথে অনেক API (Promise.all + await)
+                            </h4>
+                            <p class="text-sm text-yellow-700 mb-3">কয়েকটা API একসাথে কল করতে চাইলে
+                                <code>Promise.all()</code> ব্যবহার করুন। সব একসাথে রান হবে, মোট সময় = সবচেয়ে ধীরটার
+                                সময়।</p>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>async function loadDashboard() {</code></pre>
+                                <pre data-prefix="2"><code>  try {</code></pre>
+                                <pre
+                                    data-prefix="3"><code>    const [usersRes, postsRes] = await Promise.all([</code></pre>
+                                <pre
+                                    data-prefix="4"><code>      fetch('https://jsonplaceholder.typicode.com/users'),</code></pre>
+                                <pre
+                                    data-prefix="5"><code>      fetch('https://jsonplaceholder.typicode.com/posts')</code></pre>
+                                <pre data-prefix="6"><code>    ]);</code></pre>
+                                <pre data-prefix="7"><code>    const users = await usersRes.json();</code></pre>
+                                <pre data-prefix="8"><code>    const posts = await postsRes.json();</code></pre>
+                                <pre data-prefix="9"><code>    console.log(users.length, posts.length);</code></pre>
+                                <pre data-prefix="10"><code>    return { users, posts };</code></pre>
+                                <pre data-prefix="11"><code>  } catch (e) {</code></pre>
+                                <pre data-prefix="12"><code>    console.error(e.message);</code></pre>
+                                <pre data-prefix="13"><code>  }</code></pre>
+                                <pre data-prefix="14"><code>}</code></pre>
+                                <pre data-prefix="15"><code>loadDashboard();</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Error Handling -->
+                        <div class="bg-red-50/80 border border-red-100 rounded-xl p-4 mb-6">
+                            <h4 class="font-bold text-red-900 mb-2"><i
+                                    class="fa-solid fa-triangle-exclamation text-red-500 mr-1"></i> Error Handling (try
+                                / catch / throw)</h4>
+                            <p class="text-sm text-slate-700 mb-2">নেটওয়ার্ক ফেইল বা বাজে ডেটা এড়াতে async কোড সবসময়
+                                <code>try { ... } catch (err) { ... }</code> দিয়ে wrap করুন। নিজে এরর দিতে
+                                <code>throw new Error('message')</code> ব্যবহার করুন।</p>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>try {</code></pre>
+                                <pre
+                                    data-prefix="2"><code>  const data = await fetch(url).then(r =&gt; r.json());</code></pre>
+                                <pre data-prefix="3"><code>  if (!data.id) throw new Error('Invalid data');</code></pre>
+                                <pre data-prefix="4"><code>} catch (err) {</code></pre>
+                                <pre data-prefix="5"><code>  console.error(err.message);</code></pre>
+                                <pre data-prefix="6"><code>}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Summary box -->
+                        <div class="bg-slate-100 p-4 rounded-xl border border-slate-300">
+                            <h4 class="font-bold text-slate-800 mb-2">সংক্ষেপে মনে রাখুন</h4>
+                            <ul class="text-sm text-slate-700 space-y-1 list-disc ml-5">
+                                <li><code>async</code> ফাংশন = ফাংশনটা একটা Promise রিটার্ন করে।</li>
+                                <li><code>await</code> = শুধু async ফাংশনের ভেতরে; Promise রেজলভ হওয়া পর্যন্ত অপেক্ষা
+                                    করে।</li>
+                                <li>এরর ধরতে: <code>try { await ... } catch (err) { ... }</code> ব্যবহার করুন।</li>
+                                <li>বহু API একসাথে: <code>await Promise.all([fetch(...), fetch(...)])</code>।</li>
+                            </ul>
+                        </div>
+                </section>
+
+                <!-- Section: Performance -->
+                <section id="performance"
+                        class="doc-card doc-card-accent doc-card-accent-teal p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-gauge-high text-teal-500"></i> Performance Optimization
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-teal-50 border border-teal-200 rounded-lg p-4">
+                                <h4 class="font-bold text-teal-800 mb-1">কিভাবে কোডে লিখতে হয়?</h4>
+                                <p class="text-sm text-slate-700"><strong>Debounce:</strong> একটা হেল্পার ফাংশন লিখুন
+                                    যেটা <code>setTimeout</code> ও <code>clearTimeout</code> দিয়ে “আগের টাইমার বাতিল +
+                                    নতুন টাইমার” করে। সেই ফাংশন দিয়ে আপনার আসল হ্যান্ডলার wrap করুন (যেমন সার্চের
+                                    জন্য)। <strong>Throttle:</strong> <code>Date.now()</code> দিয়ে শেষ কখন রান হয়েছিল
+                                    দেখুন; যদি নির্দিষ্ট সময় (যেমন ২০০ms) পার হয়ে যায় তবেই ফাংশন রান করুন, নাহলে আটকে
+                                    দিন।</p>
+                            </div>
+                            <div class="bg-teal-50 border border-teal-200 rounded-lg p-4">
+                                <h4 class="font-bold text-teal-800 mb-1">কেন ব্যবহার ভালো?</h4>
+                                <p class="text-sm text-slate-700">সার্চ বক্সে প্রতি কী-স্ট্রোকে API কল করলে সার্ভার ও
+                                    নেটওয়ার্ক চাপ পড়ে; <strong>debounce</strong> দিয়ে শুধু টাইপ থামার পর একবার কল
+                                    হয়। স্ক্রল/রিসাইজের মতো ঘন ঘন ফায়ার হওয়া ইভেন্টে <strong>throttle</strong> দিলে
+                                    নির্দিষ্ট সময়ে একবারই লজিক চলে, তাই UI হালকা থাকে।</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-teal-50 border-l-4 border-teal-500 p-4 mb-6 rounded-r-lg">
+                            <h4 class="font-bold text-teal-800">Debounce Concept:</h4>
+                            <p class="text-sm text-teal-700 mt-2">সার্চ বক্সে টাইপ করার সময় প্রতিটা অক্ষরের জন্য যদি API
+                                কল হয়, তাহলে সার্ভার ক্র্যাশ করতে পারে। <strong>Debounce</strong> এর কাজ হলো, ইউজার টাইপ
+                                করা থামানোর নির্দিষ্ট সময় (যেমন ৫০০ মিলিসেকেন্ড) পর ফাংশন রান করা। এর আগে আবার টাইপ করলে
+                                আগের টাইমার ক্যান্সেল হয়ে নতুন করে শুরু হবে।</p>
+                        </div>
+
+                        <div class="mockup-code text-xs mb-6">
+                            <pre data-prefix="1"><code>function debounce(fn, delay) {</code></pre>
+                            <pre data-prefix="2"><code>  let timerId;</code></pre>
+                            <pre data-prefix="3"><code>  return function (...args) {</code></pre>
+                            <pre data-prefix="4"><code>    clearTimeout(timerId);</code></pre>
+                            <pre
+                                data-prefix="5"><code>    timerId = setTimeout(() =&gt; fn.apply(this, args), delay);</code></pre>
+                            <pre data-prefix="6"><code>  };</code></pre>
+                            <pre data-prefix="7"><code>}</code></pre>
+                            <pre data-prefix="8"><code></code></pre>
+                            <pre
+                                data-prefix="9"><code>const searchInput = document.getElementById('search');</code></pre>
+                            <pre data-prefix="10"><code>const handleSearch = debounce((event) =&gt; {</code></pre>
+                            <pre
+                                data-prefix="11"><code>  console.log('Searching for:', event.target.value);</code></pre>
+                            <pre data-prefix="12"><code>}, 500);</code></pre>
+                            <pre
+                                data-prefix="13"><code>searchInput.addEventListener('input', handleSearch);</code></pre>
+                        </div>
+
+                        <div class="bg-teal-50 border-l-4 border-teal-500 p-4 mb-4 rounded-r-lg">
+                            <h4 class="font-bold text-teal-800">Throttle Concept:</h4>
+                            <p class="text-sm text-teal-700 mt-2">অবিরাম চলতে থাকা ইভেন্ট (যেমন: Page Scroll) এর
+                                ক্ষেত্রে আমরা চাই নির্দিষ্ট সময় পরপর একবার ফাংশনটি কাজ করুক। <strong>Throttle</strong>
+                                এটি নিশ্চিত করে।</p>
+                        </div>
+
+                        <div class="mockup-code text-xs">
+                            <pre data-prefix="1"><code>function throttle(fn, limit) {</code></pre>
+                            <pre data-prefix="2"><code>  let lastCall = 0;</code></pre>
+                            <pre data-prefix="3"><code>  return function (...args) {</code></pre>
+                            <pre data-prefix="4"><code>    const now = Date.now();</code></pre>
+                            <pre data-prefix="5"><code>    if (now - lastCall &gt;= limit) {</code></pre>
+                            <pre data-prefix="6"><code>      lastCall = now;</code></pre>
+                            <pre data-prefix="7"><code>      fn.apply(this, args);</code></pre>
+                            <pre data-prefix="8"><code>    }</code></pre>
+                            <pre data-prefix="9"><code>  };</code></pre>
+                            <pre data-prefix="10"><code>}</code></pre>
+                            <pre data-prefix="11"><code></code></pre>
+                            <pre
+                                data-prefix="12"><code>window.addEventListener('scroll', throttle(() =&gt; {</code></pre>
+                            <pre data-prefix="13"><code>  console.log('Scroll position:', window.scrollY);</code></pre>
+                            <pre data-prefix="14"><code>}, 200));</code></pre>
+                        </div>
+                </section>
+
+                <!-- Section: DSA -->
+                <section id="dsa"
+                    class="doc-card doc-card-accent doc-card-accent-purple p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                    data-animate="fadeUp">
+                    <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-cubes text-purple-500"></i> Data Structures
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                <h4 class="font-bold text-purple-800 mb-1">কিভাবে ফাংশনে ব্যবহার করব?</h4>
+                                <p class="text-sm text-slate-700"><strong>Set:</strong>
+                                    <code>const s = new Set(arr)</code> দিয়ে ইউনিক ভ্যালু; অ্যারে চাইলে
+                                    <code>[...s]</code>। <strong>Map:</strong> <code>map.set(key, value)</code>,
+                                    <code>map.get(key)</code>। ডুপ্লিকেট চেক, কাউন্ট, ক্যাশের মতো লুকআপের জন্য ফাংশনের
+                                    ভেতরে ব্যবহার করুন। <strong>Stack/Queue:</strong> ক্লাস বানিয়ে
+                                    <code>push/pop</code> বা <code>enqueue/dequeue</code> দিয়ে অ্যারে দিয়ে ইমপ্লিমেন্ট
+                                    করুন।</p>
+                            </div>
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                <h4 class="font-bold text-purple-800 mb-1">কেন ব্যবহার ভালো?</h4>
+                                <p class="text-sm text-slate-700">অ্যারে থেকে ইউনিক নিতে বা “এটা আগে দেখেছি কি না” চেক
+                                    করতে Set O(1) দেয়। Key দিয়ে ভ্যালু খোঁজা Map-এ সহজ ও ফাস্ট। Stack দিয়ে Undo/Back,
+                                    Queue দিয়ে টাস্ক অর্ডার মেইনটেইন করা যায়। তাই ডেটা কীভাবে ব্যবহার করছেন সেটার উপর
+                                    ভিত্তি করে সঠিক ডাটা স্ট্রাকচার বেছে নিলে কোড সহজ ও দ্রুত হয়।</p>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-purple-50 p-5 rounded-xl border border-purple-100">
+                                <h3 class="font-bold text-lg mb-2 text-purple-800">Set (Unique Data)</h3>
+                                <p class="text-sm text-slate-600 mb-3">Set এ কখনো ডুপ্লিকেট ডেটা থাকে না। Array থেকে
+                                    ডুপ্লিকেট বাদ দেওয়ার সবচেয়ে ফাস্ট উপায় এটি।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix=">"
+                                        class="text-success"><code>const unique = [...new Set([1,2,2,3])];</code></pre>
+                                </div>
+                            </div>
+                            <div class="bg-purple-50 p-5 rounded-xl border border-purple-100">
+                                <h3 class="font-bold text-lg mb-2 text-purple-800">Map (Key-Value Power)</h3>
+                                <p class="text-sm text-slate-600 mb-3">Object এর Key হিসেবে শুধু String বসে, কিন্তু Map
+                                    এ যেকোনো কিছু (এমনকি Object বা Array) Key হতে পারে।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>const prices = new Map();</code></pre>
+                                    <pre data-prefix="2"><code>prices.set('apple', 120);</code></pre>
+                                    <pre data-prefix="3"><code>prices.set('orange', 80);</code></pre>
+                                    <pre data-prefix="4"><code>console.log(prices.get('apple'));</code></pre>
+                                </div>
+                            </div>
+                            <div class="bg-purple-50 p-5 rounded-xl border border-purple-100">
+                                <h3 class="font-bold text-lg mb-2 text-purple-800">Stack (LIFO)</h3>
+                                <p class="text-sm text-slate-600 mb-3">Last In, First Out. যেমন ব্রাউজারের ব্যাক বাটন বা
+                                    Undo সিস্টেম। শেষে যা যোগ হয়েছে, সবার আগে সেটাই রিমুভ হবে।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>class Stack {</code></pre>
+                                    <pre data-prefix="2"><code>  constructor() { this.items = []; }</code></pre>
+                                    <pre data-prefix="3"><code>  push(item) { this.items.push(item); }</code></pre>
+                                    <pre data-prefix="4"><code>  pop() { return this.items.pop(); }</code></pre>
+                                    <pre data-prefix="5"><code>}</code></pre>
+                                </div>
+                            </div>
+                            <div class="bg-purple-50 p-5 rounded-xl border border-purple-100">
+                                <h3 class="font-bold text-lg mb-2 text-purple-800">Queue (FIFO)</h3>
+                                <p class="text-sm text-slate-600 mb-3">First In, First Out. লাইনে দাঁড়ানোর মতো। যে আগে
+                                    এসেছে সে আগে সার্ভিস পাবে। যেমন প্রিন্টার টাস্ক।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>class Queue {</code></pre>
+                                    <pre data-prefix="2"><code>  constructor() { this.items = []; }</code></pre>
+                                    <pre data-prefix="3"><code>  enqueue(item) { this.items.push(item); }</code></pre>
+                                    <pre data-prefix="4"><code>  dequeue() { return this.items.shift(); }</code></pre>
+                                    <pre data-prefix="5"><code>}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- Section: Big O -->
+                <section id="big-o"
+                        class="doc-card doc-card-accent doc-card-accent-red p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-stopwatch text-red-500"></i> Big O & Time Complexity
+                        </h2>
+                        <p class="text-slate-600 mb-4">আপনার কোড ১০টি ডেটার জন্য ভালো চললেও ১ লক্ষ ডেটার জন্য ব্রাউজার
+                            ক্র্যাশ করতে পারে। এখানেই আসে Time Complexity.</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                <h4 class="font-bold text-red-800 mb-1">কিভাবে কোডে চিন্তা করব?</h4>
+                                <p class="text-sm text-slate-700">লুপ একবার চলে = O(N)। লুপের ভেতর আরেক লুপ (প্রতি
+                                    আইটেমের জন্য পুরো অ্যারে) = O(N²)। ইনডেক্স বা অবজেক্ট কী দিয়ে সরাসরি অ্যাক্সেস =
+                                    O(1)। ফাংশন লিখার পর নিজে জিজ্ঞেস করুন: ডেটা দ্বিগুণ হলে স্টেপ কতগুণ বাড়বে? যত কম
+                                    (১, log N, N) তত ভালো।</p>
+                            </div>
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                <h4 class="font-bold text-red-800 mb-1">কেন ব্যবহার ভালো?</h4>
+                                <p class="text-sm text-slate-700">বড় ডেটা বা স্লো ইউজার এক্সপেরিয়েন্স এড়াতে
+                                    অ্যালগরিদম বেছে নেওয়ার সময় Big O দিয়ে তুলনা করা যায়। নেস্টেড লুপ কমিয়ে Map/Set
+                                    দিয়ে লুকআপ করলে O(N²) থেকে O(N) করা যায় — রিয়েল প্রজেক্টে এটাই পারফরম্যান্স
+                                    বাঁচায়।</p>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3 mt-4 mb-6">
+                            <li
+                                class="flex items-start gap-3 p-3 bg-green-50 text-green-800 rounded-lg border border-green-200">
+                                <div class="badge badge-success text-white font-bold">O(1)</div>
+                                <div>
+                                    <strong>Constant Time:</strong> এটি সবচেয়ে ফাস্ট। ডিরেক্ট Array Index বা Object Key
+                                    দিয়ে ডেটা খোঁজা। ডেটা যত খুশি হোক, টাইম সমান লাগবে।
+                                </div>
+                            </li>
+                            <li
+                                class="flex items-start gap-3 p-3 bg-yellow-50 text-yellow-800 rounded-lg border border-yellow-200">
+                                <div class="badge badge-warning text-white font-bold">O(N)</div>
+                                <div>
+                                    <strong>Linear Time:</strong> ডেটা যত বাড়বে, সময় তত লাগবে। যেমন সাধারণ
+                                    <code>for loop</code> বা <code>Array.find()</code>।
+                                </div>
+                            </li>
+                            <li
+                                class="flex items-start gap-3 p-3 bg-red-50 text-red-800 rounded-lg border border-red-200">
+                                <div class="badge badge-error text-white font-bold">O(N²)</div>
+                                <div>
+                                    <strong>Quadratic Time:</strong> লুপের ভেতর লুপ (Nested Loops)। প্রো লেভেলে এটা
+                                    সবসময় অ্যাভয়েড করতে হয়!
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mockup-code text-xs">
+                            <pre data-prefix="1"><code>// O(N) উদাহরণ</code></pre>
+                            <pre data-prefix="2"><code>function findItem(arr, target) {</code></pre>
+                            <pre data-prefix="3"><code>  for (const item of arr) {</code></pre>
+                            <pre data-prefix="4"><code>    if (item === target) return true;</code></pre>
+                            <pre data-prefix="5"><code>  }</code></pre>
+                            <pre data-prefix="6"><code>  return false;</code></pre>
+                            <pre data-prefix="7"><code>}</code></pre>
+                            <pre data-prefix="8"><code></code></pre>
+                            <pre data-prefix="9"><code>// O(N²) উদাহরণ</code></pre>
+                            <pre data-prefix="10"><code>function hasDuplicatePair(arr) {</code></pre>
+                            <pre data-prefix="11"><code>  for (let i = 0; i &lt; arr.length; i++) {</code></pre>
+                            <pre data-prefix="12"><code>    for (let j = i + 1; j &lt; arr.length; j++) {</code></pre>
+                            <pre data-prefix="13"><code>      if (arr[i] === arr[j]) return true;</code></pre>
+                            <pre data-prefix="14"><code>    }</code></pre>
+                            <pre data-prefix="15"><code>  }</code></pre>
+                            <pre data-prefix="16"><code>  return false;</code></pre>
+                            <pre data-prefix="17"><code>}</code></pre>
+                        </div>
+                </section>
+
+                <!-- Section: Algorithms -->
+                <section id="algorithms"
+                        class="doc-card doc-card-accent doc-card-accent-cyan p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                        data-animate="fadeUp">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-magnifying-glass text-cyan-500"></i> Algorithms & Sorting
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4">
+                                <h4 class="font-bold text-cyan-800 mb-1">কিভাবে ফাংশনে লিখতে হয়?</h4>
+                                <p class="text-sm text-slate-700"><strong>Recursion:</strong> একটা Base Case রাখুন
+                                    (যেখানে আর কল না করে রিটার্ন); তারপর নিজে নিজেকে ছোট ইনপুট দিয়ে কল করুন (যেমন
+                                    <code>factorial(n-1)</code>)। <strong>Binary Search:</strong> সর্টেড অ্যারে নিন;
+                                    <code>left</code>, <code>right</code>, <code>mid</code> দিয়ে মাঝখান দিয়ে ভাগ করে
+                                    টার্গেট বামে নাকি ডানে চেক করুন; লুপ বা রিকার্শন দিয়ে একদিকে সরতে থাকুন।
+                                    <strong>Sort:</strong> প্র্যাকটিসের জন্য bubble/selection লিখুন; প্রজেক্টে
+                                    <code>arr.sort((a,b) => a - b)</code> ব্যবহার করুন।</p>
+                            </div>
+                            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4">
+                                <h4 class="font-bold text-cyan-800 mb-1">কেন ব্যবহার ভালো?</h4>
+                                <p class="text-sm text-slate-700">রিকার্শন ট্রি/নেস্টেড ডেটা বা গাণিতিক সংজ্ঞা
+                                    (factorial, fibonacci) একদম সোজা করে। বাইনারি সার্চ সর্টেড ডেটায় O(log N) এ খোঁজ
+                                    দেয়। সঠিক অ্যালগরিদম বেছে নিলে বড় ডেটায় অ্যাপ ফাস্ট থাকে।</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-cyan-700">Recursion</h3>
+                                <p class="text-sm text-slate-600 mb-3">একটি ফাংশন যখন তার নিজের ভেতরে নিজেকেই কল করে।
+                                    এটি ট্রি (Tree) ডাটা স্ট্রাকচার বা জটিল প্রবলেম সলভ করতে কাজে লাগে। তবে Base Case না
+                                    দিলে ইনফিনিট লুপে পড়ে ব্রাউজার ক্র্যাশ করতে পারে।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>function factorial(n) {</code></pre>
+                                    <pre data-prefix="2"><code>  if (n === 0) return 1; // Base case</code></pre>
+                                    <pre
+                                        data-prefix="3"><code>  return n * factorial(n - 1); // Recursive call</code></pre>
+                                    <pre data-prefix="4"><code>}</code></pre>
+                                    <pre data-prefix="5"><code>console.log(factorial(5)); // 120</code></pre>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-cyan-700">Binary Search</h3>
+                                <p class="text-sm text-slate-600 mb-3">১০ লক্ষ ডেটা থেকে কোনো কিছু খুঁজতে Linear Search
+                                    (for loop) নিলে ১০ লক্ষ বার চেক করতে হতে পারে (O(N))। কিন্তু ডেটাগুলো সাজানো
+                                    (Sorted) থাকলে Binary Search দিয়ে মাঝখান থেকে ভাগ করে খুঁজলে মাত্র ২০ বারে ডেটা
+                                    পাওয়া সম্ভব (O(log N))।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>function binarySearch(arr, target) {</code></pre>
+                                    <pre data-prefix="2"><code>  let left = 0;</code></pre>
+                                    <pre data-prefix="3"><code>  let right = arr.length - 1;</code></pre>
+                                    <pre data-prefix="4"><code>  while (left &lt;= right) {</code></pre>
+                                    <pre
+                                        data-prefix="5"><code>    const mid = Math.floor((left + right) / 2);</code></pre>
+                                    <pre data-prefix="6"><code>    if (arr[mid] === target) return mid;</code></pre>
+                                    <pre
+                                        data-prefix="7"><code>    if (arr[mid] &lt; target) left = mid + 1;</code></pre>
+                                    <pre data-prefix="8"><code>    else right = mid - 1;</code></pre>
+                                    <pre data-prefix="9"><code>  }</code></pre>
+                                    <pre data-prefix="10"><code>  return -1;</code></pre>
+                                    <pre data-prefix="11"><code>}</code></pre>
+                                    <pre
+                                        data-prefix="12"><code>console.log(binarySearch([1,3,5,7,9], 7)); // 3</code></pre>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-cyan-700">Sorting Algorithms</h3>
+                                <p class="text-sm text-slate-600 mb-3"><b>Bubble Sort</b> এবং <b>Selection Sort</b>
+                                    বেসিক শেখার জন্য ভালো। কিন্তু রিয়েল লাইফে <code>Array.sort()</code> ব্যবহার করা হয়,
+                                    যা সাধারণত Merge Sort বা Quick Sort এর মতো ফাস্ট অ্যালগরিদম ব্যবহার করে।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>function bubbleSort(arr) {</code></pre>
+                                    <pre data-prefix="2"><code>  const copy = [...arr];</code></pre>
+                                    <pre data-prefix="3"><code>  for (let i = 0; i &lt; copy.length; i++) {</code></pre>
+                                    <pre
+                                        data-prefix="4"><code>    for (let j = 0; j &lt; copy.length - 1 - i; j++) {</code></pre>
+                                    <pre data-prefix="5"><code>      if (copy[j] &gt; copy[j + 1]) {</code></pre>
+                                    <pre
+                                        data-prefix="6"><code>        [copy[j], copy[j + 1]] = [copy[j + 1], copy[j]];</code></pre>
+                                    <pre data-prefix="7"><code>      }</code></pre>
+                                    <pre data-prefix="8"><code>    }</code></pre>
+                                    <pre data-prefix="9"><code>  }</code></pre>
+                                    <pre data-prefix="10"><code>  return copy;</code></pre>
+                                    <pre data-prefix="11"><code>}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- Section: Patterns -->
+                <section id="patterns"
+                    class="doc-card doc-card-accent doc-card-accent-indigo p-8 rounded-2xl scroll-mt-24 scroll-animate"
+                    data-animate="fadeUp">
+                    <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-solid fa-chess-board text-indigo-500"></i> Problem Solving Patterns
+                        </h2>
+                        <p class="text-slate-600 mb-4">LeetCode বা ইন্টারভিউ প্রবলেম সহজে সলভ করার জন্য কিছু নির্দিষ্ট
+                            প্যাটার্ন ব্যবহার করা হয়।</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                                <h4 class="font-bold text-indigo-800 mb-1">কিভাবে কোডে ব্যবহার করব?</h4>
+                                <p class="text-sm text-slate-700"><strong>Two Pointers:</strong> সর্টেড অ্যারে/স্ট্রিং-এ
+                                    <code>left = 0</code>, <code>right = length - 1</code> দিয়ে শুরু করুন; sum বা তুলনা
+                                    করে হয় <code>left++</code> নয় <code>right--</code> করুন যতক্ষণ না কন্ডিশন মিলে বা
+                                    ক্রস হয়। <strong>Sliding Window:</strong> একটা সাইজের (k) উইন্ডো নিয়ে প্রথম k
+                                    আইটেমের যোগফল/মান নিন; তারপর এক ধাপ ডানে সরে আগেরটা বাদ দিয়ে নতুনটা যোগ করুন;
+                                    ম্যাক্স/মিন আপডেট করুন।</p>
+                            </div>
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                                <h4 class="font-bold text-indigo-800 mb-1">কেন এই প্যাটার্ন ভালো?</h4>
+                                <p class="text-sm text-slate-700">Two Pointer দিয়ে পেয়ার সাম, প্যালিনড্রোম, টার্গেট
+                                    সাম — নেস্টেড লুপ ছাড়াই O(N) এ সলভ করা যায়। Sliding Window দিয়ে “কটি পরপরের
+                                    সর্বোচ্চ যোগফল” বা সাবস্ট্রিং প্রবলেম O(N) এ করা যায়। তাই প্যাটার্ন চিনে থাকলে কোড
+                                    দ্রুত ও পরিষ্কার লিখতে পারবেন।</p>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
+                                <h3 class="font-bold text-lg mb-2 text-indigo-800">Two Pointers</h3>
+                                <p class="text-sm text-slate-700 mb-3">Array এর দুই প্রান্ত থেকে (শুরু এবং শেষ) দুটি
+                                    পয়েন্টার ধরে ডেটা চেক করা। Array সাজানো (Sorted) থাকলে খুব দ্রুত কোনো পেয়ার (Pair)
+                                    খুঁজে পেতে সাহায্য করে।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>// Sorted array থেকে pair sum খোঁজা</code></pre>
+                                    <pre data-prefix="2"><code>function pairSum(arr, target) {</code></pre>
+                                    <pre data-prefix="3"><code>  let left = 0, right = arr.length - 1;</code></pre>
+                                    <pre data-prefix="4"><code>  while (left &lt; right) {</code></pre>
+                                    <pre data-prefix="5"><code>    const sum = arr[left] + arr[right];</code></pre>
+                                    <pre
+                                        data-prefix="6"><code>    if (sum === target) return [arr[left], arr[right]];</code></pre>
+                                    <pre data-prefix="7"><code>    if (sum &lt; target) left++;</code></pre>
+                                    <pre data-prefix="8"><code>    else right--;</code></pre>
+                                    <pre data-prefix="9"><code>  }</code></pre>
+                                    <pre data-prefix="10"><code>  return null;</code></pre>
+                                    <pre data-prefix="11"><code>}</code></pre>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-100">
+                                <h3 class="font-bold text-lg mb-2 text-indigo-800">Sliding Window</h3>
+                                <p class="text-sm text-slate-700 mb-3">Array বা String এর একটি নির্দিষ্ট অংশের (Window)
+                                    সাবসেট নিয়ে কাজ করা। যেমন: "একটি Array এর ৩টি পাশাপাশি সংখ্যার সর্বোচ্চ যোগফল বের
+                                    করা"। এটি Nested Loop এর বদলে O(N) টাইম কমপ্লেক্সিটিতে সমাধান দেয়।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>function maxSubArraySum(arr, k) {</code></pre>
+                                    <pre data-prefix="2"><code>  let max = 0, temp = 0;</code></pre>
+                                    <pre data-prefix="3"><code>  for (let i = 0; i &lt; k; i++) {</code></pre>
+                                    <pre data-prefix="4"><code>    temp += arr[i];</code></pre>
+                                    <pre data-prefix="5"><code>  }</code></pre>
+                                    <pre data-prefix="6"><code>  max = temp;</code></pre>
+                                    <pre data-prefix="7"><code>  for (let i = k; i &lt; arr.length; i++) {</code></pre>
+                                    <pre data-prefix="8"><code>    temp = temp - arr[i - k] + arr[i];</code></pre>
+                                    <pre data-prefix="9"><code>    max = Math.max(max, temp);</code></pre>
+                                    <pre data-prefix="10"><code>  }</code></pre>
+                                    <pre data-prefix="11"><code>  return max;</code></pre>
+                                    <pre data-prefix="12"><code>}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+                <!-- Section: Advanced JS -->
+                <section id="advanced-js" class="doc-card doc-card-accent doc-card-accent-indigo p-8 rounded-2xl scroll-mt-24">
+                        <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
+                            <i class="fa-brands fa-js-square text-jsdark"></i> Advanced JS Architecture
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-slate-100 border border-slate-300 rounded-lg p-4">
+                                <h4 class="font-bold text-slate-800 mb-1">কিভাবে কোডে ব্যবহার করব?</h4>
+                                <p class="text-sm text-slate-700"><strong>Closure:</strong> একটা ফাংশনের ভেতরে আরেক
+                                    ফাংশন রিটার্ন করুন; ইনার ফাংশন আউটারের কোনো ভেরিয়েবল ব্যবহার করলে সেটা “বন্ধনীতে”
+                                    থেকে যাবে — প্রাইভেট কাউন্টার, ডিবাউন্সের টাইমার ইত্যাদি এভাবে বানান।
+                                    <strong>this:</strong> অবজেক্টের মেথডে সাধারণ ফাংশন ব্যবহার করলে <code>this</code>
+                                    সেই অবজেক্ট; অ্যারো ফাংশনে <code>this</code> উপরের স্কোপের। ইভেন্ট লিসেনারে কনটেক্সট
+                                    ঠিক রাখতে অ্যারো ব্যবহার করুন বা <code>.bind(this)</code>।</p>
+                            </div>
+                            <div class="bg-slate-100 border border-slate-300 rounded-lg p-4">
+                                <h4 class="font-bold text-slate-800 mb-1">কেন ব্যবহার ভালো?</h4>
+                                <p class="text-sm text-slate-700">Closure দিয়ে ডেটা প্রাইভেট রাখা যায় এবং একই ফাংশন
+                                    দিয়ে অনেকগুলো আলাদা স্টেট (কাউন্টার, ক্যাশ) ম্যানেজ করা যায়। <code>this</code>
+                                    সঠিক বোঝা থাকলে ইভেন্ট হ্যান্ডলার, ক্লাস, ক্যালব্যাকে বাগ এড়ানো যায়।</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-slate-800">Closures</h3>
+                                <p class="text-sm text-slate-600 mb-3">যখন একটি ইনার ফাংশন তার আউটার ফাংশনের
+                                    ভেরিয়েবলগুলোকে মনে রাখে (এমনকি আউটার ফাংশন এক্সিকিউট হয়ে যাওয়ার পরও), তখন তাকে
+                                    Closure বলে। এটি ডেটা প্রাইভেসি (Private Variables) তৈরির জন্য খুব জনপ্রিয়।</p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>function createCounter() {</code></pre>
+                                    <pre data-prefix="2"><code>  let count = 0; // private variable</code></pre>
+                                    <pre data-prefix="3"><code>  return function () {</code></pre>
+                                    <pre data-prefix="4"><code>    count++;</code></pre>
+                                    <pre data-prefix="5"><code>    console.log('Count:', count);</code></pre>
+                                    <pre data-prefix="6"><code>  };</code></pre>
+                                    <pre data-prefix="7"><code>}</code></pre>
+                                    <pre data-prefix="8"><code>const inc = createCounter();</code></pre>
+                                    <pre data-prefix="9"><code>inc(); // 1</code></pre>
+                                    <pre data-prefix="10"><code>inc(); // 2</code></pre>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-slate-800">The <code>this</code> Keyword</h3>
+                                <p class="text-sm text-slate-600 mb-3"><code>this</code> মানে হলো "বর্তমান কনটেক্সট"।
+                                    সাধারণ ফাংশনে এটি Window অবজেক্টকে নির্দেশ করে, কিন্তু Arrow Function এ এটি নিজস্ব
+                                    <code>this</code> তৈরি করে না, বরং তার পেরেন্ট এর <code>this</code> কে ব্যবহার করে।
+                                </p>
+                                <div class="mockup-code text-xs">
+                                    <pre data-prefix="1"><code>const person = {</code></pre>
+                                    <pre data-prefix="2"><code>  name: 'Rahim',</code></pre>
+                                    <pre data-prefix="3"><code>  regular() { console.log(this.name); },</code></pre>
+                                    <pre
+                                        data-prefix="4"><code>  arrow: () =&gt; { console.log(this.name); }</code></pre>
+                                    <pre data-prefix="5"><code>};</code></pre>
+                                    <pre data-prefix="6"><code>person.regular(); // 'Rahim'</code></pre>
+                                    <pre data-prefix="7"><code>person.arrow();   // undefined (global this)</code></pre>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 text-slate-800">Code Splitting & Lazy Loading</h3>
+                                <p class="text-sm text-slate-600 mb-3">সাইট লোড হওয়ার সময় পুরো সাইটের সব JS ফাইল একসাথে
+                                    লোড না করে, শুধু যখন যে পেজ বা কম্পোনেন্ট দরকার, তখন সেই নির্দিষ্ট JS ফাইল লোড করা।
+                                    এতে ওয়েবসাইটের Initial Load Time অনেক ফাস্ট হয়।</p>
+                                <p class="text-xs text-slate-500">React / Vite / Next.js এর মতো ফ্রেমওয়ার্কগুলো আন্ডার
+                                    দ্য হুড এই কনসেপ্টগুলো ব্যবহার করে।                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-jsdark text-slate-400 py-8 text-center border-t border-slate-800 mt-12 relative z-10">
+        <!-- Reusable Optimization Widget Container -->
+        <div id="seo-widget-container"></div>
+
+        <p>&copy; 2026 Developer Roadmap Guide. Made for Future Pros.</p>
+    </footer>
+
+    <script src="scroll-animations.js"></script>
+    <script src="docs.js"></script>
+    <script src="site-optimizer.js"></script>
+
+</body>
+
+</html>

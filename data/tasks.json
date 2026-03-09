@@ -1,0 +1,125 @@
+{
+    "M1W1": {
+        "title": "Month 1: Core & Arrays",
+        "topics": [
+            "Variables (let, const), Scope, and Hoisting",
+            "Data Types (Primitive vs Reference)",
+            "Array Methods: map, filter, reduce, find"
+        ],
+        "description": "Write 10 small JS programs and Solve 8 array problems on HackerRank",
+        "docLink": "https://javascript.info/array-methods"
+    },
+    "M1W3": {
+        "title": "Month 1: Strings & Objects",
+        "topics": [
+            "String manipulation (split, reverse, join)",
+            "Object keys, values, entries",
+            "Frequency Counter concept using Objects"
+        ],
+        "description": "Solve string problems and build a User data parser logic",
+        "docLink": "https://javascript.info/object"
+    },
+    "M2W1": {
+        "title": "Month 2: Advanced DOM",
+        "topics": [
+            "Event Bubbling & Capturing",
+            "Event Delegation (Performance optimization)",
+            "DocumentFragment for fast DOM updates",
+            "localStorage / sessionStorage API"
+        ],
+        "description": "Build Dynamic Todo UI with localStorage",
+        "docLink": "https://javascript.info/event-delegation"
+    },
+    "M2W3": {
+        "title": "Month 2: APIs & Data",
+        "topics": [
+            "Fetch API, Promises",
+            "Async / Await implementation",
+            "JSON parsing and dynamic rendering",
+            "Debounce technique for Search API"
+        ],
+        "description": "Fetch Public API, build searchable list with debounce",
+        "docLink": "https://javascript.info/fetch"
+    },
+    "M3W1": {
+        "title": "Month 3: Advanced Data Types",
+        "topics": [
+            "Set: O(1) duplicate removal",
+            "Map: Better object logic for data lookups",
+            "Stack Data Structure (LIFO)"
+        ],
+        "description": "Create Duplicate Removal Tool, Undo/Redo System",
+        "docLink": "https://javascript.info/map-set"
+    },
+    "M3W3": {
+        "title": "Month 3: Queue & Big O",
+        "topics": [
+            "Queue Data Structure (FIFO)",
+            "Time Complexity basics: O(1), O(N), O(N^2)",
+            "Space Complexity"
+        ],
+        "description": "Task Queue Simulator, Compare 2 algorithms performance",
+        "docLink": "https://www.freecodecamp.org/news/big-o-cheat-sheet-time-complexity-chart/"
+    },
+    "M4W1": {
+        "title": "Month 4: Recursion & Binary Search",
+        "topics": [
+            "Recursion: base case, recursive case (Factorial, Fibonacci)",
+            "Binary Search: O(log N) sorted array search",
+            "When to use recursion vs loop"
+        ],
+        "description": "Write recursive factorial & Fibonacci; implement Binary Search on sorted array; solve 5 recursion problems on HackerRank/LeetCode.",
+        "docLink": "https://javascript.info/recursion"
+    },
+    "M4W2": {
+        "title": "Month 4: Sorting Algorithms",
+        "topics": [
+            "Bubble Sort and Selection Sort (concept + code)",
+            "Array.sort() and comparator function",
+            "Time complexity of sorting: O(N^2) vs O(N log N)"
+        ],
+        "description": "Implement Bubble Sort and Selection Sort in JS; use Array.sort() with custom comparator; understand when which sort is used.",
+        "docLink": "https://www.freecodecamp.org/news/sorting-algorithms-explained-with-examples-in-javascript-python-java-and-c/"
+    },
+    "M5W1": {
+        "title": "Month 5: Problem Solving Patterns",
+        "topics": [
+            "Two Pointers: sorted array pair sum, remove duplicates",
+            "Sliding Window: max sum subarray, substring problems",
+            "Frequency Counter: anagrams, count patterns (reinforce from Month 1)"
+        ],
+        "description": "Solve 15–20 LeetCode problems using only Two Pointer, Sliding Window, and Frequency Counter. No brute force—identify the pattern first.",
+        "docLink": "https://leetcode.com/explore/featured/card/leetcodes-interview-crash-course-data-structures-and-algorithms/"
+    },
+    "M6W1": {
+        "title": "Month 6–9: Advanced JS & Performance",
+        "topics": [
+            "Closures: how they work, use in event handlers and private data",
+            "The 'this' keyword: binding, arrow functions, call/apply/bind",
+            "Code Splitting and Lazy Loading for faster load",
+            "Debounce & Throttle in real projects, Lighthouse audit"
+        ],
+        "description": "Build a small module using closures; fix 'this' bugs in event listeners; add lazy loading to a project; achieve 90+ Lighthouse performance score.",
+        "docLink": "https://javascript.info/closure"
+    },
+    "M10W1": {
+        "title": "Month 10–12: Job Prep & Portfolio",
+        "topics": [
+            "Mock interviews: DSA + JS tricky questions (hoisting, closure, event loop)",
+            "Portfolio: deploy one project on Vercel/Netlify, add README and live link",
+            "Resume & LinkedIn: highlight JS and DSA projects, contribution and learning path"
+        ],
+        "description": "Do 3+ mock interviews; deploy at least one full project with 80+ Lighthouse score; update resume and LinkedIn with roadmap projects.",
+        "docLink": "https://roadmap.sh/javascript"
+    },
+    "Welcome": {
+        "title": "Hello Pro Developer!",
+        "topics": [
+            "Leverage your PHP knowledge to learn JS backend quickly",
+            "Use WordPress UI knowledge to master DOM",
+            "Focus completely on Performance & Optimization"
+        ],
+        "description": "Your base in PHP and WP is a massive advantage. Just map your backend logic to JS frontend concepts. You got this!",
+        "docLink": "https://roadmap.sh/javascript"
+    }
+}

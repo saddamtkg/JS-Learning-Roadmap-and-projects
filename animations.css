@@ -1,0 +1,137 @@
+/**
+ * Modern scroll & UI animations
+ * Use with scroll-animations.js for scroll-triggered effects
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-animate,
+    .scroll-animate * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ---- Keyframes ---- */
+@keyframes animFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animFadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animFadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes animFadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes animScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes animBlurIn {
+    from {
+        opacity: 0;
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* ---- Base: elements wait in viewport before animating ---- */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Initial state for keyframe variants (avoids jump when animation starts) */
+.scroll-animate[data-animate="fadeUp"] { transform: translateY(28px); }
+.scroll-animate[data-animate="fadeDown"] { transform: translateY(-20px); }
+.scroll-animate[data-animate="fadeLeft"] { transform: translateX(-24px); }
+.scroll-animate[data-animate="fadeRight"] { transform: translateX(24px); }
+.scroll-animate[data-animate="scale"] { transform: scale(0.92); }
+
+/* ---- Variants: use data-animate="fadeUp" | "fadeLeft" | "fadeRight" | "scale" | "blur" ---- */
+.scroll-animate[data-animate="fadeUp"].animated {
+    animation: animFadeInUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.scroll-animate[data-animate="fadeDown"].animated {
+    animation: animFadeInDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.scroll-animate[data-animate="fadeLeft"].animated {
+    animation: animFadeInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.scroll-animate[data-animate="fadeRight"].animated {
+    animation: animFadeInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.scroll-animate[data-animate="scale"].animated {
+    animation: animScaleIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.scroll-animate[data-animate="blur"].animated {
+    animation: animBlurIn 0.7s ease-out forwards;
+}
+
+/* Stagger delay: data-delay="1" … "5" (in 100ms steps) */
+.scroll-animate[data-delay="1"].animated { animation-delay: 0.1s; }
+.scroll-animate[data-delay="2"].animated { animation-delay: 0.2s; }
+.scroll-animate[data-delay="3"].animated { animation-delay: 0.3s; }
+.scroll-animate[data-delay="4"].animated { animation-delay: 0.4s; }
+.scroll-animate[data-delay="5"].animated { animation-delay: 0.5s; }
+
+/* Transition-based (no keyframe) delay */
+.scroll-animate[data-delay="1"] { transition-delay: 0.1s; }
+.scroll-animate[data-delay="2"] { transition-delay: 0.2s; }
+.scroll-animate[data-delay="3"] { transition-delay: 0.3s; }
+.scroll-animate[data-delay="4"] { transition-delay: 0.4s; }
+.scroll-animate[data-delay="5"] { transition-delay: 0.5s; }
