@@ -1,0 +1,220 @@
+🚀 Phase 1 (Basic JavaScript Projects)
+1️⃣ Counter App
+
+শিখবেন:
+
+DOM
+
+Event
+
+State update
+
+Feature:
+
+increment
+
+decrement
+
+reset
+
+2️⃣ Digital Clock
+
+শিখবেন:
+
+Date API
+
+setInterval
+
+3️⃣ Random Quote Generator
+
+শিখবেন:
+
+API call
+
+async/await
+
+4️⃣ Character Counter
+
+শিখবেন:
+
+textarea event
+
+string manipulation
+
+🚀 Phase 2 (Intermediate JS Projects)
+5️⃣ Todo App
+
+Feature:
+
+add task
+
+delete task
+
+complete task
+
+localStorage save
+
+6️⃣ Weather App
+
+শিখবেন:
+
+API
+
+async JS
+
+7️⃣ Search Filter System
+
+Feature:
+
+search input
+
+dynamic filtering
+
+DOM update
+
+8️⃣ Image Slider
+
+শিখবেন:
+
+DOM manipulation
+
+event handling
+
+🚀 Phase 3 (Algorithm + Logic Projects)
+9️⃣ Sorting Visualizer
+
+User দেখবে:
+
+bubble sort
+
+selection sort
+
+🔟 Search System
+
+Feature:
+
+binary search
+
+dynamic search
+
+11️⃣ Pagination System
+
+Feature:
+
+next page
+
+previous page
+
+API data pagination
+
+12️⃣ Infinite Scroll
+
+Feature:
+
+lazy loading
+
+scroll event
+
+🚀 Phase 4 (Real World Projects)
+13️⃣ Blog Website
+
+Feature:
+
+post list
+
+search
+
+filter
+
+14️⃣ Product Filter System
+
+Feature:
+
+price filter
+
+category filter
+
+sorting
+
+15️⃣ Dashboard UI
+
+Feature:
+
+chart
+
+dynamic data
+
+16️⃣ Task Manager
+
+Feature:
+
+task
+
+priority
+
+deadline
+
+🚀 Phase 5 (Advanced Projects)
+17️⃣ Real-time Chat UI
+
+Feature:
+
+message UI
+
+typing effect
+
+18️⃣ Performance Optimized Blog
+
+শিখবেন:
+
+lazy loading
+
+code splitting
+
+19️⃣ Full API Dashboard
+
+Feature:
+
+multiple API
+
+data visualization
+
+20️⃣ Developer Portfolio
+
+Feature:
+
+project showcase
+
+blog
+
+contact form
+
+📅 আপনি এইভাবে করবেন
+
+Month 1–2
+👉 Basic projects
+
+Month 3–4
+👉 Intermediate projects
+
+Month 5–6
+👉 Algorithm projects
+
+Month 7–12
+👉 Real world projects
+
+🎯 যদি আপনি এই ২০টা project করেন
+
+আপনার skill হবে:
+
+JavaScript strong
+
+DOM master
+
+API expert
+
+performance optimization
+
+problem solving
+
+এটা করলে আপনি সত্যিই market-ready developer হতে পারবেন।
