@@ -219,10 +219,13 @@ class SiteOptimizer {
         // Render the floating widget
         container.innerHTML = `
             <div id="floating-seo-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: #0f172a; color: white; padding: 15px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; width: 220px; font-family: sans-serif; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.optimizerInstance.openModal()">
-                <h4 style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center; color: #F7DF1E;">
+                <h4 style="margin: 0 0 6px 0; font-size: 14px; font-weight: bold; color: #F7DF1E;">
                     <span><i class="fa-solid fa-gauge-high"></i> Optimizer Goal</span>
                 </h4>
-                
+                <div style="margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #334155;">
+                    <div id="optimizer-widget-date" style="font-variant-numeric: tabular-nums; font-size: 14px; color: #fff; font-weight: 600; line-height: 1.3;">-- --- ----</div>
+                    <div id="optimizer-widget-clock" style="font-variant-numeric: tabular-nums; font-size: 15px; color: #fff; font-weight: 700; line-height: 1.3;">--:--:-- --</div>
+                </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 12px;">
                     <span>Performance</span>
                     <span style="color: ${this.results.perf.color}; font-weight: bold; font-family: monospace;">${this.results.perf.score}</span>
@@ -246,8 +249,28 @@ class SiteOptimizer {
             </div>
         `;
 
+        this.startClock();
         // Create or update modal
         this.renderModal();
+    }
+
+    startClock() {
+        const pad = (n) => (n < 10 ? '0' + n : '' + n);
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const update = () => {
+            const dateEl = document.getElementById('optimizer-widget-date');
+            const clockEl = document.getElementById('optimizer-widget-clock');
+            if (!dateEl || !clockEl) return;
+            const d = new Date();
+            const h = d.getHours();
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            const h12 = h % 12 || 12;
+            dateEl.textContent = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+            clockEl.textContent = pad(h12) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' ' + ampm;
+        };
+        if (this.clockInterval) clearInterval(this.clockInterval);
+        update();
+        this.clockInterval = setInterval(update, 1000);
     }
 
     renderModal() {

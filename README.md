@@ -15,7 +15,11 @@
 | `index.html` | মেইন পেজ (রোডম্যাপ, সিলেবাস, প্রজেক্ট) |
 | `docs.html` | ডকুমেন্টেশন পেজ (সব টপিকের বিস্তারিত) |
 | `main.js` | সাইটের লজিক ও ডেটা লোডিং |
-| `site-optimizer.js` | পারফরম্যান্স উইজেট |
+| `docs.js` | ডক পেজ: সাইডবার অ্যাকটিভ সেকশন + কোড কপি বাটন |
+| `docs.css` | ডক পেজ স্টাইল |
+| `animations.css` | স্ক্রল অ্যানিমেশন ও UI স্টাইল |
+| `scroll-animations.js` | স্ক্রল ট্রিগার অ্যানিমেশন |
+| `site-optimizer.js` | পারফরম্যান্স উইজেট (ডেট + ক্লক) |
 | `data/` ফোল্ডার | `tasks.json` + `projects.json` (সিলেবাস ও প্রজেক্ট ডেটা) |
 
 > ⚠️ **জরুরি:** `data` ফোল্ডার এবং এর ভেতরের দুটো JSON ফাইল অবশ্যই আপলোড করতে হবে। এগুলো ছাড়া সাইটে সিলেবাস ও প্রজেক্ট লোড হবে না।
@@ -38,13 +42,17 @@
 
 ```
 My Programming-roadMap/
-├── index.html      ← মেইন পেজ
-├── docs.html       ← ডকুমেন্টেশন
-├── main.js         ← অ্যাপ লজিক
-├── site-optimizer.js
+├── index.html          ← মেইন পেজ
+├── docs.html           ← ডকুমেন্টেশন
+├── main.js             ← অ্যাপ লজিক
+├── docs.js             ← ডক পেজ (সাইডবার + কপি বাটন)
+├── docs.css            ← ডক পেজ স্টাইল
+├── animations.css      ← অ্যানিমেশন স্টাইল
+├── scroll-animations.js
+├── site-optimizer.js   ← অপ্টিমাইজার উইজেট + ক্লক
 ├── data/
-│   ├── tasks.json    ← সিলেবাস টাস্ক (View Task এর ডেটা)
-│   └── projects.json ← ২০ প্রজেক্টের তালিকা
+│   ├── tasks.json      ← সিলেবাস টাস্ক (View Task এর ডেটা)
+│   └── projects.json  ← ২০ প্রজেক্টের তালিকা
 └── README.md
 ```
 
