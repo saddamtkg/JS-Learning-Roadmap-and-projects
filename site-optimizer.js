@@ -21,6 +21,8 @@ class SiteOptimizer {
     }
 
     init() {
+        this.renderCornerClock();
+        this.startClock();
         this.analyze();
         this.renderWidget();
     }
@@ -218,14 +220,10 @@ class SiteOptimizer {
 
         // Render the floating widget
         container.innerHTML = `
-            <div id="floating-seo-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: #0f172a; color: white; padding: 15px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; width: 220px; font-family: sans-serif; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.optimizerInstance.openModal()">
-                <h4 style="margin: 0 0 6px 0; font-size: 14px; font-weight: bold; color: #F7DF1E;">
+            <div id="floating-seo-widget" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: #0f172a; color: white; padding: 15px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; width: 220px; font-family: sans-serif; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.optimizerInstance.openModal()">
+                <h4 style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px; color: #F7DF1E;">
                     <span><i class="fa-solid fa-gauge-high"></i> Optimizer Goal</span>
                 </h4>
-                <div style="margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #334155;">
-                    <div id="optimizer-widget-date" style="font-variant-numeric: tabular-nums; font-size: 14px; color: #fff; font-weight: 600; line-height: 1.3;">-- --- ----</div>
-                    <div id="optimizer-widget-clock" style="font-variant-numeric: tabular-nums; font-size: 15px; color: #fff; font-weight: 700; line-height: 1.3;">--:--:-- --</div>
-                </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 12px;">
                     <span>Performance</span>
                     <span style="color: ${this.results.perf.color}; font-weight: bold; font-family: monospace;">${this.results.perf.score}</span>
@@ -249,17 +247,32 @@ class SiteOptimizer {
             </div>
         `;
 
-        this.startClock();
-        // Create or update modal
         this.renderModal();
+    }
+
+    renderCornerClock() {
+        if (document.getElementById('corner-clock-wrap')) return;
+        const html = `
+            <div id="corner-clock-wrap" style="
+                position: fixed; bottom: 20px; right: 20px; z-index: 9998;
+                background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+                border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 16px;
+                padding: 14px 20px; min-width: 150px; box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+                font-family: 'Fira Code', 'SF Mono', monospace; color: #fff; user-select: none;
+            ">
+                <div style="font-size: 11px; color: #94a3b8; letter-spacing: 0.06em; margin-bottom: 6px;" id="corner-clock-date">-- --- ----</div>
+                <div style="font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.03em; color: #F7DF1E;" id="corner-clock-time">--:--:-- --</div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', html);
     }
 
     startClock() {
         const pad = (n) => (n < 10 ? '0' + n : '' + n);
         const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         const update = () => {
-            const dateEl = document.getElementById('optimizer-widget-date');
-            const clockEl = document.getElementById('optimizer-widget-clock');
+            const dateEl = document.getElementById('corner-clock-date');
+            const clockEl = document.getElementById('corner-clock-time');
             if (!dateEl || !clockEl) return;
             const d = new Date();
             const h = d.getHours();
