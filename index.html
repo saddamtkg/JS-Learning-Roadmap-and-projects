@@ -9,6 +9,14 @@
     <title>Pro JavaScript & DSA Roadmap | 1 Year Plan</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
+    <!-- Preconnect for faster LCP and Web Vitals (fonts + CDN) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
     <!-- DaisyUI & Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,7 +30,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Animations (scroll & modern UI) -->
-    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="css/animations.css">
 
     <script>
         tailwind.config = {
@@ -85,7 +93,7 @@
     </div>
 
     <!-- Navbar -->
-    <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8">
+    <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8 items-center">
         <div class="navbar-start">
             <button type="button" class="btn btn-ghost lg:hidden text-js p-2" data-mobile-menu-toggle aria-label="Open menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,6 +119,9 @@
             <a href="practice.html" class="nav-link-pill"><i class="fa-solid fa-pen-fancy"></i> Practice</a>
         </div>
         <div class="navbar-end gap-2">
+            <button type="button" class="nav-link-pill" onclick="showDailyRoutineModal()" title="Daily Routine — ২০% শেখা, ৮০% প্র্যাকটিস">
+                <i class="fa-solid fa-calendar-check"></i> <span class="hidden xl:inline">Daily Routine</span>
+            </button>
             <button type="button" class="nav-profile-btn" onclick="showWelcomeModal()">
                 <i class="fa-solid fa-user-astronaut"></i> My Profile
             </button>
@@ -134,6 +145,7 @@
                 <li><a href="#projects" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-flask w-5 text-center"></i> 20 Projects</a></li>
                 <li><a href="docs.html" class="flex items-center gap-3 rounded-xl py-3 text-js font-semibold hover:bg-white/10 transition-colors"><i class="fa-solid fa-book w-5 text-center"></i> Documentation</a></li>
                 <li><a href="practice.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-pen-fancy w-5 text-center"></i> Practice</a></li>
+                <li><button type="button" onclick="showDailyRoutineModal(); document.body.classList.remove('mobile-drawer-open');" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors w-full text-left"><i class="fa-solid fa-calendar-check w-5 text-center"></i> Daily Routine</button></li>
             </ul>
             <div class="mt-4 pt-4 border-t border-slate-600">
                 <button type="button" onclick="showWelcomeModal(); document.body.classList.remove('mobile-drawer-open');" class="btn btn-outline btn-sm border-2 border-js text-js hover:bg-js hover:text-jsdark w-full gap-2 rounded-xl">
@@ -585,7 +597,7 @@
                     কিভাবে একটি স্কেলেবল, হাই-পারফরম্যান্স ওয়েবসাইট বানাতে হয় যা মিলিসেকেন্ডে লোড হয়!</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <button class="btn btn-neutral btn-lg"
-                        onclick="document.getElementById('confetti-modal').showModal()">Complete Roadmap Goal</button>
+                        onclick="openConfettiModal()">Complete Roadmap Goal</button>
                 </div>
             </div>
         </section>
@@ -681,11 +693,10 @@
     </footer>
 
     <!-- Scroll animations (must run early so elements can be observed) -->
-    <script src="scroll-animations.js"></script>
-    <script src="mobile-menu.js"></script>
-    <!-- Main JavaScript File -->
-    <script src="main.js"></script>
-    <script src="site-optimizer.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/site-optimizer.js"></script>
+    <script type="module" src="js/web-vitals-report.js"></script>
 </body>
 
 </html>

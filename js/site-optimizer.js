@@ -1,9 +1,20 @@
+/**
+ * site-optimizer.js — Floating optimizer widget and corner clock (loads on all pages).
+ * Analyzes performance, accessibility, best practices, SEO and renders widget + modal. All comments in English.
+ */
 class SiteOptimizer {
+    /** Creates optimizer instance and runs init after page load */
     constructor(containerId = 'seo-widget-container') {
         this.containerId = containerId;
         this.results = this.getDefaultResults();
-        
-        // Wait for page to fully load so we can measure performance
+
+        const self = this;
+        /** Called by web-vitals-report.js when LCP, INP, or CLS is available; updates perf score and widget only (modal refreshes when opened) */
+        window.__optimizerUpdateFromWebVitals = function (metrics) {
+            self.updatePerfFromWebVitals(metrics);
+            self.renderWidget();
+        };
+
         if (document.readyState === 'complete') {
             this.init();
         } else {
@@ -11,6 +22,7 @@ class SiteOptimizer {
         }
     }
 
+    /** Returns default score and label for Performance, Accessibility, Best Practices, SEO */
     getDefaultResults() {
         return {
             perf: { score: 100, label: 'Performance', icon: 'fa-bolt', issues: [], color: '' },
@@ -20,6 +32,7 @@ class SiteOptimizer {
         };
     }
 
+    /** Renders clock, starts tick, runs analysis and renders the floating widget */
     init() {
         this.renderCornerClock();
         this.startClock();
@@ -27,10 +40,10 @@ class SiteOptimizer {
         this.renderWidget();
     }
 
+    /** Resets results, re-runs analyze and re-renders widget (used by Rescan button) */
     rescan() {
-        // Show scanning state in modal button
-        const btn = document.getElementById('rescan-btn');
-        if (btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right: 5px;"></i> Scanning...';
+        const rescanButton = document.getElementById('rescan-btn');
+        if (rescanButton) rescanButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right: 5px;"></i> Scanning...';
         
         setTimeout(() => {
             this.results = this.getDefaultResults(); // Reset results
@@ -40,53 +53,80 @@ class SiteOptimizer {
         }, 600); // Fake small delay for effect
     }
 
-    analyze() {
-        // --- 1. Performance ---
-        let perfScore = 100;
-        
-        // Load Time
-        let loadTime = 0;
-        if (window.performance) {
-            const navEntries = window.performance.getEntriesByType("navigation");
-            if (navEntries.length > 0) {
-                loadTime = Math.round(navEntries[0].domContentLoadedEventEnd);
-            } else if (window.performance.timing) {
-                const t = window.performance.timing;
-                loadTime = t.domContentLoadedEventEnd - t.navigationStart;
-            }
-        }
-        
-        if (loadTime > 800 && loadTime < 10000) { // Sanity check to avoid negative huge drops
-            const drop = Math.floor((loadTime - 800) / 100);
-            perfScore -= drop;
-            this.results.perf.issues.push(`Page load time is slow: <b>${loadTime}ms</b>. Aim for < 800ms.`);
-        } else if (loadTime <= 800 && loadTime > 0) {
-            this.results.perf.issues.push(`Great page load time: <b>${loadTime}ms</b>.`);
-        } else {
-            this.results.perf.issues.push(`Could not accurately measure page load time.`);
-        }
-        
-        // DOM Size
-        const domElements = document.getElementsByTagName('*').length;
-        if (domElements > 800) {
-            perfScore -= Math.floor((domElements - 800) / 50);
-            this.results.perf.issues.push(`Too many DOM elements: <b>${domElements}</b>. This causes layout lag. Limit to < 800.`);
-        } else {
-            this.results.perf.issues.push(`DOM size is optimal: <b>${domElements}</b> elements.`);
-        }
+    /**
+     * Computes a 0–100 score from LCP (ms), INP (ms), CLS — same idea as Lighthouse/PageSpeed.
+     * Good: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1. Poor: LCP ≥6s, INP ≥1s, CLS ≥0.25.
+     */
+    static scoreFromWebVitals(metrics) {
+        const lcp = metrics.LCP && metrics.LCP.value != null ? metrics.LCP.value / 1000 : null;
+        const inp = metrics.INP && metrics.INP.value != null ? metrics.INP.value : null;
+        const cls = metrics.CLS && metrics.CLS.value != null ? metrics.CLS.value : null;
 
-        // Unoptimized Images (No explicit width/height to prevent layout shifts)
-        const allImages = document.querySelectorAll('img');
-        let unoptimizedImgs = [];
-        allImages.forEach(img => {
-            if (!img.hasAttribute('width') && !img.hasAttribute('height') && !img.style.width) {
-                unoptimizedImgs.push(img.src.split('/').pop() || 'Inline Image');
-            }
-        });
-        if (unoptimizedImgs.length > 0) {
-            perfScore -= (unoptimizedImgs.length * 2);
-            this.results.perf.issues.push(`Found <b>${unoptimizedImgs.length}</b> image(s) without explicit width/height (Causes Cumulative Layout Shift). Examples: ${unoptimizedImgs.slice(0,2).join(', ')}`);
+        const scoreLCP = lcp == null ? null : lcp <= 2.5 ? 100 : lcp >= 6 ? 0 : Math.round(100 - ((lcp - 2.5) / 3.5) * 100);
+        const scoreINP = inp == null ? null : inp <= 200 ? 100 : inp >= 1000 ? 0 : Math.round(100 - ((inp - 200) / 800) * 100);
+        const scoreCLS = cls == null ? null : cls <= 0.1 ? 100 : cls >= 0.25 ? 0 : Math.round(100 - ((cls - 0.1) / 0.15) * 100);
+
+        const scores = [scoreLCP, scoreINP, scoreCLS].filter(s => s != null);
+        if (scores.length === 0) return null;
+        return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+    }
+
+    /** Updates this.results.perf from Web Vitals (LCP, INP, CLS) and sets issues for the modal */
+    updatePerfFromWebVitals(metrics) {
+        const score = SiteOptimizer.scoreFromWebVitals(metrics);
+        if (score == null) return;
+
+        this.results.perf.score = Math.max(0, Math.min(100, score));
+        this.results.perf.color = this.results.perf.score >= 90 ? '#22c55e' : this.results.perf.score >= 60 ? '#f59e0b' : '#ef4444';
+        this.results.perf.issues = [];
+
+        if (metrics.LCP && metrics.LCP.value != null) {
+            const lcpSec = (metrics.LCP.value / 1000).toFixed(2);
+            const good = metrics.LCP.value <= 2500;
+            this.results.perf.issues.push(good
+                ? `LCP (Largest Contentful Paint): <b>${lcpSec}s</b> — good.`
+                : `LCP: <b>${lcpSec}s</b>. Aim for ≤2.5s for better score.`);
         }
+        if (metrics.INP && metrics.INP.value != null) {
+            const good = metrics.INP.value <= 200;
+            this.results.perf.issues.push(good
+                ? `INP (Interaction to Next Paint): <b>${Math.round(metrics.INP.value)}ms</b> — good.`
+                : `INP: <b>${Math.round(metrics.INP.value)}ms</b>. Aim for ≤200ms.`);
+        }
+        if (metrics.CLS && metrics.CLS.value != null) {
+            const good = metrics.CLS.value <= 0.1;
+            this.results.perf.issues.push(good
+                ? `CLS (Cumulative Layout Shift): <b>${metrics.CLS.value.toFixed(2)}</b> — good.`
+                : `CLS: <b>${metrics.CLS.value.toFixed(2)}</b>. Aim for ≤0.1 to reduce layout shift.`);
+        }
+    }
+
+    /** Runs performance (fallback until Web Vitals arrive), a11y, best-practices and SEO checks */
+    analyze() {
+        let perfScore = 100;
+        const vitals = typeof window !== 'undefined' && window.__webVitalsMetrics && Object.keys(window.__webVitalsMetrics).length > 0;
+        if (vitals) {
+            this.updatePerfFromWebVitals(window.__webVitalsMetrics);
+            perfScore = this.results.perf.score;
+        } else {
+            if (window.performance) {
+                const navEntries = window.performance.getEntriesByType("navigation");
+                if (navEntries.length > 0) {
+                    const loadTime = Math.round(navEntries[0].domContentLoadedEventEnd);
+                    if (loadTime > 800 && loadTime < 10000) {
+                        perfScore -= Math.floor((loadTime - 800) / 100);
+                    }
+                    this.results.perf.issues.push(loadTime <= 800 && loadTime > 0
+                        ? `Load: <b>${loadTime}ms</b>. Web Vitals (LCP, INP, CLS) will update score when ready.`
+                        : `Load: <b>${loadTime}ms</b>.`);
+                }
+            }
+            this.results.perf.score = Math.max(0, Math.min(100, perfScore));
+            this.results.perf.color = this.results.perf.score >= 90 ? '#22c55e' : this.results.perf.score >= 60 ? '#f59e0b' : '#ef4444';
+        }
+        this.results.perf.score = Math.max(0, Math.min(100, this.results.perf.score));
+
+        const allImages = document.querySelectorAll('img');
 
         // --- 2. Accessibility ---
         let a11yScore = 100;
@@ -105,7 +145,7 @@ class SiteOptimizer {
             this.results.a11y.issues.push(`All ${allImages.length} images have 'alt' text.`);
         }
 
-        // HTML Lang — bn (Bengali) ও en বৈধ; শুধু অনুপস্থিত থাকলে ইস্যু
+        // HTML lang — missing is an issue; en, bn, etc. are valid
         const htmlLang = document.documentElement.getAttribute('lang');
         if (!htmlLang) {
             a11yScore -= 15;
@@ -119,7 +159,7 @@ class SiteOptimizer {
             }
         }
 
-        // Empty Buttons/Links — যেগুলোতে কোনো পাঠ্য বা aria-label নেই (আইকন-অনলি সহ)
+        // Empty buttons/links (no text or aria-label)
         const interactive = document.querySelectorAll('button, a');
         let emptyElements = [];
         interactive.forEach(el => {
@@ -354,7 +394,9 @@ class SiteOptimizer {
         document.body.insertAdjacentHTML('beforeend', modalHtml);
     }
 
+    /** Shows the analysis modal; re-renders modal content so Web Vitals–updated perf score is visible */
     openModal() {
+        this.renderModal();
         const modal = document.getElementById('seo-modal-overlay');
         if (modal) modal.style.display = 'flex';
     }

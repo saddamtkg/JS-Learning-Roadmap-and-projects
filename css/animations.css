@@ -3,6 +3,11 @@
  * Use with scroll-animations.js for scroll-triggered effects
  */
 
+/* পপআপ খোলা/বন্ধে স্ক্রলবারের জায়গা রাখা — ফ্লিকার রোধ (প্যাডিং লাগে না) */
+html {
+    scrollbar-gutter: stable;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .scroll-animate,
     .scroll-animate * {
@@ -160,14 +165,24 @@ body.mobile-drawer-open #mobile-drawer {
     }
 }
 
-/* ---- Desktop nav: simple & unique (same on all pages) ---- */
+/* ---- Desktop nav: simple & unique, সব পেজে একই অ্যালাইনমেন্ট ---- */
+.navbar-center,
+.navbar-end {
+    align-items: center;
+    display: flex;
+}
 .nav-link-pill,
-.nav-dropdown-trigger {
+.nav-dropdown-trigger,
+.nav-profile-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    min-height: 2.5rem;
     padding: 0.4rem 0.75rem;
     font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.25;
     color: rgba(255, 255, 255, 0.9);
     background: transparent;
     border: none;
@@ -176,6 +191,17 @@ body.mobile-drawer-open #mobile-drawer {
     transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     text-decoration: none;
     cursor: pointer;
+    white-space: nowrap;
+}
+.nav-link-pill i,
+.nav-dropdown-trigger i,
+.nav-profile-btn i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25em;
+    flex-shrink: 0;
+    font-size: 1em;
 }
 .nav-link-pill:hover,
 .nav-dropdown-trigger:hover {
@@ -226,19 +252,10 @@ body.mobile-drawer-open #mobile-drawer {
 }
 
 .nav-profile-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.9rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #F7DF1E;
-    background: transparent;
     border: 1px solid #F7DF1E;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    cursor: pointer;
+    border-bottom: 1px solid #F7DF1E;
+    font-weight: 600;
+    color: #F7DF1E;
 }
 .nav-profile-btn:hover {
     background: #F7DF1E;

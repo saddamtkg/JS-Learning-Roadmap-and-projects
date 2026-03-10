@@ -1,5 +1,6 @@
 /**
- * Practice & Revision page – load questions, filter by topic/level, mark for revision
+ * practice.js — Practice page (practice.html) only: load questions, filter by topic/level, mark for revision.
+ * All comments in English.
  */
 
 const STORAGE_KEY_REVISION = 'js-roadmap-revision-ids';
@@ -8,9 +9,10 @@ const STORAGE_KEY_PRACTICE_COUNT = 'js-roadmap-practice-count';
 let practiceData = { topics: [] };
 let revisionIds = new Set();
 let practiceCounts = {};
-/** Which topic is shown (index in full list). Only one topic in DOM for performance. */
+/** Index of the currently visible topic segment (only one in DOM for performance) */
 let activeSegmentIndex = 0;
 
+/** Loads revision-marked question IDs from localStorage into revisionIds */
 function loadRevisionFromStorage() {
     try {
         const raw = localStorage.getItem(STORAGE_KEY_REVISION);
@@ -20,12 +22,14 @@ function loadRevisionFromStorage() {
     }
 }
 
+/** Persists revisionIds to localStorage */
 function saveRevisionToStorage() {
     try {
         localStorage.setItem(STORAGE_KEY_REVISION, JSON.stringify([...revisionIds]));
     } catch (_) {}
 }
 
+/** Loads per-question practice counts from localStorage into practiceCounts */
 function loadPracticeCountsFromStorage() {
     try {
         const raw = localStorage.getItem(STORAGE_KEY_PRACTICE_COUNT);
@@ -36,16 +40,19 @@ function loadPracticeCountsFromStorage() {
     }
 }
 
+/** Saves practiceCounts to localStorage */
 function savePracticeCountToStorage() {
     try {
         localStorage.setItem(STORAGE_KEY_PRACTICE_COUNT, JSON.stringify(practiceCounts));
     } catch (_) {}
 }
 
+/** Returns a unique id string for a question (topicId__questionId) */
 function getQuestionFullId(topicId, questionId) {
     return `${topicId}__${questionId}`;
 }
 
+/** Toggles revision mark for a question, saves storage, re-renders and updates banner */
 function toggleRevision(topicId, questionId) {
     const fullId = getQuestionFullId(topicId, questionId);
     if (revisionIds.has(fullId)) {
@@ -58,6 +65,7 @@ function toggleRevision(topicId, questionId) {
     updateRevisionBanner();
 }
 
+/** Increments the practice count for a question and saves to storage */
 function incrementPracticeCount(topicId, questionId) {
     const fullId = getQuestionFullId(topicId, questionId);
     practiceCounts[fullId] = (practiceCounts[fullId] || 0) + 1;
@@ -65,14 +73,17 @@ function incrementPracticeCount(topicId, questionId) {
     renderAllTopics();
 }
 
+/** Returns true if the question is marked for revision */
 function isRevisionMarked(topicId, questionId) {
     return revisionIds.has(getQuestionFullId(topicId, questionId));
 }
 
+/** Returns the number of times the user marked this question as practiced */
 function getPracticeCount(topicId, questionId) {
     return practiceCounts[getQuestionFullId(topicId, questionId)] || 0;
 }
 
+/** Fetches practice-questions.json and populates practiceData (topics or months) */
 async function fetchPracticeData() {
     const res = await fetch('data/practice-questions.json');
     if (!res.ok) throw new Error('Failed to load practice questions');
@@ -81,19 +92,23 @@ async function fetchPracticeData() {
     if (!practiceData.months) practiceData.months = [];
 }
 
+/** Returns true if data uses months array instead of topics */
 function useMonths() {
     return practiceData.months && practiceData.months.length > 0;
 }
 
+/** Returns the segment id string (e.g. month-1 or topic id) */
 function getSegmentId(segment) {
     return useMonths() ? 'month-' + segment.month : segment.id;
 }
 
+/** Returns the active level filter: 'all', 'beginner', 'intermediate', or 'advanced' */
 function getActiveLevelFilter() {
     const el = document.querySelector('[data-filter-level].active');
     return el ? el.dataset.filterLevel : 'all';
 }
 
+/** Returns true if "Revision only" filter is active */
 function getActiveRevisionFilter() {
     const el = document.querySelector('[data-filter-revision].active');
     return el ? el.dataset.filterRevision === 'only' : false;
@@ -103,6 +118,7 @@ function getAllSegments() {
     return useMonths() ? practiceData.months : practiceData.topics;
 }
 
+/** Returns the segment at activeSegmentIndex (clamped); updates activeSegmentIndex */
 function getActiveSegment() {
     const segments = getAllSegments();
     if (!segments.length) return null;
@@ -111,6 +127,7 @@ function getActiveSegment() {
     return segments[idx];
 }
 
+/** Returns segments that pass the current level and revision-only filters */
 function getFilteredSegments() {
     const levelFilter = getActiveLevelFilter();
     const revisionOnly = getActiveRevisionFilter();
@@ -139,6 +156,7 @@ function getFilteredQuestionsForSegment(segment) {
     });
 }
 
+/** Returns HTML string for one question card (number, text, level, hint/answer tools, revision/practiced buttons) */
 function renderQuestion(segmentId, q, questionNumber) {
     const fullId = getQuestionFullId(segmentId, q.id);
     const marked = isRevisionMarked(segmentId, q.id);
@@ -169,6 +187,7 @@ function renderQuestion(segmentId, q, questionNumber) {
     `;
 }
 
+/** Escapes text for safe use in HTML attributes (including quotes) */
 function escapeAttr(text) {
     if (text == null) return '';
     return escapeHtml(text).replace(/"/g, '&quot;');
@@ -181,6 +200,7 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+/** Returns HTML string for one topic section (heading + filtered question list) */
 function renderSegment(segment) {
     const segId = getSegmentId(segment);
     const questions = getFilteredQuestionsForSegment(segment);
@@ -207,6 +227,7 @@ function renderSegment(segment) {
     `;
 }
 
+/** Fills the practice sidebar list with topic links and active state; calls setupSidebarClicks */
 function renderPracticeSidebar() {
     const list = document.getElementById('practice-sidebar-list');
     if (!list) return;
@@ -232,35 +253,37 @@ function renderPracticeSidebar() {
     setupSidebarClicks();
 }
 
+/** Updates active/highlight classes on sidebar links to match activeSegmentIndex */
 function updateSidebarActiveState() {
-    const list = document.getElementById('practice-sidebar-list');
-    if (!list) return;
-    list.querySelectorAll('.practice-nav-link').forEach((a, idx) => {
-        const isActive = Number(a.getAttribute('data-segment-index')) === activeSegmentIndex;
-        a.classList.toggle('active', isActive);
-        a.classList.toggle('bg-js/10', isActive);
-        a.classList.toggle('text-jsdark', isActive);
-        a.classList.toggle('border-l-2', isActive);
-        a.classList.toggle('border-js', isActive);
+    const sidebarList = document.getElementById('practice-sidebar-list');
+    if (!sidebarList) return;
+    sidebarList.querySelectorAll('.practice-nav-link').forEach((navLink) => {
+        const isActive = Number(navLink.getAttribute('data-segment-index')) === activeSegmentIndex;
+        navLink.classList.toggle('active', isActive);
+        navLink.classList.toggle('bg-js/10', isActive);
+        navLink.classList.toggle('text-jsdark', isActive);
+        navLink.classList.toggle('border-l-2', isActive);
+        navLink.classList.toggle('border-js', isActive);
     });
 }
 
+/** Delegates clicks on sidebar topic links: set active segment, render, scroll, no hash in URL */
 function setupSidebarClicks() {
     const list = document.getElementById('practice-sidebar-list');
     if (!list) return;
-    list.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href^="#topic-"]');
-        if (!link) return;
-        e.preventDefault();
-        const idx = link.getAttribute('data-segment-index');
-        if (idx != null) {
-            activeSegmentIndex = parseInt(idx, 10);
+    list.addEventListener('click', (event) => {
+        const topicLink = event.target.closest('a[href^="#topic-"]');
+        if (!topicLink) return;
+        event.preventDefault();
+        const segmentIndexStr = topicLink.getAttribute('data-segment-index');
+        if (segmentIndexStr != null) {
+            activeSegmentIndex = parseInt(segmentIndexStr, 10);
             renderActiveTopicOnly();
             updateSidebarActiveState();
-            const href = link.getAttribute('href');
-            const id = href ? href.slice(1) : '';
-            const el = document.getElementById(id);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const anchorHref = topicLink.getAttribute('href');
+            const targetSectionId = anchorHref ? anchorHref.slice(1) : '';
+            const targetSection = document.getElementById(targetSectionId);
+            if (targetSection) targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             if (window.history && window.history.replaceState) {
                 window.history.replaceState(null, '', window.location.pathname + window.location.search);
             }
@@ -268,27 +291,28 @@ function setupSidebarClicks() {
     });
 }
 
+/** Attaches click handlers for revision and practiced buttons inside the given container */
 function bindQuestionActions(container) {
     if (!container) return;
-    container.querySelectorAll('[data-action="revision"]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const item = btn.closest('.question-item');
-            const topicId = item?.dataset?.topic;
-            const qId = item?.dataset?.q;
-            if (topicId && qId) toggleRevision(topicId, qId);
+    container.querySelectorAll('[data-action="revision"]').forEach((revisionButton) => {
+        revisionButton.addEventListener('click', () => {
+            const questionItem = revisionButton.closest('.question-item');
+            const topicId = questionItem?.dataset?.topic;
+            const questionId = questionItem?.dataset?.q;
+            if (topicId && questionId) toggleRevision(topicId, questionId);
         });
     });
-    container.querySelectorAll('[data-action="practiced"]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const item = btn.closest('.question-item');
-            const topicId = item?.dataset?.topic;
-            const qId = item?.dataset?.q;
-            if (topicId && qId) incrementPracticeCount(topicId, qId);
+    container.querySelectorAll('[data-action="practiced"]').forEach((practicedButton) => {
+        practicedButton.addEventListener('click', () => {
+            const questionItem = practicedButton.closest('.question-item');
+            const topicId = questionItem?.dataset?.topic;
+            const questionId = questionItem?.dataset?.q;
+            if (topicId && questionId) incrementPracticeCount(topicId, questionId);
         });
     });
 }
 
-/** Render only the active topic (keeps DOM small for performance). */
+/** Renders only the active topic section (keeps DOM small for performance) */
 function renderActiveTopicOnly() {
     const container = document.getElementById('practice-topics');
     if (!container) return;
@@ -321,11 +345,12 @@ function renderActiveTopicOnly() {
     updateSidebarActiveState();
 }
 
-/** Kept for callers that expect renderAllTopics (same behavior: render active only). */
+/** Alias for renderActiveTopicOnly for callers that expect renderAllTopics */
 function renderAllTopics() {
     renderActiveTopicOnly();
 }
 
+/** Shows or hides the revision banner and updates the count; syncs filter button state */
 function updateRevisionBanner() {
     const banner = document.getElementById('revision-only-banner');
     const count = revisionIds.size;
@@ -341,6 +366,7 @@ function updateRevisionBanner() {
     if (numEl) numEl.textContent = count;
 }
 
+/** Binds level and revision filter buttons to re-render and update banner */
 function setupFilters() {
     document.querySelectorAll('[data-filter-level]').forEach((el) => {
         el.addEventListener('click', () => {
@@ -362,6 +388,7 @@ function setupFilters() {
     });
 }
 
+/** Loads storage, fetches data, renders sidebar and content, sets up filters */
 function init() {
     loadRevisionFromStorage();
     loadPracticeCountsFromStorage();
@@ -387,7 +414,7 @@ function init() {
     setupFilters();
 }
 
-// Scroll progress bar (practice page)
+/** Updates the top scroll progress bar width on scroll (practice page) */
 function initScrollProgress() {
     const progressBar = document.getElementById('scroll-progress');
     if (!progressBar) return;
@@ -399,7 +426,7 @@ function initScrollProgress() {
     });
 }
 
-// Anchor links: স্মুথ স্ক্রল, URL-এ # যুক্ত হবে না (sidebar সহ dynamic link এর জন্য delegation)
+/** Smooth scroll to anchor on click and remove hash from URL (delegation for dynamic sidebar links) */
 function initAnchorScrollNoHash() {
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href^="#"]');
