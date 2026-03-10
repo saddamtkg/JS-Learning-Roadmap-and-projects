@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery — Images and videos in a masonry grid. Click to view full screen with lightbox.">
+    <title>Gallery | JS Pro Roadmap</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Preconnect for faster LCP and Web Vitals (fonts + CDN) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/gallery.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Hind Siliguri', 'sans-serif'], mono: ['Fira Code', 'monospace'] },
+                    colors: { js: '#F7DF1E', jsdark: '#323330' }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="text-slate-800 antialiased relative">
+
+    <div class="fixed top-0 left-0 w-full h-1.5 bg-jsdark z-[60]">
+        <div id="scroll-progress" class="h-full bg-js text-jsdark transition-all duration-150 w-0"></div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar bg-jsdark text-js sticky top-0 z-50 shadow-lg px-4 lg:px-8 items-center">
+        <div class="navbar-start">
+            <button type="button" class="btn btn-ghost lg:hidden text-js p-2" data-mobile-menu-toggle aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </button>
+            <a class="btn btn-ghost text-xl font-bold gap-2" href="index.html" aria-label="JS Pro Roadmap - Home">
+                <i class="fa-brands fa-js text-2xl"></i>
+                <span class="hidden sm:inline">JS Pro Roadmap</span>
+            </a>
+        </div>
+        <div class="navbar-center hidden lg:flex items-center gap-6">
+            <a href="index.html" class="nav-link-pill"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="docs.html" class="nav-link-pill"><i class="fa-solid fa-book"></i> Documentation</a>
+            <a href="practice.html" class="nav-link-pill"><i class="fa-solid fa-pen-fancy"></i> Practice</a>
+            <a href="gallery.html" class="nav-link-pill active" aria-current="page"><i class="fa-solid fa-images"></i> Gallery</a>
+        </div>
+        <div class="navbar-end gap-2">
+            <button type="button" class="nav-link-pill" onclick="showDailyRoutineModal()" title="Daily Routine">
+                <i class="fa-solid fa-calendar-check"></i> <span class="hidden xl:inline">Daily Routine</span>
+            </button>
+            <button type="button" class="nav-profile-btn" onclick="showWelcomeModal()">
+                <i class="fa-solid fa-user-astronaut"></i> My Profile
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-black/60 z-[55] lg:hidden" aria-hidden="true"></div>
+    <aside id="mobile-drawer" class="fixed right-0 top-0 bottom-0 w-72 max-w-[85vw] bg-jsdark text-white shadow-2xl z-[60] lg:hidden flex flex-col" aria-label="Mobile menu">
+        <div class="flex items-center justify-between p-4 border-b border-slate-600">
+            <span class="font-bold text-js flex items-center gap-2"><i class="fa-brands fa-js text-xl"></i> Menu</span>
+            <button type="button" class="btn btn-ghost btn-sm btn-circle text-white hover:bg-white/10" data-mobile-drawer-close aria-label="Close menu">
+                <i class="fa-solid fa-times text-lg"></i>
+            </button>
+        </div>
+        <nav class="p-4 flex-1 overflow-y-auto">
+            <ul class="menu menu-vertical gap-1 w-full">
+                <li><a href="index.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-house w-5 text-center"></i> Home</a></li>
+                <li><a href="docs.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-book w-5 text-center"></i> Documentation</a></li>
+                <li><a href="practice.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-pen-fancy w-5 text-center"></i> Practice</a></li>
+                <li><a href="gallery.html" class="flex items-center gap-3 rounded-xl py-3 text-js font-semibold hover:bg-white/10 transition-colors"><i class="fa-solid fa-images w-5 text-center"></i> Gallery</a></li>
+                <li><button type="button" onclick="showDailyRoutineModal(); document.body.classList.remove('mobile-drawer-open');" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors w-full text-left"><i class="fa-solid fa-calendar-check w-5 text-center"></i> Daily Routine</button></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12 scroll-animate" data-animate="fadeUp">
+            <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-jsdark/90 text-js font-mono text-sm mb-5 shadow-lg">
+                <i class="fa-solid fa-images"></i> Media
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-800 mb-4">Gallery</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                Images and videos in a masonry grid. Click any item to open full view and browse with prev/next.
+            </p>
+        </div>
+
+        <div id="gallery-grid" class="gallery-masonry">
+            <!-- Filled by js/gallery.js from data/gallery.json; first 20 shown, then Load more -->
+            <div class="flex justify-center py-12 col-span-full">
+                <span class="loading loading-spinner loading-lg text-js"></span>
+            </div>
+        </div>
+        <div id="gallery-load-more-wrap" class="text-center mt-10 mb-6" style="display: none;"></div>
+    </main>
+
+    <!-- Lightbox modal (Fancybox-style: full view, prev/next, close) -->
+    <div id="gallery-lightbox" class="gallery-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Media viewer">
+        <div class="gallery-lightbox-backdrop" id="gallery-lightbox-backdrop"></div>
+        <button type="button" class="gallery-lightbox-close" id="gallery-lightbox-close" aria-label="Close">
+            <i class="fa-solid fa-times"></i>
+        </button>
+        <button type="button" class="gallery-lightbox-prev" id="gallery-lightbox-prev" aria-label="Previous">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button type="button" class="gallery-lightbox-next" id="gallery-lightbox-next" aria-label="Next">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="gallery-lightbox-content" id="gallery-lightbox-content">
+            <!-- Image or video inserted here by JS -->
+        </div>
+        <div class="gallery-lightbox-caption" id="gallery-lightbox-caption"></div>
+    </div>
+
+    <footer class="bg-slate-100 border-t border-slate-200 py-6 text-center text-slate-500 text-sm relative z-10 mt-12">
+        <div id="seo-widget-container"></div>
+        <p><a href="index.html" class="link link-hover text-jsdark font-medium">JS Pro Roadmap</a> — Gallery.</p>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/site-optimizer.js"></script>
+    <script type="module" src="js/web-vitals-report.js"></script>
+</body>
+</html>

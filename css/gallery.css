@@ -1,0 +1,241 @@
+/**
+ * Gallery page: masonry grid + lightbox (Fancybox-style full view).
+ */
+
+/* Masonry grid using CSS columns */
+.gallery-masonry {
+  column-count: 1;
+  column-gap: 1rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .gallery-masonry {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-masonry {
+    column-count: 3;
+    column-gap: 1.25rem;
+  }
+}
+
+.gallery-card {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+/* Smooth fade-in when loading more (avoids flickering) */
+.gallery-card-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.gallery-card-enter.gallery-card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-card-enter.gallery-card-visible:hover {
+  transform: translateY(-4px);
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Image wrapper: keeps layout stable and shows placeholder until image loads */
+.gallery-card-img-wrap {
+  position: relative;
+  background: #e2e8f0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.gallery-card-img-wrap .gallery-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-card-img-wrap .gallery-card-img.gallery-img-loaded {
+  opacity: 1;
+}
+
+.gallery-card img,
+.gallery-card .gallery-card-poster {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+.gallery-card .gallery-card-poster {
+  position: relative;
+  background: #1e293b;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.gallery-card .gallery-card-poster .gallery-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-card .gallery-card-poster .gallery-card-img.gallery-img-loaded {
+  opacity: 1;
+}
+
+.gallery-card .gallery-card-poster i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: rgba(247, 223, 30, 0.9);
+  z-index: 1;
+}
+
+.gallery-card-title {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+/* Lightbox overlay */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.gallery-lightbox.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.gallery-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  cursor: pointer;
+}
+
+.gallery-lightbox-close,
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+  position: absolute;
+  z-index: 10002;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.gallery-lightbox-close:hover,
+.gallery-lightbox-prev:hover,
+.gallery-lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.gallery-lightbox-close {
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
+.gallery-lightbox-prev {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+}
+
+.gallery-lightbox-next {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+}
+
+.gallery-lightbox-content {
+  position: relative;
+  z-index: 10001;
+  max-width: 95vw;
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.gallery-lightbox-content iframe,
+.gallery-lightbox-content video {
+  width: 90vw;
+  max-width: 900px;
+  height: 50.625vw;
+  max-height: 506.25px;
+  border: none;
+  border-radius: 8px;
+}
+
+.gallery-lightbox-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10002;
+  color: #fff;
+  text-align: center;
+  max-width: 80%;
+  font-size: 0.95rem;
+}
+
+/* Load more button: spinner + smooth state */
+.gallery-loadmore-loading {
+  pointer-events: none;
+}
+
+.gallery-loadmore-loading .loading {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
