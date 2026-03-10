@@ -1,0 +1,413 @@
+{
+  "months": [
+    {
+      "id": "M1",
+      "label": "Month 1",
+      "title": "Core & Arrays / Strings & Objects",
+      "videos": [
+        {
+          "youtubeId": "sscX432bMZo",
+          "title": "JavaScript in 1 Shot (Hindi) - Chai aur Code",
+          "topic": "Variables, Data Types, Array, Object, Functions - Full Basics",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "VlPiVmYuoqw",
+          "title": "JavaScript Tutorial 2024 - Beginners to Pro (Hindi)",
+          "topic": "Variables, Loops, Arrays, Functions, DOM - Apna College",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "o68WJE3V_pw",
+          "title": "JavaScript Full Course 11 Hours (Hindi) Part 1",
+          "topic": "Complete JS Basics in Hindi",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "W6NZfCO5SIk",
+          "title": "JavaScript Tutorial for Beginners - Mosh",
+          "topic": "Variables (let, const), Scope & Hoisting",
+          "language": "en"
+        },
+        {
+          "youtubeId": "PkZNo7MFNFg",
+          "title": "Learn JavaScript - Full Course - freeCodeCamp",
+          "topic": "String manipulation, Objects, Arrays - 20M+ views",
+          "language": "en"
+        },
+        {
+          "youtubeId": "hdI2bqOjy3c",
+          "title": "JavaScript in 100 Seconds",
+          "topic": "Data Types (Primitive vs Reference) - Quick",
+          "language": "en"
+        },
+        {
+          "youtubeId": "PojpwEbOQJg",
+          "title": "map(), filter(), reduce() - Array Methods",
+          "topic": "Array Methods: map, filter, reduce",
+          "language": "en"
+        },
+        {
+          "youtubeId": "R1xRCq8eQoY",
+          "title": "Array Methods: map, filter, reduce - Traversy",
+          "topic": "Array Methods: map, filter, reduce, find",
+          "language": "en"
+        },
+        {
+          "youtubeId": "Kdz9J5vC4_o",
+          "title": "What is JavaScript - Full Course (Hindi)",
+          "topic": "JavaScript Basics for Beginners in Hindi",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "8h-XPrY9s7I",
+          "title": "JavaScript Scope Explained in Bangla",
+          "topic": "Global, Block, Function Scope & Scope Chain",
+          "language": "bn"
+        }
+      ]
+    },
+    {
+      "id": "M2",
+      "label": "Month 2",
+      "title": "Advanced DOM / APIs & Data",
+      "videos": [
+        {
+          "youtubeId": "5fb2aPlgoys",
+          "title": "JavaScript DOM Manipulation - Full Course",
+          "topic": "Event Bubbling, Delegation, Selectors - freeCodeCamp",
+          "language": "en"
+        },
+        {
+          "youtubeId": "3PHXvlpOkf4",
+          "title": "JavaScript DOM Tutorial",
+          "topic": "Event Bubbling, Delegation, DocumentFragment",
+          "language": "en"
+        },
+        {
+          "youtubeId": "3PHXvlpOkf4",
+          "title": "Document Object Model in JavaScript",
+          "topic": "DOM Tutorial - Select, Create, Update elements",
+          "language": "en"
+        },
+        {
+          "youtubeId": "VlOj0-VBji8",
+          "title": "localStorage & sessionStorage",
+          "topic": "localStorage / sessionStorage API",
+          "language": "en"
+        },
+        {
+          "youtubeId": "OFpqvaJ3QYg",
+          "title": "Async/Await, Promises, Fetch API - Full Course",
+          "topic": "Fetch API, Promises, Async/Await - 2hr Course",
+          "language": "en"
+        },
+        {
+          "youtubeId": "cuEtnrL9-H0",
+          "title": "Fetch API & Async Await",
+          "topic": "Fetch API, Promises, Async/Await",
+          "language": "en"
+        },
+        {
+          "youtubeId": "Yp9KIcSKTNo",
+          "title": "Async/Await with Fetch API",
+          "topic": "Using Async/Await with Fetch - Clean HTTP",
+          "language": "en"
+        },
+        {
+          "youtubeId": "cjIswDCKgu0",
+          "title": "Debounce and Throttle in 16 Minutes",
+          "topic": "Debounce technique for Search API",
+          "language": "en"
+        },
+        {
+          "youtubeId": "8pDqJVdNa44",
+          "title": "Web Development in Hindi",
+          "topic": "DOM, Events, localStorage - Hindi",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "5fb2aPlgoys",
+          "title": "DOM Manipulation Methods - Full Course",
+          "topic": "DOM Manipulation Methods Explained",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "id": "M3",
+      "label": "Month 3",
+      "title": "Set, Map, Stack, Queue & Big O",
+      "videos": [
+        {
+          "youtubeId": "ycohc5l4OMI",
+          "title": "Set and Map - JavaScript",
+          "topic": "Set: O(1) duplicate removal, Map for lookups",
+          "language": "en"
+        },
+        {
+          "youtubeId": "FNZ5o9S9prU",
+          "title": "Stack Data Structure",
+          "topic": "Stack Data Structure (LIFO)",
+          "language": "en"
+        },
+        {
+          "youtubeId": "XuCbpw6h1uk",
+          "title": "Queue Data Structure",
+          "topic": "Queue (FIFO) & Time Complexity",
+          "language": "en"
+        },
+        {
+          "youtubeId": "D6xkbGLQesk",
+          "title": "Big O Notation",
+          "topic": "Time Complexity: O(1), O(N), O(N²)",
+          "language": "en"
+        },
+        {
+          "youtubeId": "ycohc5l4OMI",
+          "title": "Set and Map - When to Use",
+          "topic": "Set & Map - Better than Object for lookups",
+          "language": "en"
+        },
+        {
+          "youtubeId": "FNZ5o9S9prU",
+          "title": "Data Structures - Stack & Queue",
+          "topic": "Stack, Queue - JavaScript",
+          "language": "en"
+        },
+        {
+          "youtubeId": "VlPiVmYuoqw",
+          "title": "JavaScript & DSA - Apna College (Hindi)",
+          "topic": "Time Complexity basics in Hindi",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "70UgtzMZehc",
+          "title": "filter, map, reduce together",
+          "topic": "Using filter, map, reduce - JavaScript",
+          "language": "en"
+        },
+        {
+          "youtubeId": "pa1awOKyoRA",
+          "title": "Master Filter, Map, Reduce",
+          "topic": "Array Functions - Filter, Map, Reduce",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "id": "M4",
+      "label": "Month 4",
+      "title": "Recursion, Binary Search & Sorting",
+      "videos": [
+        {
+          "youtubeId": "6oDQaB2one8",
+          "title": "Recursion in JavaScript",
+          "topic": "Recursion: base case, Factorial, Fibonacci",
+          "language": "en"
+        },
+        {
+          "youtubeId": "_FJvnsIu1co",
+          "title": "Callbacks, Recursive Functions - JavaScript",
+          "topic": "Recursion & Anonymous Functions",
+          "language": "en"
+        },
+        {
+          "youtubeId": "FmiQr4nfoPQ",
+          "title": "Recursion, Iteration - JavaScript",
+          "topic": "When to use recursion vs loop",
+          "language": "en"
+        },
+        {
+          "youtubeId": "s7d-tW0yBGA",
+          "title": "Binary Search Algorithm",
+          "topic": "Binary Search: O(log N) sorted array",
+          "language": "en"
+        },
+        {
+          "youtubeId": "xWBP4lzkoyM",
+          "title": "Sorting Algorithms Explained",
+          "topic": "Bubble Sort, Selection Sort, Array.sort()",
+          "language": "en"
+        },
+        {
+          "youtubeId": "sscX432bMZo",
+          "title": "JavaScript in 1 Shot - Chai aur Code (Hindi)",
+          "topic": "Recursion & Functions - Full course Hindi",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "s7d-tW0yBGA",
+          "title": "Binary Search - Implementation",
+          "topic": "Binary Search in JavaScript",
+          "language": "en"
+        },
+        {
+          "youtubeId": "xWBP4lzkoyM",
+          "title": "Sorting Algorithms - Merge & Quick",
+          "topic": "O(N log N) Sorting algorithms",
+          "language": "en"
+        },
+        {
+          "youtubeId": "FmiQr4nfoPQ",
+          "title": "Recursion, Iteration - JavaScript (JSConf)",
+          "topic": "Recursion basics - When to use recursion vs loop",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "id": "M5",
+      "label": "Month 5",
+      "title": "Problem Solving Patterns",
+      "videos": [
+        {
+          "youtubeId": "QzZ7nmouLTI",
+          "title": "Two Pointers in 7 Minutes - LeetCode Pattern",
+          "topic": "Two Pointers: pair sum, remove duplicates",
+          "language": "en"
+        },
+        {
+          "youtubeId": "MK-NZ4hN7rs",
+          "title": "Sliding Window Technique",
+          "topic": "Sliding Window: max sum subarray",
+          "language": "en"
+        },
+        {
+          "youtubeId": "nFuxdq_9Tls",
+          "title": "Frequency Counter Pattern",
+          "topic": "Frequency Counter: anagrams, count patterns",
+          "language": "en"
+        },
+        {
+          "youtubeId": "U6gd75KtFzQ",
+          "title": "Two Pointers - Remove Duplicates (LeetCode)",
+          "topic": "Two Pointers - Problem Solving",
+          "language": "en"
+        },
+        {
+          "youtubeId": "MK-NZ4hN7rs",
+          "title": "Sliding Window - Fixed & Variable",
+          "topic": "Sliding Window patterns",
+          "language": "en"
+        },
+        {
+          "youtubeId": "nFuxdq_9Tls",
+          "title": "DSA Patterns - Frequency Counter",
+          "topic": "Two Pointers, Sliding Window, Frequency",
+          "language": "en"
+        },
+        {
+          "youtubeId": "BToJFVy-QCo",
+          "title": "Two Pointers - 3Sum LeetCode (JavaScript)",
+          "topic": "Two Pointer technique - DSA",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "id": "M6",
+      "label": "Month 6–9",
+      "title": "Closures, this, Performance",
+      "videos": [
+        {
+          "youtubeId": "3a0I8dcRzmY",
+          "title": "Closures in JavaScript",
+          "topic": "Closures: event handlers, private data",
+          "language": "en"
+        },
+        {
+          "youtubeId": "zE9iro4r918",
+          "title": "The 'this' keyword - JavaScript",
+          "topic": "this: binding, arrow functions, call/apply/bind",
+          "language": "en"
+        },
+        {
+          "youtubeId": "g2nMKQe-hTw",
+          "title": "Lazy Loading & Code Splitting",
+          "topic": "Code Splitting, Lazy Loading, Lighthouse",
+          "language": "en"
+        },
+        {
+          "youtubeId": "cI4b2TtdOYQ",
+          "title": "Debounce & Throttle",
+          "topic": "Debounce & Throttle in real projects",
+          "language": "en"
+        },
+        {
+          "youtubeId": "sscX432bMZo",
+          "title": "Closures & Scope - Chai aur Code (Hindi)",
+          "topic": "Closures explained in Hindi",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "rZ41y93P2Qo",
+          "title": "Event Loop - JavaScript",
+          "topic": "Call Stack, Web API, Event Loop",
+          "language": "en"
+        },
+        {
+          "youtubeId": "8aGhZQkoFbQ",
+          "title": "What the heck is the event loop anyway?",
+          "topic": "Event Loop - JSConf",
+          "language": "en"
+        },
+        {
+          "youtubeId": "n4N5Snn_njA",
+          "title": "JavaScript Bangla Tutorial",
+          "topic": "Variables, Array, Object - Bangla",
+          "language": "bn"
+        }
+      ]
+    },
+    {
+      "id": "M10",
+      "label": "Month 10–12",
+      "title": "Job Prep & Portfolio",
+      "videos": [
+        {
+          "youtubeId": "8dUpL8GNP1c",
+          "title": "JavaScript Interview Questions",
+          "topic": "Mock interviews: hoisting, closure, event loop",
+          "language": "en"
+        },
+        {
+          "youtubeId": "mFY0J5X8bRA",
+          "title": "Deploy on Vercel",
+          "topic": "Portfolio: deploy on Vercel/Netlify",
+          "language": "en"
+        },
+        {
+          "youtubeId": "F4bWOD6sHqY",
+          "title": "Resume & LinkedIn for Developers",
+          "topic": "Resume & LinkedIn: JS and DSA projects",
+          "language": "en"
+        },
+        {
+          "youtubeId": "8dUpL8GNP1c",
+          "title": "JavaScript Interview - Frontend",
+          "topic": "JS tricky questions - Interview",
+          "language": "en"
+        },
+        {
+          "youtubeId": "VlPiVmYuoqw",
+          "title": "JavaScript Tutorial - Apna College (Hindi)",
+          "topic": "JS Interview prep - Full course Hindi",
+          "language": "hi"
+        },
+        {
+          "youtubeId": "mFY0J5X8bRA",
+          "title": "Deploy to Vercel / Netlify",
+          "topic": "Deploy project - GitHub Pages/Vercel",
+          "language": "en"
+        },
+        {
+          "youtubeId": "8dUpL8GNP1c",
+          "title": "JavaScript Interview - Common Questions",
+          "topic": "Hoisting, Closure, Event Loop - Interview",
+          "language": "en"
+        }
+      ]
+    }
+  ]
+}

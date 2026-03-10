@@ -145,9 +145,9 @@
             '  </div>' +
             '</form>' +
             '<form method="dialog" class="modal-backdrop"><button type="submit" aria-label="Close">close</button></form>';
-        d.addEventListener('close', function () { setTimeout(window.unlockBodyScroll, 0); });
-        document.body.appendChild(d);
-        return d;
+        dialogElement.addEventListener('close', function () { setTimeout(window.unlockBodyScroll, 0); });
+        document.body.appendChild(dialogElement);
+        return dialogElement;
     }
 
     /** Opens the Daily Routine modal (builds on first use) */

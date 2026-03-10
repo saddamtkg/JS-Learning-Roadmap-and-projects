@@ -70,7 +70,7 @@
             <a href="index.html" class="nav-link-pill"><i class="fa-solid fa-house"></i> Home</a>
             <a href="docs.html" class="nav-link-pill active"><i class="fa-solid fa-book"></i> Documentation</a>
             <a href="practice.html" class="nav-link-pill"><i class="fa-solid fa-pen-fancy"></i> Practice</a>
-            <a href="gallery.html" class="nav-link-pill"><i class="fa-solid fa-images"></i> Gallery</a>
+            <a href="gallery.html" class="nav-link-pill"><i class="fa-brands fa-youtube"></i> Videos</a>
         </div>
         <div class="navbar-end gap-2">
             <button type="button" class="nav-link-pill" onclick="showDailyRoutineModal()" title="Daily Routine — ২০% শেখা, ৮০% প্র্যাকটিস">
@@ -96,7 +96,7 @@
                 <li><a href="index.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-house w-5 text-center"></i> Home</a></li>
                 <li><a href="docs.html" class="flex items-center gap-3 rounded-xl py-3 text-js font-semibold hover:bg-white/10 transition-colors"><i class="fa-solid fa-book w-5 text-center"></i> Documentation</a></li>
                 <li><a href="practice.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-pen-fancy w-5 text-center"></i> Practice</a></li>
-                <li><a href="gallery.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-images w-5 text-center"></i> Gallery</a></li>
+                <li><a href="gallery.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-brands fa-youtube w-5 text-center"></i> Videos</a></li>
                 <li><button type="button" onclick="showDailyRoutineModal(); document.body.classList.remove('mobile-drawer-open');" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors w-full text-left"><i class="fa-solid fa-calendar-check w-5 text-center"></i> Daily Routine</button></li>
             </ul>
         </nav>
@@ -115,6 +115,10 @@
             <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
                 ১২ মাসের সিলেবাসের প্রতিটি টপিকের বিস্তারিত ধারণা এবং কনসেপ্ট এই পেইজে দেওয়া হলো।
             </p>
+            <div class="doc-enough-banner max-w-4xl mx-auto text-left scroll-animate" data-animate="fadeUp">
+                <h3 class="flex items-center gap-2"><i class="fa-solid fa-circle-check"></i> Enough & Pro Documentation</h3>
+                <p>এই ডকুমেন্টেশনে যে টপিকগুলো আছে সেগুলোই রিয়েল প্রজেক্ট ও ইন্টারভিউতে সবচেয়ে বেশি ব্যবহার হয়। প্রতিটি টপিক কী, কেন শিখবেন, কখন কোথায় লাগবে এবং সিনট্যাক্স/উদাহরণ দিয়ে ভালোভাবে বোঝানো হয়েছে। একবার ঠিকমতো পড়ে প্র্যাকটিস করলে ভবিষ্যতে জব, ফ্রিল্যান্স ও ওপেন সোর্সে অনেক এগিয়ে থাকবেন।</p>
+            </div>
         </div>
 
         <!-- Sidebar + Content: কন্টেন্ট আরও চওড়া -->
@@ -178,9 +182,18 @@
                                 Loop ও Event Listener
                             </h2>
                         </div>
-                        <p class="text-slate-600 mb-10 leading-relaxed">JS এ এই টপিকগুলো না বুঝলে প্রায় কিছুই করা যায়
+                        <p class="text-slate-600 mb-6 leading-relaxed">JS এ এই টপিকগুলো না বুঝলে প্রায় কিছুই করা যায়
                             না। নিচে ধারণা, কখন কোথায় কীভাবে ব্যবহার করবেন এবং অনেক উদাহরণ দেওয়া হলো — কপি করে Console
                             এ রান করে দেখুন।</p>
+                        <div class="doc-future-help">
+                            <h4><i class="fa-solid fa-arrow-trend-up text-emerald-600 mr-1"></i> ভবিষ্যতে কোথায় লাগবে</h4>
+                            <p><strong>Array (map/filter/reduce):</strong> প্রায় প্রতিটি প্রজেক্টে লিস্ট ডেটা ট্রান্সফর্ম, API রেসপন্স প্রসেসিং, সার্চ/ফিল্টার। ইন্টারভিউতে প্রায়ই জিজ্ঞাসা। <strong>Object:</strong> ইউজার/প্রোডাক্ট ডেটা, সেটিংস, ফ্রিকোয়েন্সি কাউন্টার, JSON। <strong>Event Loop:</strong> অ্যাসিঙ্ক বাগ ডিবাগ, সিনক্রোনাস vs অ্যাসিঙ্ক বোঝা। <strong>Event Listener:</strong> যেকোনো UI — বাটন, ফর্ম, ডায়নামিক এলিমেন্ট। এগুলো ভালো করলে রিয়েল ওয়ার্কে দ্রুত অ্যাডজাস্ট করতে পারবেন।</p>
+                        </div>
+
+                        <div class="bg-slate-100 border-l-4 border-amber-500 p-5 rounded-r-xl mb-8">
+                            <h3 class="font-bold text-slate-800 mb-3">কেন Loop, Event Loop, Array, Object ও String সবচেয়ে গুরুত্বপূর্ণ?</h3>
+                            <p class="text-slate-700 mb-3"><strong>Array</strong> ও <strong>Object</strong> দিয়েই জেএসে যেকোনো ডেটা স্ট্রাকচার বানানো হয় — API থেকে ডেটা আসে অ্যারে বা অবজেক্টে, ইউজার লিস্ট, প্রোডাক্ট লিস্ট, সেটিংস সব এখানেই। <strong>Loop</strong> ছাড়া অ্যারেতে ঘুরে মান বের করা বা ট্রান্সফর্ম করা যায় না; <code>for</code>, <code>for...of</code>, <code>forEach</code> প্রতিদিন ব্যবহার হয়। <strong>Event Loop</strong> বোঝা জরুরি কারণ জেএস এক থ্রেড — API কল, টাইমার, ক্লিক ইভেন্ট সব অ্যাসিঙ্ক; কখন কোন কোড রান হবে সেটা Event Loop দিয়ে নিয়ন্ত্রিত। না বুঝলে "ডেটা আসার আগেই ব্যবহার" করার মতো বাগ হয়। <strong>String</strong> — ফর্ম ভ্যালিডেশন, সার্চ, URL বা টেক্সট কাটাকুটি, API থেকে আসা স্ট্রিং পার্স করা সব জায়গায় লাগে। তাই এই পাঁচটা টপিক ভালো করে শিখলে বাকি জেএস অনেক সহজ হয়ে যায়।</p>
+                        </div>
 
                         <!-- ARRAY -->
                         <div class="mb-12">
@@ -191,6 +204,10 @@
                                 ইনডেক্স ০ থেকে শুরু। <strong class="text-slate-800">কখন কোথায়:</strong> লিস্ট ডেটা
                                 (ইউজার লিস্ট, টাস্ক, প্রোডাক্ট), লুপ চালাতে, map/filter/reduce দিয়ে ট্রান্সফর্ম করতে।
                             </p>
+                            <p class="text-sm text-slate-600 mb-2"><strong>সিনট্যাক্স (প্রায়ই ব্যবহৃত):</strong></p>
+                            <div class="doc-syntax-box text-sm mb-4">
+                                <strong>array.map(callback)</strong> → নতুন অ্যারে। &nbsp;|&nbsp; <strong>array.filter(callback)</strong> → শর্ত মেনে উপাদান। &nbsp;|&nbsp; <strong>array.reduce((acc, item) => {...}, initial)</strong> → একক মান।
+                            </div>
                             <p class="text-sm font-semibold text-slate-700 mb-3">কিভাবে কাজ করে ও ব্যবহার করবেন:</p>
                             <div class="space-y-5">
                                 <div class="mockup-code text-xs">
@@ -225,6 +242,76 @@
                                     <pre data-prefix="3"><code>console.log(first); // 30</code></pre>
                                 </div>
                             </div>
+                            <h4 class="font-bold text-slate-800 mt-6 mb-3">map, filter সহ যে মেথডগুলো কোডকে efficient করে — এবং কিভাবে কাজ করে</h4>
+                            <p class="text-slate-600 mb-4">এই মেথডগুলো লুপ নিজে লিখার বদলে এক লাইনে কাজ সেরে দেয়; কোড ছোট হয়, পড়তে ও বাগ কম হয়। নিচে প্রতিটির <strong>কিভাবে কাজ করে</strong> সংক্ষেপে দেওয়া হলো।</p>
+                            <div class="space-y-4 mb-6">
+                                <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">map — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700">অ্যারের প্রতিটি উপাদানের ওপর আপনার দেওয়া callback ফাংশন একবার করে কল হয়; প্রতিবার যে মান ফাংশন return করে সেটা নতুন অ্যারের সেই পজিশনে বসে। শেষে একদম সমান লেন্থের নতুন অ্যারে ফিরে আসে। অরিজিনাল অ্যারে বদলায় না।</p>
+                                </div>
+                                <div class="bg-emerald-50 border border-emerald-100 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">filter — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700">প্রতিটি উপাদানে callback চালিয়ে যেগুলো <code>true</code> রিটার্ন করে শুধু সেগুলো নতুন অ্যারে তে রাখে। যে উপাদানে <code>false</code> বা falsy রিটার্ন সেটা বাদ পড়ে। তাই লেন্থ অরিজিনালের চেয়ে কম বা সমান হতে পারে। অরিজিনাল বদলায় না।</p>
+                                </div>
+                                <div class="bg-amber-50 border border-amber-100 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">reduce — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700">একটা "accumulator" (acc) মান দিয়ে শুরু করেন (দ্বিতীয় আর্গুমেন্ট)। অ্যারে বাম থেকে ডানে একটার পর একটা উপাদান নিয়ে callback(acc, currentItem) চালিয়ে যে মান return করেন সেটাই পরের স্টেপের acc হয়। শেষ উপাদান শেষে যে acc থাকে সেটাই reduce এর রিটার্ন। দিয়ে যোগফল, গড়, অ্যারে থেকে অবজেক্ট, গ্রুপ বাই — সব বের করা যায়।</p>
+                                </div>
+                                <div class="bg-purple-50 border border-purple-100 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">find / findIndex — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700">বাম থেকে ঘুরে যেই প্রথম উপাদানে callback <code>true</code> রিটার্ন করে, find সেটা (ভ্যালু) রিটার্ন করে, findIndex সেই ইনডেক্স রিটার্ন করে। কোনটাই মিল না পেলে find <code>undefined</code>, findIndex <code>-1</code> দেয়।</p>
+                                </div>
+                                <div class="bg-cyan-50 border border-cyan-100 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">some / every — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700"><strong>some:</strong> যেই মুহূর্তে কোনো একটা উপাদানে callback true রিটার্ন করে, তখনই some true রিটার্ন করে এবং বাকি চেক বন্ধ। সব false হলে false। <strong>every:</strong> সব উপাদানে callback true হতে হবে; একটা false হলেই every false রিটার্ন করে এবং বন্ধ। খালি অ্যারে every → true, some → false।</p>
+                                </div>
+                                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">flat / flatMap — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700"><strong>flat(depth):</strong> নেস্টেড অ্যারে (অ্যারের ভেতরে অ্যারে) কে এক লেভেল বা কয় লেভেল চ্যাপ্টা করে দেয়। <code>[[1,2],[3,4]].flat()</code> → <code>[1,2,3,4]</code>। <strong>flatMap:</strong> আগে map চালায়, তারপর ফলাফল এক লেভেল flat করে। তাই map + flat(1) এর শর্টকাট; প্রতিটি আইটেম থেকে অ্যারে বের করে সবার ভ্যালু এক অ্যারে করতে কাজে লাগে।</p>
+                                </div>
+                                <div class="bg-rose-50 border border-rose-100 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">at(index) — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700">অ্যারের কোনো ইনডেক্সের ভ্যালু নিতে <code>arr.at(0)</code> প্রথম, <code>arr.at(-1)</code> শেষ। নেগেটিভ ইনডেক্স পেছন থেকে (যেমন -1 = শেষ, -2 = শেষের আগের)। <code>arr[arr.length - 1]</code> লিখার বদলে <code>arr.at(-1)</code> দিলে পড়তে সহজ।</p>
+                                </div>
+                                <div class="bg-teal-50 border border-teal-100 rounded-lg p-4">
+                                    <p class="font-semibold text-slate-800 mb-1">sort — কিভাবে কাজ করে</p>
+                                    <p class="text-sm text-slate-700">অরিজিনাল অ্যারে কে জায়গায় (in-place) সর্ট করে, মানে নিজেই বদলে যায়। callback না দিলে স্ট্রিং হিসেবে ইউনিকোড অর্ডারে সাজায় (সংখ্যা সঠিকভাবে সর্ট হয় না)। সংখ্যা সর্ট করতে <code>(a, b) =&gt; a - b</code> (আরোহী) বা <code>(a, b) =&gt; b - a</code> (অবরোহী) দিতে হয়। অরিজিনাল রাখতে চাইলে আগে <code>[...arr].sort(...)</code> করে কপি নিন।</p>
+                                </div>
+                            </div>
+                            <div class="mockup-code text-xs mb-4">
+                                <pre data-prefix="1"><code>// flatMap: প্রতিটি শব্দ ভাঙে অক্ষরের অ্যারে, তারপর সবার একসাথে</code></pre>
+                                <pre data-prefix="2"><code>['hi', 'ok'].flatMap(s =&gt; s.split(''));  // ['h','i','o','k']</code></pre>
+                                <pre data-prefix="3"><code>// at: শেষ আইটেম</code></pre>
+                                <pre data-prefix="4"><code>const last = [10, 20, 30].at(-1);  // 30</code></pre>
+                                <pre data-prefix="5"><code>// sort সংখ্যা (কপি নিয়ে, অরিজিনাল অক্ষুণ্ণ)</code></pre>
+                                <pre data-prefix="6"><code>const sorted = [...[3, 1, 2]].sort((a, b) =&gt; a - b);  // [1, 2, 3]</code></pre>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mt-6 mb-3">কোডিং লাইফে সবচেয়ে বেশি ব্যবহৃত Array মেথড — সংক্ষিপ্ত টেবিল</h4>
+                            <div class="overflow-x-auto mb-4">
+                                <table class="table table-sm table-zebra border border-slate-200 rounded-lg text-sm">
+                                    <thead><tr class="bg-slate-100"><th>মেথড</th><th>কোথায় লাগে (কোডিং লাইফ)</th><th>সংক্ষিপ্ত উদাহরণ</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>push</code> / <code>pop</code></td><td>লিস্টে আইটেম যোগ/সরানো (টো-ডু, কার্ট)</td><td><code>cart.push(item); cart.pop();</code></td></tr>
+                                        <tr><td><code>map</code></td><td>API ডেটা থেকে UI এর জন্য নতুন অ্যারে (নামের লিস্ট, আইডি)</td><td><code>users.map(u =&gt; u.name)</code></td></tr>
+                                        <tr><td><code>filter</code></td><td>সার্চ/ফিল্টার (ক্যাটাগরি, প্রাইস রেঞ্জ)</td><td><code>products.filter(p =&gt; p.price &lt; 100)</code></td></tr>
+                                        <tr><td><code>reduce</code></td><td>যোগফল, গড়, গ্রুপ বাই, এক অবজেক্টে জমা</td><td><code>prices.reduce((sum, p) =&gt; sum + p, 0)</code></td></tr>
+                                        <tr><td><code>find</code> / <code>findIndex</code></td><td>আইডি দিয়ে একটা আইটেম খোঁজা</td><td><code>users.find(u =&gt; u.id === 5)</code></td></tr>
+                                        <tr><td><code>includes</code></td><td>কোনো মান আছে কিনা চেক (সিম্পল)</td><td><code>ids.includes(10)</code></td></tr>
+                                        <tr><td><code>some</code> / <code>every</code></td><td>কোনো একটা শর্ত মেনেছে? / সব মেনেছে?</td><td><code>arr.some(x =&gt; x &gt; 0)</code></td></tr>
+                                        <tr><td><code>flat</code> / <code>flatMap</code></td><td>নেস্টেড অ্যারে চ্যাপ্টা করা; map + flat একসাথে</td><td><code>arr.flat(); arr.flatMap(x =&gt; x.items)</code></td></tr>
+                                        <tr><td><code>at(i)</code></td><td>ইনডেক্স দিয়ে ভ্যালু; at(-1) = শেষ</td><td><code>arr.at(-1)</code></td></tr>
+                                        <tr><td><code>slice</code></td><td>কপি বা অংশ নেওয়া (অরিজিনাল বদলায় না)</td><td><code>arr.slice(0, 5)</code></td></tr>
+                                        <tr><td><code>sort</code></td><td>সর্ট (সংখ্যা: (a,b) =&gt; a-b); অরিজিনাল বদলায়, কপি চাইলে [...arr].sort()</td><td><code>[...arr].sort((a,b) =&gt; a-b)</code></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>// রিয়েল লাইফ উদাহরণ: API থেকে ইউজার নিয়ে শুধু নাম + টোটাল কাউন্ট</code></pre>
+                                <pre data-prefix="2"><code>const users = [{ id: 1, name: 'A' }, { id: 2, name: 'B' }];</code></pre>
+                                <pre data-prefix="3"><code>const names = users.map(u =&gt; u.name);           // ['A', 'B']</code></pre>
+                                <pre data-prefix="4"><code>const total = users.reduce((n, u) =&gt; n + 1, 0); // 2</code></pre>
+                                <pre data-prefix="5"><code>const hasA = users.some(u =&gt; u.name === 'A');   // true</code></pre>
+                            </div>
                         </div>
 
                         <!-- OBJECT -->
@@ -235,6 +322,10 @@
                                 অবজেক্ট হলো key-value জোড়ার কালেকশন — একটা এনটিটির বিভিন্ন প্রপার্টি (নাম, বয়স, ইমেইল)
                                 একসাথে রাখা। <strong class="text-slate-800">কখন কোথায়:</strong> ইউজার/প্রোডাক্ট ডেটা,
                                 সেটিংস, API থেকে আসা JSON, ফ্রিকোয়েন্সি কাউন্টার (কোন অক্ষর কতবার)।</p>
+                            <div class="doc-syntax-box text-sm mb-4">
+                                <strong>Object.keys(obj)</strong> → কীগুলোর অ্যারে। &nbsp;|&nbsp; <strong>Object.values(obj)</strong> → ভ্যালুগুলোর অ্যারে। &nbsp;|&nbsp; <strong>Object.entries(obj)</strong> → [key, value] জোড়ার অ্যারে।
+                            </div>
+                            <p class="text-slate-600 mb-3"><strong>কিভাবে কাজ করে:</strong> <code>Object.keys(obj)</code> অবজেক্টের নিজস্ব (enumerable) প্রপার্টিগুলোর শুধু কী নামগুলো অ্যারে হিসেবে দেয়। <code>Object.values(obj)</code> সেই কীগুলোর ভ্যালুগুলো অ্যারে করে দেয়। <code>Object.entries(obj)</code> প্রতিটি প্রপার্টিকে <code>[key, value]</code> জোড়া হিসেবে দেয় — লুপে <code>for (const [k, v] of Object.entries(obj))</code> চালাতে বা Map বানাতে সুবিধা। এই তিনটা মেথড অরিজিনাল অবজেক্ট বদলায় না।</p>
                             <p class="text-sm font-semibold text-slate-700 mb-3">কিভাবে কাজ করে ও ব্যবহার করবেন:</p>
                             <div class="space-y-5">
                                 <div class="mockup-code text-xs">
@@ -269,6 +360,25 @@
                                         data-prefix="9"><code>console.log(countChars('hello')); // { h:1, e:1, l:2, o:1 }</code></pre>
                                 </div>
                             </div>
+                            <h4 class="font-bold text-slate-800 mt-6 mb-3">কোডিং লাইফে সবচেয়ে ব্যবহৃত Object প্যাটার্ন ও মেথড</h4>
+                            <div class="overflow-x-auto mb-4">
+                                <table class="table table-sm table-zebra border border-slate-200 rounded-lg text-sm">
+                                    <thead><tr class="bg-slate-100"><th>মেথড/প্যাটার্ন</th><th>কোথায় লাগে</th><th>উদাহরণ</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>Object.keys(obj)</code></td><td>অবজেক্টের সব কী ঘুরতে, ফর্ম ফিল্ড চেক</td><td><code>Object.keys(settings).forEach(k =&gt; ...)</code></td></tr>
+                                        <tr><td><code>Object.values(obj)</code></td><td>শুধু ভ্যালু নিয়ে অ্যারে বানানো</td><td><code>Object.values(user)</code></td></tr>
+                                        <tr><td><code>Object.entries(obj)</code></td><td>key-value জোড়া দিয়ে লুপ, <code>Map</code> বানানো</td><td><code>for (const [k,v] of Object.entries(obj))</code></td></tr>
+                                        <tr><td><code>{ ...obj }</code> (spread)</td><td>কপি, একটু বদলে নতুন অবজেক্ট</td><td><code>{ ...user, name: 'New' }</code></td></tr>
+                                        <tr><td><code>obj[key] = (obj[key] || 0) + 1</code></td><td>ফ্রিকোয়েন্সি কাউন্টার (অক্ষর, শব্দ)</td><td>ইন্টারভিউ ও অ্যালগোরিদমে খুব কমন</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mockup-code text-xs">
+                                <pre data-prefix="1"><code>// রিয়েল লাইফ: সেটিংস থেকে শুধু সক্রিয় কীগুলো</code></pre>
+                                <pre data-prefix="2"><code>const settings = { theme: 'dark', sound: true, lang: 'en' };</code></pre>
+                                <pre data-prefix="3"><code>const keys = Object.keys(settings);  // ['theme','sound','lang']</code></pre>
+                                <pre data-prefix="4"><code>const copy = { ...settings, theme: 'light' }; // কপি + ওভাররাইড</code></pre>
+                            </div>
                         </div>
 
                         <!-- LOOPS -->
@@ -280,6 +390,7 @@
                                 ইনডেক্স দরকার হলে <code>for (let i=0; ...)</code>; অ্যারের ভ্যালু দরকার হলে
                                 <code>for...of</code>; অবজেক্টের কী/ভ্যালু ঘুরতে <code>for...in</code> বা
                                 <code>Object.keys()</code>; প্রতিটায় একটা কাজ করতে <code>forEach</code>।</p>
+                            <p class="text-slate-600 mb-4"><strong>কিভাবে কাজ করে:</strong> <code>for (let i=0; i&lt;arr.length; i++)</code> — i দিয়ে ০ থেকে length-১ পর্যন্ত এক এক করে বাড়ে, প্রতিবার arr[i] এক্সেস করেন। <code>for...of</code> অ্যারের প্রতিটি উপাদানকে একটার পর একটা ভ্যারিয়েবলে দেয় (ইনডেক্স দেয় না)। <code>for...in</code> অবজেক্টের keys দিয়ে ঘোরে; অ্যারে এ ব্যবহার করলে ইনডেক্স (স্ট্রিং) পাবেন, তাই অ্যারে ঘুরতে for...of ভালো। <code>forEach</code> অ্যারের প্রতিটি উপাদানের জন্য callback(value, index, array) একবার করে চালায়; মাঝে break করা যায় না, return শুধু সেই callback থেকে বের হয়।</p>
                             <p class="text-sm font-semibold text-slate-700 mb-3">উদাহরণ — কপি করে রান করুন:</p>
                             <div class="space-y-5">
                                 <div class="mockup-code text-xs">
@@ -313,6 +424,8 @@
                                     <pre data-prefix="4"><code>});</code></pre>
                                 </div>
                             </div>
+                            <h4 class="font-bold text-slate-800 mt-6 mb-3">কোডিং লাইফে কখন কোন লুপ ব্যবহার করবেন</h4>
+                            <p class="text-slate-600 mb-3">ইনডেক্স দরকার (যেমন i, position) বা পেছন দিক দিয়ে ঘুরতে চাইলে → <code>for (let i = 0; i &lt; arr.length; i++)</code>। শুধু ভ্যালু দরকার, অ্যারেতে ঘুরতে → <code>for (const item of arr)</code> — সবচেয়ে পড়তে সহজ। অবজেক্টের key/value ঘুরতে → <code>for (const key in obj)</code> বা <code>Object.keys(obj).forEach(...)</code>। অ্যারের প্রতিটায় সাইড ইফেক্ট (DOM আপডেট, লগ) করতে চাইলে → <code>arr.forEach((item, i) =&gt; { ... })</code>। নতুন অ্যারে বা এক মান বের করতে চাইলে map/filter/reduce ব্যবহার করুন, শুধু লুপের জন্য for বা for...of।</p>
                         </div>
 
                         <!-- EVENT LOOP -->
@@ -343,6 +456,7 @@
                                 <pre
                                     data-prefix="6"><code>// আউটপুট: A, D, C, B (সিনক্রোনাস আগে, তারপর মাইক্রোটাস্ক, তারপর টাস্ক)</code></pre>
                             </div>
+                            <p class="text-slate-600 mt-4"><strong>কোডিং লাইফে:</strong> <code>fetch()</code> বা API কল করলে রেসপন্স আসতে সময় লাগে। সেই সময় পর্যন্ত বাকি কোড রান করতে থাকে। তাই API এর ডেটা ব্যবহার করতে চাইলে অবশ্যই <code>await fetch()</code> বা <code>.then(callback)</code> এর ভেতরে লিখতে হয় — বাইরে লিখলে ডেটা তখনো আসেনি বলে undefined বা এরর পাবেন। Event Loop এই নিয়ম দিয়ে অ্যাসিঙ্ক কাজগুলো সিরিয়াল রাখে।</p>
                         </div>
 
                         <!-- EVENT LISTENER -->
@@ -354,6 +468,9 @@
                                 একটা ইভেন্ট ফায়ার করে। Event Listener দিয়ে আপনি বলতে পারেন “এই ইভেন্ট হলে এই ফাংশন
                                 চালাও”। <strong>কখন কোথায়:</strong> বাটন ক্লিক, ইনপুটে টাইপ, ফর্ম সাবমিট, স্ক্রল,
                                 কী-প্রেস — যেকোনো ইউজার অ্যাকশনে রেসপন্স দিতে।</p>
+                            <div class="doc-syntax-box text-sm mb-4">
+                                <strong>element.addEventListener('eventType', callback)</strong> — eventType: 'click', 'submit', 'keyup', 'input', 'scroll', 'load'
+                            </div>
                             <p class="text-sm font-bold text-slate-700 mb-2">কিভাবে লিখতে হয় ও ব্যবহার করবেন:</p>
                             <div class="space-y-4">
                                 <div class="mockup-code text-xs">
@@ -400,6 +517,10 @@
                             </div>
                         </div>
 
+                        <div class="doc-pro-tip">
+                            <h4><i class="fa-solid fa-lightbulb text-amber-600 mr-1"></i> Pro Tip</h4>
+                            <p>map/filter/reduce চেইন করলে পড়া সহজ হয়: <code>arr.filter(x => x > 0).map(x => x * 2).reduce((a,b) => a + b, 0)</code>। Event Listener অনেক বাটন/আইটেমে দিতে Event Delegation ব্যবহার করুন — প্যারেন্টে এক লিসেনার, ভেতরে <code>e.target.closest('button')</code> দিয়ে চেক করুন।</p>
+                        </div>
                         <div class="bg-amber-50 border border-amber-300 rounded-xl p-4">
                             <h4 class="font-bold text-amber-900 mb-2">সংক্ষেপে মনে রাখুন</h4>
                             <ul class="text-sm text-slate-700 space-y-1 list-disc ml-5">
@@ -428,7 +549,10 @@
                         <p class="text-slate-600 mb-4">JS এর বেসিক ফাউন্ডেশন। কিভাবে মেমরিতে ভেরিয়েবল কাজ করে তা না
                             জানলে অনেক বাগ ফেস করতে হয়। নিচের উদাহরণগুলো কপি করে ব্রাউজারের Console এ রান করে দেখতে
                             পারবেন।</p>
-
+                        <div class="doc-future-help mb-6">
+                            <h4><i class="fa-solid fa-arrow-trend-up text-emerald-600 mr-1"></i> ভবিষ্যতে কোথায় লাগবে</h4>
+                            <p>var/let/const ও Hoisting ইন্টারভিউতে প্রায়ই জিজ্ঞাসা হয়। বড় প্রজেক্টে scope ভুল বোঝলে বাগ হয়; টিম ওয়ার্কে <code>let</code>/<code>const</code> ব্যবহারের নিয়ম জানা জরুরি।</p>
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
                                 <h4 class="font-bold text-blue-800 mb-1">কিভাবে ফাংশনে ব্যবহার করব?</h4>
@@ -616,9 +740,39 @@
                         </h2>
                         <p class="text-slate-600 mb-6">প্রোজেক্টে স্ট্রিং ম্যানিপুলেশন, API থেকে আসা JSON এবং ডেটা ভাঙতে
                             Destructuring প্রতিদিন লাগে।</p>
+                        <div class="doc-future-help mb-6">
+                            <h4><i class="fa-solid fa-arrow-trend-up text-emerald-600 mr-1"></i> ভবিষ্যতে কোথায় লাগবে</h4>
+                            <p><strong>JSON.parse / JSON.stringify:</strong> প্রায় প্রতিটি API রেসপন্স ও ফ্রন্ট-ব্যাকেন্ড ডেটা এক্সচেঞ্জ। <strong>Destructuring:</strong> React/Vue-তে props, state; ফাংশন প্যারামিটার; কোড ছোট ও পড়া সহজ। <strong>String (split, trim, includes):</strong> সার্চ, ভ্যালিডেশন, প্যালিনড্রোম/অ্যালগোরিদম।</p>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg text-slate-800 mb-3">কোডিং লাইফে সবচেয়ে ব্যবহৃত String মেথড — আলোচনা ও উদাহরণ</h3>
+                            <div class="overflow-x-auto mb-4">
+                                <table class="table table-sm table-zebra border border-slate-200 rounded-lg text-sm">
+                                    <thead><tr class="bg-slate-100"><th>মেথড</th><th>কোথায় লাগে</th><th>উদাহরণ</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><code>trim()</code></td><td>ইউজার ইনপুটের আগাপিছনের স্পেস সরানো</td><td><code>'  email@x.com  '.trim()</code></td></tr>
+                                        <tr><td><code>toLowerCase()</code> / <code>toUpperCase()</code></td><td>তুলনা বা ডিসপ্লে (কেস ইগনোর)</td><td><code>str.toLowerCase() === 'yes'</code></td></tr>
+                                        <tr><td><code>split(sep)</code></td><td>স্ট্রিং থেকে অ্যারে (শব্দ, লাইন, CSV)</td><td><code>'a,b,c'.split(',')</code> → <code>['a','b','c']</code></td></tr>
+                                        <tr><td><code>join(sep)</code></td><td>অ্যারে থেকে স্ট্রিং (অবজেক্টে অ্যারের মেথড)</td><td><code>['a','b'].join('-')</code> → <code>'a-b'</code></td></tr>
+                                        <tr><td><code>includes(sub)</code></td><td>সার্চ — সাবস্ট্রিং আছে কিনা</td><td><code>title.includes('JS')</code></td></tr>
+                                        <tr><td><code>startsWith</code> / <code>endsWith</code></td><td>প্রিফিক্স/সাফিক্স চেক (ফাইলনেম, URL)</td><td><code>path.startsWith('/api')</code></td></tr>
+                                        <tr><td><code>slice(start, end)</code></td><td>কোনো অংশ কেটে নেওয়া (অরিজিনাল বদলায় না)</td><td><code>'hello'.slice(0, 2)</code> → <code>'he'</code></td></tr>
+                                        <tr><td><code>replace(old, new)</code></td><td>একটা রিপ্লেস; সব বদলাতে regex</td><td><code>str.replace(/\s/g, '-')</code></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mockup-code text-xs mb-4">
+                                <pre data-prefix="1"><code>// রিয়েল লাইফ: ফর্ম ভ্যালিডেশন + প্যালিনড্রোম</code></pre>
+                                <pre data-prefix="2"><code>const input = '  Level  ';</code></pre>
+                                <pre data-prefix="3"><code>const cleaned = input.trim().toLowerCase();  // 'level'</code></pre>
+                                <pre data-prefix="4"><code>const rev = cleaned.split('').reverse().join('');</code></pre>
+                                <pre data-prefix="5"><code>const isPalindrome = cleaned === rev;  // true</code></pre>
+                                <pre data-prefix="6"><code>// সার্চ: 'JavaScript Pro'.includes('Pro')  // true</code></pre>
+                            </div>
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
-                                <h3 class="font-bold text-lg text-slate-800 mb-2">String Methods</h3>
+                                <h3 class="font-bold text-lg text-slate-800 mb-2">String Methods — সংক্ষিপ্ত রেফারেন্স</h3>
                                 <p class="text-sm text-slate-600 mb-3">split, join, slice, includes, trim, toLowerCase —
                                     প্যালিনড্রোম চেক, সার্চ, কেস বদলাতে ব্যবহার করুন।</p>
                                 <div class="mockup-code text-xs">
@@ -654,7 +808,10 @@
                     <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
                             <i class="fa-solid fa-sitemap text-orange-500"></i> Advanced DOM & Events
                         </h2>
-
+                        <div class="doc-future-help mb-6">
+                            <h4><i class="fa-solid fa-arrow-trend-up text-emerald-600 mr-1"></i> ভবিষ্যতে কোথায় লাগবে</h4>
+                            <p>DOM ম্যানিপুলেশন ও Event Delegation যেকোনো ভ্যানিলা জেএস প্রজেক্টে লাগে। React/Vue ব্যবহার করলেও ভিতরে একই কনসেপ্ট; ইন্টারভিউতে "Event Bubbling", "Delegation", "DocumentFragment" জিজ্ঞাসা হয়। ডায়নামিক লিস্ট/টেবিলে এক প্যারেন্টে এক লিসেনার দেয়া প্র্যাকটিস করুন।</p>
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
                                 <h4 class="font-bold text-orange-800 mb-1">কিভাবে ইভেন্টে ব্যবহার করব?</h4>
@@ -726,7 +883,13 @@
                         <p class="text-slate-600 mb-6">ইন্টারনেট থেকে ডেটা আনা, ফাইল রিড করা, বা যে কাজে সময় লাগে —
                             সেগুলো JavaScript এ <strong>Asynchronous</strong>। <code>async</code> এবং <code>await</code>
                             দিয়ে এই কাজগুলো সহজ ও পড়তে সুবিধা হয় (Promise-এর চেয়ে)।</p>
-
+                        <div class="doc-future-help mb-6">
+                            <h4><i class="fa-solid fa-arrow-trend-up text-emerald-600 mr-1"></i> ভবিষ্যতে কোথায় লাগবে</h4>
+                            <p>প্রায় প্রতিটি অ্যাপে API কল, ডেটা লোড, ফর্ম সাবমিট — সবই async। React/Vue/Angular বা যে ফ্রেমওয়ার্কেই যান, <code>async/await</code> + <code>try/catch</code> এবং <code>Promise.all</code> জানা থাকলে কাজ দ্রুত করবেন। ইন্টারভিউতেও প্রায়ই জিজ্ঞাসা।</p>
+                        </div>
+                        <div class="doc-syntax-box text-sm mb-6">
+                            <strong>async function fn() { const data = await fetch(url).then(r => r.json()); }</strong> — try/catch দিয়ে এরর হ্যান্ডল করুন। একসাথে অনেক API: <strong>await Promise.all([fetch(u1), fetch(u2)])</strong>
+                        </div>
                         <!-- Part 1: কী ও কেন -->
                         <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r-xl mb-6">
                             <h3 class="font-bold text-lg text-amber-900 mb-2">১. async এবং await কী?</h3>
@@ -1281,7 +1444,10 @@
                         <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 text-slate-800 border-b pb-3">
                             <i class="fa-brands fa-js-square text-jsdark"></i> Advanced JS Architecture
                         </h2>
-
+                        <div class="doc-future-help mb-6">
+                            <h4><i class="fa-solid fa-arrow-trend-up text-emerald-600 mr-1"></i> ভবিষ্যতে কোথায় লাগবে</h4>
+                            <p><strong>Closure:</strong> Debounce/Throttle, প্রাইভেট ভেরিয়েবল, React-এর হুকের পিছনের লজিক; ইন্টারভিউতে প্রায়ই জিজ্ঞাসা। <strong>this:</strong> ক্লাস, ইভেন্ট হ্যান্ডলার, ক্যালব্যাকে কনটেক্সট বোঝা; অ্যারো ফাংশন vs সাধারণ ফাংশন কখন ব্যবহার করবেন জানা জরুরি।</p>
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div class="bg-slate-100 border border-slate-300 rounded-lg p-4">
                                 <h4 class="font-bold text-slate-800 mb-1">কিভাবে কোডে ব্যবহার করব?</h4>

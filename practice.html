@@ -63,7 +63,7 @@
             <a href="index.html" class="nav-link-pill"><i class="fa-solid fa-house"></i> Home</a>
             <a href="docs.html" class="nav-link-pill"><i class="fa-solid fa-book"></i> Documentation</a>
             <a href="practice.html" class="nav-link-pill active" aria-current="page"><i class="fa-solid fa-pen-fancy"></i> Practice</a>
-            <a href="gallery.html" class="nav-link-pill"><i class="fa-solid fa-images"></i> Gallery</a>
+            <a href="gallery.html" class="nav-link-pill"><i class="fa-brands fa-youtube"></i> Videos</a>
         </div>
         <div class="navbar-end gap-2">
             <button type="button" class="nav-link-pill" onclick="showDailyRoutineModal()" title="Daily Routine — ২০% শেখা, ৮০% প্র্যাকটিস">
@@ -89,7 +89,7 @@
                 <li><a href="index.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-house w-5 text-center"></i> Home</a></li>
                 <li><a href="docs.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-book w-5 text-center"></i> Documentation</a></li>
                 <li><a href="practice.html" class="flex items-center gap-3 rounded-xl py-3 text-js font-semibold hover:bg-white/10 transition-colors"><i class="fa-solid fa-pen-fancy w-5 text-center"></i> Practice</a></li>
-                <li><a href="gallery.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-solid fa-images w-5 text-center"></i> Gallery</a></li>
+                <li><a href="gallery.html" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors"><i class="fa-brands fa-youtube w-5 text-center"></i> Videos</a></li>
                 <li><button type="button" onclick="showDailyRoutineModal(); document.body.classList.remove('mobile-drawer-open');" class="flex items-center gap-3 rounded-xl py-3 text-white hover:bg-white/10 hover:text-js transition-colors w-full text-left"><i class="fa-solid fa-calendar-check w-5 text-center"></i> Daily Routine</button></li>
             </ul>
         </nav>
@@ -106,14 +106,18 @@
                 <p class="text-slate-300 text-lg max-w-2xl mx-auto">
                     Beginner থেকে Advanced পর্যন্ত সব টপিকের প্রশ্ন। বারবার প্র্যাকটিস করুন, রিভিশনের জন্য মার্ক করুন — যাতে পিছনের টপিক ভুলে গেলেও আবার রিভিশন করতে পারেন এবং লজিক স্ট্রং থাকে।
                 </p>
+                <p class="text-slate-400 text-sm max-w-xl mx-auto mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+                    <span><i class="fa-solid fa-rotate-right text-amber-400 mr-1"></i> রিভিশনের জন্য মার্ক</span>
+                    <span><i class="fa-solid fa-check text-green-400 mr-1"></i> প্র্যাকটিস করেছি (ক্লিক করলে কাউন্ট বাড়ে)</span>
+                </p>
             </div>
         </section>
 
         <!-- Revision only banner (hidden when no revision marked) -->
         <div id="revision-only-banner" class="revision-only-banner hidden px-4 py-3 flex items-center justify-center gap-2 flex-wrap">
-            <i class="fa-solid fa-rotate-right text-amber-700"></i>
+            <i class="fa-solid fa-rotate-right text-amber-700" aria-hidden="true"></i>
             <span><strong data-revision-count>0</strong> question(s) marked for revision.</span>
-            <button type="button" data-filter-revision="only" class="btn btn-sm btn-warning">Show only revision</button>
+            <button type="button" data-filter-revision="only" class="btn btn-sm btn-warning filter-pill" aria-pressed="false">Show only revision</button>
         </div>
 
         <!-- Sidebar + Content (same layout as Documentation page) -->
@@ -129,20 +133,22 @@
             </aside>
 
             <!-- Content: Filters + Questions (narrower width, centered) -->
-            <div class="flex-1 min-w-0 order-1 lg:order-2 max-w-4xl mx-auto">
-                <section class="py-6">
-                    <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
-                        <span class="text-slate-600 font-medium">Level:</span>
-                        <div class="flex flex-wrap gap-2">
-                            <button type="button" data-filter-level="all" class="btn btn-sm filter-pill active">All</button>
-                            <button type="button" data-filter-level="beginner" class="btn btn-sm btn-ghost filter-pill">Beginner</button>
-                            <button type="button" data-filter-level="intermediate" class="btn btn-sm btn-ghost filter-pill">Intermediate</button>
-                            <button type="button" data-filter-level="advanced" class="btn btn-sm btn-ghost filter-pill">Advanced</button>
+            <div class="flex-1 min-w-0 order-1 lg:order-2 max-w-4xl mx-auto w-full">
+                <section class="py-4 md:py-6 px-0">
+                    <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-4 md:mb-6" role="group" aria-label="Filter questions">
+                        <span class="text-slate-600 font-medium text-sm w-full sm:w-auto text-center sm:text-left">Level:</span>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <button type="button" data-filter-level="all" class="btn btn-sm filter-pill active" aria-pressed="true">All</button>
+                            <button type="button" data-filter-level="beginner" class="btn btn-sm btn-ghost filter-pill" aria-pressed="false">Beginner</button>
+                            <button type="button" data-filter-level="intermediate" class="btn btn-sm btn-ghost filter-pill" aria-pressed="false">Intermediate</button>
+                            <button type="button" data-filter-level="advanced" class="btn btn-sm btn-ghost filter-pill" aria-pressed="false">Advanced</button>
                         </div>
-                        <span class="text-slate-400 mx-2">|</span>
-                        <span class="text-slate-600 font-medium">View:</span>
-                        <button type="button" data-filter-revision="all" class="btn btn-sm btn-ghost filter-pill active">All questions</button>
-                        <button type="button" data-filter-revision="only" class="btn btn-sm btn-ghost filter-pill">Revision only</button>
+                        <span class="text-slate-400 mx-1 sm:mx-2 hidden sm:inline" aria-hidden="true">|</span>
+                        <span class="text-slate-600 font-medium text-sm w-full sm:w-auto text-center sm:text-left mt-2 sm:mt-0">View:</span>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <button type="button" data-filter-revision="all" class="btn btn-sm btn-ghost filter-pill active" aria-pressed="true">All questions</button>
+                            <button type="button" data-filter-revision="only" class="btn btn-sm btn-ghost filter-pill" aria-pressed="false">Revision only</button>
+                        </div>
                     </div>
 
                     <div id="practice-topics" class="min-h-[200px] max-w-full mx-auto">

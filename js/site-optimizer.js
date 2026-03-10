@@ -49,8 +49,7 @@ class SiteOptimizer {
             this.results = this.getDefaultResults(); // Reset results
             this.analyze(); // Re-evaluate the live DOM
             this.renderWidget(); // Update UI
-            this.openModal(); // Ensure modal stays open
-        }, 600); // Fake small delay for effect
+        }, 600); // Small delay for effect; do not open modal on reload
     }
 
     /**
@@ -258,11 +257,12 @@ class SiteOptimizer {
         let container = document.getElementById(this.containerId);
         if (!container) return;
 
-        // Render the floating widget
+        // Render the floating widget (reload next to Optimizer Goal; click area opens modal)
         container.innerHTML = `
-            <div id="floating-seo-widget" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: #0f172a; color: white; padding: 15px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; width: 220px; font-family: sans-serif; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onclick="window.optimizerInstance.openModal()">
-                <h4 style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px; color: #F7DF1E;">
+            <div id="floating-seo-widget" class="optimizer-floating-widget" onclick="window.optimizerInstance.openModal()">
+                <h4 class="optimizer-widget-title">
                     <span><i class="fa-solid fa-gauge-high"></i> Optimizer Goal</span>
+                    <button type="button" id="rescan-btn" class="optimizer-widget-rescan" onclick="event.stopPropagation(); window.optimizerInstance.rescan();" aria-label="Re-scan"> <i class="fa-solid fa-rotate-right"></i> </button>
                 </h4>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 12px;">
                     <span>Performance</span>
@@ -293,15 +293,17 @@ class SiteOptimizer {
     renderCornerClock() {
         if (document.getElementById('corner-clock-wrap')) return;
         const html = `
-            <div id="corner-clock-wrap" style="
-                position: fixed; bottom: 20px; right: 20px; z-index: 9998;
-                background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-                border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 16px;
-                padding: 14px 20px; min-width: 150px; box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-                font-family: 'Fira Code', 'SF Mono', monospace; color: #fff; user-select: none;
-            ">
-                <div style="font-size: 11px; color: #94a3b8; letter-spacing: 0.06em; margin-bottom: 6px;" id="corner-clock-date">-- --- ----</div>
-                <div style="font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.03em; color: #F7DF1E;" id="corner-clock-time">--:--:-- --</div>
+            <div id="corner-clock-wrap" class="optimizer-clock-wrap">
+                <div class="optimizer-clock-ring">
+                    <div class="optimizer-clock-inner">
+                        <div class="optimizer-clock-date" id="corner-clock-date">-- --- ----</div>
+                        <div class="optimizer-clock-time" id="corner-clock-time">--:--:--</div>
+                    </div>
+                </div>
+            </div>
+            <div id="optimizer-mobile-buttons" class="optimizer-mobile-buttons" aria-label="Clock and Optimizer">
+                <button type="button" class="optimizer-mobile-btn optimizer-mobile-btn-clock" onclick="document.getElementById('corner-clock-wrap').classList.toggle('optimizer-clock-mobile-open')" aria-label="Toggle clock"><i class="fa-regular fa-clock"></i></button>
+                <button type="button" class="optimizer-mobile-btn optimizer-mobile-btn-optimizer" onclick="window.optimizerInstance.openModal()" aria-label="Open Optimizer"><i class="fa-solid fa-gauge-high"></i></button>
             </div>
         `;
         document.body.insertAdjacentHTML('beforeend', html);
@@ -313,13 +315,9 @@ class SiteOptimizer {
         const update = () => {
             const dateEl = document.getElementById('corner-clock-date');
             const clockEl = document.getElementById('corner-clock-time');
-            if (!dateEl || !clockEl) return;
             const d = new Date();
-            const h = d.getHours();
-            const ampm = h >= 12 ? 'PM' : 'AM';
-            const h12 = h % 12 || 12;
-            dateEl.textContent = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
-            clockEl.textContent = pad(h12) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' ' + ampm;
+            if (dateEl) dateEl.textContent = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+            if (clockEl) clockEl.textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
         };
         if (this.clockInterval) clearInterval(this.clockInterval);
         update();
@@ -380,12 +378,6 @@ class SiteOptimizer {
         });
 
         modalHtml += `
-                    </div>
-                    <div style="margin-top: 30px; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 20px;">
-                        <button id="rescan-btn" onclick="window.optimizerInstance.rescan()" style="background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 15px; transition: background 0.2s;" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">
-                            <i class="fa-solid fa-rotate-right" style="margin-right: 8px;"></i> Live Re-Scan DOM
-                        </button>
-                        <p style="margin-top: 10px; font-size: 12px; color: #94a3b8;">Scans the live DOM. If you changed things via dev tools, score will update instantly without page refresh.</p>
                     </div>
                 </div>
             </div>

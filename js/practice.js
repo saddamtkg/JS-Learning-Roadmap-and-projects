@@ -144,6 +144,20 @@ function getFilteredSegments() {
     });
 }
 
+/** If the active segment has no questions after filtering, switch to first segment that has questions */
+function ensureActiveSegmentHasQuestions() {
+    const segments = getAllSegments();
+    if (!segments.length) return;
+    const currentQuestions = getFilteredQuestionsForSegment(getActiveSegment());
+    if (currentQuestions.length > 0) return;
+    for (let i = 0; i < segments.length; i++) {
+        if (getFilteredQuestionsForSegment(segments[i]).length > 0) {
+            activeSegmentIndex = i;
+            return;
+        }
+    }
+}
+
 function getFilteredQuestionsForSegment(segment) {
     const segId = getSegmentId(segment);
     const levelFilter = getActiveLevelFilter();
@@ -175,11 +189,11 @@ function renderQuestion(segmentId, q, questionNumber) {
                     ${count > 0 ? `<span class="text-slate-400 text-xs" title="Practice count">${count}×</span>` : ''}
                     ${hasHint ? `<span class="tooltip tooltip-bottom max-w-xs" data-tip="${escapeAttr(q.hint)}"><button type="button" class="btn btn-xs btn-ghost text-amber-600" title="Question idea / Hint" aria-label="Hint"><i class="fa-solid fa-lightbulb"></i></button></span>` : ''}
                     ${hasAnswer ? `<span class="tooltip tooltip-bottom max-w-xs" data-tip="${escapeAttr(q.answer)}"><button type="button" class="btn btn-xs btn-ghost text-green-600" title="Answer idea — ensure your practice is correct" aria-label="Answer idea"><i class="fa-solid fa-circle-check"></i></button></span>` : ''}
-                    <button type="button" class="btn btn-xs ${marked ? 'btn-warning' : 'btn-ghost'}" data-action="revision" title="${marked ? 'Remove from revision' : 'Mark for revision'}" aria-label="${marked ? 'Remove from revision' : 'Mark for revision'}">
-                        <i class="fa-solid fa-rotate-right"></i>
+                    <button type="button" class="btn btn-xs ${marked ? 'btn-warning' : 'btn-ghost'}" data-action="revision" title="${marked ? 'রিভিশন থেকে সরান' : 'পরবর্তীতে আবার করবেন — রিভিশন লিস্টে যোগ করুন'}" aria-label="${marked ? 'রিভিশন থেকে সরান' : 'রিভিশনের জন্য মার্ক করুন'}">
+                        <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                     </button>
-                    <button type="button" class="btn btn-xs btn-ghost" data-action="practiced" title="I practiced this" aria-label="I practiced this">
-                        <i class="fa-solid fa-check"></i>
+                    <button type="button" class="btn btn-xs btn-ghost practice-done-btn" data-action="practiced" title="এই প্রশ্নটা প্র্যাকটিস করেছি — ক্লিক করলে কাউন্ট বাড়বে (কতবার প্র্যাকটিস করেছেন সেটা দেখাবে)" aria-label="প্র্যাকটিস করেছি — ক্লিক করলে কাউন্ট বাড়ে">
+                        <i class="fa-solid fa-check" aria-hidden="true"></i><span class="practice-done-label">প্র্যাকটিস করেছি</span>
                     </button>
                 </div>
             </div>
@@ -357,13 +371,25 @@ function updateRevisionBanner() {
     if (!banner) return;
     if (count === 0) {
         banner.classList.add('hidden');
-        const revisionBtn = document.querySelector('[data-filter-revision="only"]');
-        if (revisionBtn) revisionBtn.classList.remove('active');
+        document.querySelectorAll('[data-filter-revision="only"]').forEach((btn) => btn.classList.remove('active'));
         return;
     }
     banner.classList.remove('hidden');
     const numEl = banner.querySelector('[data-revision-count]');
     if (numEl) numEl.textContent = count;
+    const revisionOnly = getActiveRevisionFilter();
+    document.querySelectorAll('[data-filter-revision="only"]').forEach((btn) => btn.classList.toggle('active', revisionOnly));
+    syncFilterAriaPressed();
+}
+
+/** Updates aria-pressed on level and revision filter buttons to match active state */
+function syncFilterAriaPressed() {
+    document.querySelectorAll('[data-filter-level]').forEach((el) => {
+        el.setAttribute('aria-pressed', el.classList.contains('active') ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-filter-revision]').forEach((el) => {
+        el.setAttribute('aria-pressed', el.classList.contains('active') ? 'true' : 'false');
+    });
 }
 
 /** Binds level and revision filter buttons to re-render and update banner */
@@ -372,7 +398,10 @@ function setupFilters() {
         el.addEventListener('click', () => {
             document.querySelectorAll('[data-filter-level]').forEach((e) => e.classList.remove('active'));
             el.classList.add('active');
+            syncFilterAriaPressed();
+            ensureActiveSegmentHasQuestions();
             renderAllTopics();
+            updateSidebarActiveState();
         });
     });
 
@@ -382,8 +411,11 @@ function setupFilters() {
             document.querySelectorAll('[data-filter-revision]').forEach((e) => {
                 e.classList.toggle('active', e.dataset.filterRevision === value);
             });
+            syncFilterAriaPressed();
+            ensureActiveSegmentHasQuestions();
             renderAllTopics();
             updateRevisionBanner();
+            updateSidebarActiveState();
         });
     });
 }
@@ -398,6 +430,7 @@ function init() {
             renderPracticeSidebar();
             renderAllTopics();
             updateRevisionBanner();
+            syncFilterAriaPressed();
         })
         .catch((err) => {
             const container = document.getElementById('practice-topics');
