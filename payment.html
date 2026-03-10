@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pay securely — product, donation, or subscription. Multiple payment methods and currencies. Live BDT rate from free API.">
+    <title>Payment | JS Pro Roadmap</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+<body class="payment-page">
+
+    <header class="payment-header">
+        <div class="payment-header-inner">
+            <a href="index.html" class="payment-back">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                <span>Back</span>
+            </a>
+            <h1 class="payment-title">
+                <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                Payment
+            </h1>
+            <div class="payment-header-spacer"></div>
+        </div>
+    </header>
+
+    <main class="payment-main">
+        <p class="payment-intro">
+            নিরাপদে পেমেন্ট করুন — প্রোডাক্ট, ডোনেশন বা সাবস্ক্রিপশন। দেশ অনুযায়ী কারেন্সি ও পেমেন্ট মেথড বেছে নিন।
+        </p>
+
+        <!-- Bangladesh free API: live BDT rate shown in js -->
+        <section class="payment-card payment-card--highlight" id="bdt-rate-card" aria-live="polite">
+            <h2 class="payment-card-title">
+                <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                লাইভ রেট (বাংলাদেশ — ফ্রি API)
+            </h2>
+            <div class="bdt-rate-content" id="bdt-rate-content">
+                <span class="bdt-rate-loading" id="bdt-rate-loading">রেট লোড হচ্ছে…</span>
+                <span class="bdt-rate-value hidden" id="bdt-rate-value"></span>
+                <span class="bdt-rate-error hidden" id="bdt-rate-error"></span>
+            </div>
+            <p class="bdt-rate-hint" id="bdt-rate-hint">অ্যামাউন্ট ও কারেন্সি নিচে সিলেক্ট করুন; BDT সমমান এখানে দেখাবে।</p>
+        </section>
+
+        <section class="payment-card" aria-label="Payment type">
+            <h2 class="payment-card-title">কিসের জন্য পেমেন্ট</h2>
+            <div class="payment-mode-group" role="group">
+                <button type="button" class="payment-mode-btn payment-mode-btn--active" data-payment-mode="product" aria-pressed="true">
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> প্রোডাক্ট
+                </button>
+                <button type="button" class="payment-mode-btn" data-payment-mode="donation" aria-pressed="false">
+                    <i class="fa-solid fa-heart" aria-hidden="true"></i> ডোনেশন
+                </button>
+                <button type="button" class="payment-mode-btn" data-payment-mode="subscription" aria-pressed="false">
+                    <i class="fa-solid fa-repeat" aria-hidden="true"></i> সাবস্ক্রিপশন
+                </button>
+            </div>
+        </section>
+
+        <section class="payment-card" aria-label="Amount and currency">
+            <h2 class="payment-card-title">পরিমাণ ও কারেন্সি</h2>
+            <div class="payment-amount-row">
+                <div class="payment-field payment-field--grow">
+                    <label for="payment-amount">পরিমাণ</label>
+                    <input type="number" id="payment-amount" min="0" step="0.01" placeholder="0.00" value="" inputmode="decimal" aria-describedby="amount-hint">
+                    <p id="amount-hint" class="payment-hint">কমপক্ষে ১ লিখুন (বা আপনার কারেন্সিতে সমমান)</p>
+                </div>
+                <div class="payment-field payment-field--currency">
+                    <label for="payment-currency">কারেন্সি</label>
+                    <select id="payment-currency" aria-label="Select currency"></select>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment-card" aria-label="Payment method">
+            <h2 class="payment-card-title">পেমেন্ট মেথড</h2>
+            <div class="payment-methods-grid" id="payment-methods-container">
+                <span class="payment-loading">Loading…</span>
+            </div>
+        </section>
+
+        <section class="payment-card payment-card--details hidden" id="method-details-section" aria-live="polite">
+            <h2 class="payment-card-title" id="method-details-title">বিস্তারিত</h2>
+            <div class="payment-details-inner" id="method-details-content"></div>
+        </section>
+
+        <section class="payment-card payment-card--summary">
+            <div class="payment-summary-row">
+                <div>
+                    <p class="payment-summary-label">মোট</p>
+                    <p class="payment-summary-amount" id="payment-summary-text">—</p>
+                </div>
+                <button type="button" class="payment-submit-btn" id="payment-submit-btn" disabled aria-disabled="true">
+                    <i class="fa-solid fa-lock" aria-hidden="true"></i> Pay
+                </button>
+            </div>
+        </section>
+
+        <div class="payment-message hidden" id="payment-message" role="alert"></div>
+    </main>
+
+    <footer class="payment-footer">
+        <p><a href="index.html">JS Pro Roadmap</a> — Secure payment</p>
+    </footer>
+
+    <script src="js/payment-config.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>
